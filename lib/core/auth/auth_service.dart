@@ -1,18 +1,12 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Thin wrapper around Supabase Auth. Only reachable through the Account
-/// tab, which is Premium-gated — free/guest mode never touches this and
-/// keeps working entirely on local storage.
+/// tab — free/guest mode never touches this and keeps working entirely on
+/// local storage.
 class AuthService {
   const AuthService();
 
-  /// Must also be registered as a Redirect URL in the Supabase dashboard
-  /// (Authentication → URL Configuration) — Supabase silently ignores any
-  /// `redirectTo` that isn't on that allow-list.
-  static const passwordResetRedirect = 'kipack://reset-callback';
-
-  /// Same deal as [passwordResetRedirect] — without this, Supabase falls
-  /// back to the project's default Site URL for the "confirm your email"
+  /// Without this, Supabase falls back to the project's default Site URL
   /// link, which for a project that's never set one is `localhost:3000`
   /// (useless for a mobile app). Must also be added to the Redirect URLs
   /// allow-list in the Supabase dashboard.
@@ -65,18 +59,25 @@ class AuthService {
     return _auth.updateUser(UserAttributes(email: newEmail));
   }
 
-  /// Sends a "reset your password" email. Tapping its link opens the app via
-  /// [passwordResetRedirect] and fires [AuthChangeEvent.passwordRecovery] on
-  /// [onAuthStateChange] once Supabase has exchanged the link for a session —
-  /// that's the app's cue to prompt for a new password (see [ResetPasswordScreen]).
+  /// Sends a "reset your password" email containing a 6-digit code (the
+  /// email template must include `{{ .Token }}` — see [verifyPasswordResetCode]).
   Future<void> sendPasswordResetEmail(String email) {
-    return _auth.resetPasswordForEmail(
-      email,
-      redirectTo: passwordResetRedirect,
-    );
+    return _auth.resetPasswordForEmail(email);
   }
 
-  /// Sets a new password for the session established by the recovery link.
+  /// Exchanges the code from [sendPasswordResetEmail]'s email for a
+  /// recovery session — fires [AuthChangeEvent.passwordRecovery] on
+  /// [onAuthStateChange] on success, which `AppShell` already listens for
+  /// to push [ResetPasswordScreen] (no deep link involved: entering the
+  /// code IS the whole flow).
+  Future<void> verifyPasswordResetCode({
+    required String email,
+    required String code,
+  }) {
+    return _auth.verifyOTP(email: email, token: code, type: OtpType.recovery);
+  }
+
+  /// Sets a new password for the session established by [verifyPasswordResetCode].
   Future<void> setNewPassword(String newPassword) {
     return _auth.updateUser(UserAttributes(password: newPassword));
   }

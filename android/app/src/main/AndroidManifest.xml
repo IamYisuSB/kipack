@@ -36,14 +36,6 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <!-- Opens the app when the user taps the link in a
-                 "reset your password" email (see AuthService.passwordResetRedirect). -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="kipack" android:host="reset-callback"/>
-            </intent-filter>
             <!-- Opens the app when the user taps the link in the "confirm
                  your email" signup email (see AuthService.emailConfirmRedirect). -->
             <intent-filter>

@@ -311,7 +311,7 @@ class _AuthFormState extends State<_AuthForm> {
           ),
           TextButton(
             onPressed: () => Navigator.of(context).pop(controller.text.trim()),
-            child: Text(l10n.authSendLinkButton),
+            child: Text(l10n.authSendCodeButton),
           ),
         ],
       ),
@@ -320,28 +320,65 @@ class _AuthFormState extends State<_AuthForm> {
     try {
       await authService.sendPasswordResetEmail(email);
       if (!mounted) return;
-      await showDialog<void>(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text(l10n.authCheckEmailTitle),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          content: Text(l10n.authResetEmailSentBody(email)),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: Text(l10n.commonUnderstood),
-            ),
-          ],
-        ),
-      );
+      await _promptResetCode(email);
     } on AuthException catch (error) {
       if (!mounted) return;
       setState(() => _error = error.message);
     } catch (_) {
       if (!mounted) return;
       setState(() => _error = l10n.authErrorSendEmailFailed);
+    }
+  }
+
+  /// Prompts for the 6-digit code just emailed to [email] and exchanges it
+  /// for a recovery session — on success `AppShell`'s existing
+  /// `AuthChangeEvent.passwordRecovery` listener takes over and pushes
+  /// `ResetPasswordScreen`, so there's nothing else to do here.
+  Future<void> _promptResetCode(String email) async {
+    final l10n = AppLocalizations.of(context);
+    final codeController = TextEditingController();
+    final code = await showDialog<String>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(l10n.authEnterCodeTitle),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(l10n.authResetCodeSentBody(email)),
+            const SizedBox(height: 12),
+            TextField(
+              controller: codeController,
+              autofocus: true,
+              keyboardType: TextInputType.number,
+              maxLength: 6,
+              decoration: InputDecoration(hintText: l10n.authCodeHint),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: Text(l10n.commonCancel),
+          ),
+          TextButton(
+            onPressed: () =>
+                Navigator.of(context).pop(codeController.text.trim()),
+            child: Text(l10n.commonContinue),
+          ),
+        ],
+      ),
+    );
+    if (code == null || code.isEmpty || !mounted) return;
+    try {
+      await authService.verifyPasswordResetCode(email: email, code: code);
+    } on AuthException catch (error) {
+      if (!mounted) return;
+      setState(() => _error = error.message);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _error = l10n.authErrorGeneric);
     }
   }
 

@@ -6,14 +6,14 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 
 /// Pushed on top of everything as soon as [AuthChangeEvent.passwordRecovery]
-/// fires (see AppShell) — the user just tapped the link in a "reset your
-/// password" email, and Supabase has already exchanged it for a valid
-/// session, so this only needs to collect and set the new password.
+/// fires (see AppShell) — the user just entered the 6-digit code from a
+/// "reset your password" email, and Supabase has already exchanged it for a
+/// valid session, so this only needs to collect and set the new password.
 ///
-/// That session is only a *recovery* session — proof of clicking an email
-/// link, not proof of knowing any password — so leaving this screen any
-/// other way than actually setting one must not leave the user looking
-/// signed in (see [PasswordRecoveryGuard]).
+/// That session is only a *recovery* session — proof of reading that email,
+/// not proof of knowing any password — so leaving this screen any other way
+/// than actually setting one must not leave the user looking signed in (see
+/// [PasswordRecoveryGuard]).
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
 

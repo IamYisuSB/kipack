@@ -982,23 +982,29 @@ abstract class AppLocalizations {
   /// **'Tu correo electrónico'**
   String get authEmailHint;
 
-  /// No description provided for @authSendLinkButton.
+  /// No description provided for @authSendCodeButton.
   ///
   /// In es, this message translates to:
-  /// **'Enviar enlace'**
-  String get authSendLinkButton;
+  /// **'Enviar código'**
+  String get authSendCodeButton;
 
-  /// No description provided for @authCheckEmailTitle.
+  /// No description provided for @authEnterCodeTitle.
   ///
   /// In es, this message translates to:
-  /// **'Revisa tu correo'**
-  String get authCheckEmailTitle;
+  /// **'Introduce el código'**
+  String get authEnterCodeTitle;
 
-  /// No description provided for @authResetEmailSentBody.
+  /// No description provided for @authResetCodeSentBody.
   ///
   /// In es, this message translates to:
-  /// **'Has pedido restablecer la contraseña para {email}.\n\nSi ese correo está asociado a una cuenta, te llegará un enlace para elegir una nueva contraseña. Recuerda mirar también la carpeta de spam.'**
-  String authResetEmailSentBody(String email);
+  /// **'Te hemos enviado un código de 6 dígitos a {email}. Introdúcelo para continuar (revisa también la carpeta de spam).'**
+  String authResetCodeSentBody(String email);
+
+  /// No description provided for @authCodeHint.
+  ///
+  /// In es, this message translates to:
+  /// **'Código de 6 dígitos'**
+  String get authCodeHint;
 
   /// No description provided for @commonUnderstood.
   ///

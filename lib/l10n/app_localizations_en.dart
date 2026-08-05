@@ -523,15 +523,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authEmailHint => 'Your email address';
 
   @override
-  String get authSendLinkButton => 'Send link';
+  String get authSendCodeButton => 'Send code';
 
   @override
-  String get authCheckEmailTitle => 'Check your email';
+  String get authEnterCodeTitle => 'Enter the code';
 
   @override
-  String authResetEmailSentBody(String email) {
-    return 'We\'ve sent a password reset request for $email.\n\nIf that email is linked to an account, you\'ll receive a link to choose a new password. Remember to check your spam folder too.';
+  String authResetCodeSentBody(String email) {
+    return 'We\'ve sent a 6-digit code to $email. Enter it to continue (check your spam folder too).';
   }
+
+  @override
+  String get authCodeHint => '6-digit code';
 
   @override
   String get commonUnderstood => 'Got it';

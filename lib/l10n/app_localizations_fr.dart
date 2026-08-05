@@ -530,15 +530,18 @@ class AppLocalizationsFr extends AppLocalizations {
   String get authEmailHint => 'Ton adresse e-mail';
 
   @override
-  String get authSendLinkButton => 'Envoyer le lien';
+  String get authSendCodeButton => 'Envoyer le code';
 
   @override
-  String get authCheckEmailTitle => 'Vérifie ton e-mail';
+  String get authEnterCodeTitle => 'Entre le code';
 
   @override
-  String authResetEmailSentBody(String email) {
-    return 'Tu as demandé la réinitialisation du mot de passe pour $email.\n\nSi cet e-mail est associé à un compte, tu recevras un lien pour choisir un nouveau mot de passe. Pense aussi à vérifier le dossier spam.';
+  String authResetCodeSentBody(String email) {
+    return 'Nous avons envoyé un code à 6 chiffres à $email. Entre-le pour continuer (vérifie aussi le dossier spam).';
   }
+
+  @override
+  String get authCodeHint => 'Code à 6 chiffres';
 
   @override
   String get commonUnderstood => 'Compris';
