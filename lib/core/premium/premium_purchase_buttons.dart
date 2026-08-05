@@ -48,7 +48,11 @@ class PremiumPurchaseButtons extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             for (final offer in offers) ...[
-              _OfferButton(offer: offer, onPurchaseStarted: onPurchaseStarted),
+              _OfferButton(
+                offer: offer,
+                userId: ref.watch(authStateProvider).asData!.value!.id,
+                onPurchaseStarted: onPurchaseStarted,
+              ),
               const SizedBox(height: 8),
             ],
           ],
@@ -67,9 +71,14 @@ class PremiumPurchaseButtons extends ConsumerWidget {
 }
 
 class _OfferButton extends ConsumerStatefulWidget {
-  const _OfferButton({required this.offer, this.onPurchaseStarted});
+  const _OfferButton({
+    required this.offer,
+    required this.userId,
+    this.onPurchaseStarted,
+  });
 
   final GooglePlayProductDetails offer;
+  final String userId;
   final VoidCallback? onPurchaseStarted;
 
   @override
@@ -81,7 +90,10 @@ class _OfferButtonState extends ConsumerState<_OfferButton> {
 
   Future<void> _buy() async {
     setState(() => _isBuying = true);
-    final launched = await billingService.buy(widget.offer);
+    final launched = await billingService.buy(
+      widget.offer,
+      userId: widget.userId,
+    );
     if (!mounted) return;
     setState(() => _isBuying = false);
     if (launched) {

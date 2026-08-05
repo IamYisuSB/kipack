@@ -42,9 +42,19 @@ class BillingService {
   /// successfully — NOT whether the purchase completed, which arrives
   /// later via [purchaseStream] and still needs server-side verification
   /// before it's trusted (see PurchaseVerificationService).
-  Future<bool> buy(GooglePlayProductDetails offer) {
+  ///
+  /// [userId] is sent to Google as the purchase's "obfuscated account id"
+  /// and echoed back in the server-side verification response — this is
+  /// what lets verify-play-purchase confirm a purchaseToken actually
+  /// belongs to the account claiming it, instead of trusting the token
+  /// alone (which anyone who obtained it could otherwise replay onto a
+  /// different account to get Premium for free).
+  Future<bool> buy(GooglePlayProductDetails offer, {required String userId}) {
     return _iap.buyNonConsumable(
-      purchaseParam: PurchaseParam(productDetails: offer),
+      purchaseParam: PurchaseParam(
+        productDetails: offer,
+        applicationUserName: userId,
+      ),
     );
   }
 

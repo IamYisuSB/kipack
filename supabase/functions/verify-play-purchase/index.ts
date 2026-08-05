@@ -102,6 +102,20 @@ Deno.serve(async (req: Request) => {
       return jsonResponse({ error: 'La suscripción no está activa' }, 400);
     }
 
+    // Anti-fraud: if the client set an obfuscated account id when starting
+    // the purchase (see BillingService.buy), Google echoes it back here —
+    // cross-check it matches the caller. Purchases made before this field
+    // existed won't have one, so this only rejects when it's present AND
+    // wrong, never just because it's missing.
+    const externalAccountId: string | undefined =
+      subscription.externalAccountIdentifiers?.obfuscatedExternalAccountId;
+    if (externalAccountId && externalAccountId !== user.id) {
+      return jsonResponse(
+        { error: 'Esta compra pertenece a otra cuenta' },
+        403,
+      );
+    }
+
     // Service-role client so this write bypasses `protect_premium_columns`
     // (see supabase/sql/premium_subscriptions.sql) — that trigger exists
     // specifically to stop everyone EXCEPT this function from setting these
@@ -118,6 +132,17 @@ Deno.serve(async (req: Request) => {
       .eq('id', user.id);
 
     if (updateError) {
+      // Unique violation on premium_purchase_token (see
+      // supabase/sql/premium_purchase_token_unique.sql) means this exact
+      // token is already linked to a DIFFERENT account — never trust a
+      // client-reported "purchased" event enough to let it re-claim
+      // someone else's subscription onto a new account.
+      if (updateError.code === '23505') {
+        return jsonResponse(
+          { error: 'Esta compra ya está vinculada a otra cuenta' },
+          409,
+        );
+      }
       console.error('profiles update failed:', updateError);
       return jsonResponse({ error: 'No se pudo guardar la suscripción' }, 500);
     }
