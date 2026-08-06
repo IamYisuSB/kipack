@@ -958,6 +958,12 @@ abstract class AppLocalizations {
   /// **'Las contraseñas no coinciden'**
   String get authErrorPasswordMismatch;
 
+  /// No description provided for @authErrorWeakPassword.
+  ///
+  /// In es, this message translates to:
+  /// **'La contraseña no cumple todos los requisitos'**
+  String get authErrorWeakPassword;
+
   /// No description provided for @authInfoAccountCreated.
   ///
   /// In es, this message translates to:
@@ -1059,6 +1065,54 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Nombre de usuario'**
   String get authUsernameHint;
+
+  /// No description provided for @authUsernameTaken.
+  ///
+  /// In es, this message translates to:
+  /// **'Ese nombre de usuario ya está en uso'**
+  String get authUsernameTaken;
+
+  /// No description provided for @authUsernameBlocked.
+  ///
+  /// In es, this message translates to:
+  /// **'Ese nombre de usuario no está permitido'**
+  String get authUsernameBlocked;
+
+  /// No description provided for @authUsernameTooShort.
+  ///
+  /// In es, this message translates to:
+  /// **'Mínimo 3 caracteres'**
+  String get authUsernameTooShort;
+
+  /// No description provided for @authPasswordReqLength.
+  ///
+  /// In es, this message translates to:
+  /// **'8+ caracteres'**
+  String get authPasswordReqLength;
+
+  /// No description provided for @authPasswordReqLower.
+  ///
+  /// In es, this message translates to:
+  /// **'Minúscula'**
+  String get authPasswordReqLower;
+
+  /// No description provided for @authPasswordReqUpper.
+  ///
+  /// In es, this message translates to:
+  /// **'Mayúscula'**
+  String get authPasswordReqUpper;
+
+  /// No description provided for @authPasswordReqDigit.
+  ///
+  /// In es, this message translates to:
+  /// **'Número'**
+  String get authPasswordReqDigit;
+
+  /// No description provided for @authPasswordReqSymbol.
+  ///
+  /// In es, this message translates to:
+  /// **'Símbolo'**
+  String get authPasswordReqSymbol;
 
   /// No description provided for @authEmailFieldHint.
   ///

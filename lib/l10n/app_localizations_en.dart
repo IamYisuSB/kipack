@@ -510,6 +510,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get authErrorPasswordMismatch => 'Passwords don\'t match';
 
   @override
+  String get authErrorWeakPassword =>
+      'The password doesn\'t meet all the requirements';
+
+  @override
   String get authInfoAccountCreated =>
       'Account created — check your email to confirm it.';
 
@@ -569,6 +573,30 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get authUsernameHint => 'Username';
+
+  @override
+  String get authUsernameTaken => 'That username is already taken';
+
+  @override
+  String get authUsernameBlocked => 'That username isn\'t allowed';
+
+  @override
+  String get authUsernameTooShort => '3 characters minimum';
+
+  @override
+  String get authPasswordReqLength => '8+ characters';
+
+  @override
+  String get authPasswordReqLower => 'Lowercase';
+
+  @override
+  String get authPasswordReqUpper => 'Uppercase';
+
+  @override
+  String get authPasswordReqDigit => 'Number';
+
+  @override
+  String get authPasswordReqSymbol => 'Symbol';
 
   @override
   String get authEmailFieldHint => 'Email address';

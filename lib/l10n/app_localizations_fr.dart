@@ -517,6 +517,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Les mots de passe ne correspondent pas';
 
   @override
+  String get authErrorWeakPassword =>
+      'Le mot de passe ne remplit pas toutes les conditions';
+
+  @override
   String get authInfoAccountCreated =>
       'Compte créé — vérifie ton e-mail pour le confirmer.';
 
@@ -576,6 +580,30 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get authUsernameHint => 'Nom d\'utilisateur';
+
+  @override
+  String get authUsernameTaken => 'Ce nom d\'utilisateur est déjà pris';
+
+  @override
+  String get authUsernameBlocked => 'Ce nom d\'utilisateur n\'est pas autorisé';
+
+  @override
+  String get authUsernameTooShort => '3 caractères minimum';
+
+  @override
+  String get authPasswordReqLength => '8+ caractères';
+
+  @override
+  String get authPasswordReqLower => 'Minuscule';
+
+  @override
+  String get authPasswordReqUpper => 'Majuscule';
+
+  @override
+  String get authPasswordReqDigit => 'Chiffre';
+
+  @override
+  String get authPasswordReqSymbol => 'Symbole';
 
   @override
   String get authEmailFieldHint => 'Adresse e-mail';

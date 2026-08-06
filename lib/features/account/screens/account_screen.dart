@@ -11,6 +11,8 @@ import '../../../core/auth/account_deletion_service.dart';
 import '../../../core/auth/auth_provider.dart';
 import '../../../core/auth/auth_service.dart';
 import '../../../core/auth/login_attempts_service.dart';
+import '../../../core/auth/password_policy.dart';
+import '../../../core/auth/password_requirements_checklist.dart';
 import '../../../core/auth/profile_service.dart';
 import '../../../core/billing/billing_service.dart';
 import '../../../core/feedback/feedback_service.dart';
@@ -235,8 +237,25 @@ class _AuthFormState extends State<_AuthForm> {
   String? _error;
   String? _info;
 
+  Timer? _usernameCheckDebounce;
+  String? _usernameCheckedValue;
+  bool _usernameChecking = false;
+  bool? _usernameAvailable;
+  String? _usernameUnavailableReason;
+
+  @override
+  void initState() {
+    super.initState();
+    _usernameController.addListener(_onUsernameChanged);
+    // Only used to redraw the live password-requirements checklist as the
+    // user types — the actual value is always read straight off the
+    // controller, never stored separately.
+    _passwordController.addListener(_onPasswordChanged);
+  }
+
   @override
   void dispose() {
+    _usernameCheckDebounce?.cancel();
     _usernameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
@@ -244,13 +263,95 @@ class _AuthFormState extends State<_AuthForm> {
     super.dispose();
   }
 
+  void _onPasswordChanged() => setState(() {});
+
+  void _onUsernameChanged() {
+    _usernameCheckDebounce?.cancel();
+    final value = _usernameController.text.trim();
+    setState(() {
+      _usernameAvailable = null;
+      _usernameUnavailableReason = null;
+      _usernameCheckedValue = null;
+    });
+    if (value.length < 3) return;
+    _usernameCheckDebounce = Timer(
+      const Duration(milliseconds: 450),
+      () => _checkUsername(value),
+    );
+  }
+
+  Future<void> _checkUsername(String value) async {
+    setState(() => _usernameChecking = true);
+    try {
+      final rows = await Supabase.instance.client.rpc(
+        'check_username_available',
+        params: {'p_username': value},
+      );
+      // The user may have kept typing while this was in flight — ignore a
+      // stale response for a value that's no longer in the field.
+      if (!mounted || _usernameController.text.trim() != value) return;
+      final row = (rows as List).first as Map<String, dynamic>;
+      setState(() {
+        _usernameChecking = false;
+        _usernameCheckedValue = value;
+        _usernameAvailable = row['available'] as bool;
+        _usernameUnavailableReason = row['reason'] as String?;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _usernameChecking = false);
+    }
+  }
+
+  String _usernameReasonText(AppLocalizations l10n) {
+    switch (_usernameUnavailableReason) {
+      case 'blocked':
+        return l10n.authUsernameBlocked;
+      case 'too_short':
+        return l10n.authUsernameTooShort;
+      default:
+        return l10n.authUsernameTaken;
+    }
+  }
+
+  Widget? _usernameSuffixIcon() {
+    final value = _usernameController.text.trim();
+    if (value.length < 3) return null;
+    if (_usernameChecking) {
+      return const Padding(
+        padding: EdgeInsets.all(14),
+        child: SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+      );
+    }
+    if (_usernameCheckedValue != value) return null;
+    if (_usernameAvailable == true) {
+      return const Icon(Icons.check_circle_rounded, color: AppColors.success);
+    }
+    if (_usernameAvailable == false) {
+      return const Icon(Icons.cancel_rounded, color: AppColors.error);
+    }
+    return null;
+  }
+
   /// Supabase's rate-limit errors ("over_email_send_rate_limit" etc.) come
   /// back as a raw English message not meant for end users — swap those for
   /// a friendly localized one; every other AuthException still shows
   /// Supabase's own message, same as before.
+  ///
+  /// Checks both [AuthException.code] and the raw message text: depending
+  /// on which API version the Auth server reports for a given response,
+  /// the gotrue client may not always populate `code`, so the message text
+  /// ("email rate limit exceeded" etc.) is the one signal that's reliably
+  /// always present.
   String _messageFor(AuthException error) {
     final l10n = AppLocalizations.of(context);
-    if (error.code?.contains('rate_limit') ?? false) {
+    final code = error.code?.toLowerCase() ?? '';
+    final message = error.message.toLowerCase();
+    if (code.contains('rate_limit') || message.contains('rate limit')) {
       return l10n.authErrorRateLimited;
     }
     return error.message;
@@ -268,6 +369,18 @@ class _AuthFormState extends State<_AuthForm> {
     }
     if (_isSignUp && password != _confirmPasswordController.text) {
       setState(() => _error = l10n.authErrorPasswordMismatch);
+      return;
+    }
+    if (_isSignUp && !PasswordPolicy.isValid(password)) {
+      setState(() => _error = l10n.authErrorWeakPassword);
+      return;
+    }
+    if (_isSignUp && _usernameAvailable != true) {
+      setState(
+        () => _error = _usernameAvailable == false
+            ? _usernameReasonText(l10n)
+            : l10n.authErrorChooseUsername,
+      );
       return;
     }
 
@@ -453,8 +566,19 @@ class _AuthFormState extends State<_AuthForm> {
         if (_isSignUp) ...[
           TextField(
             controller: _usernameController,
-            decoration: InputDecoration(hintText: l10n.authUsernameHint),
+            decoration: InputDecoration(
+              hintText: l10n.authUsernameHint,
+              suffixIcon: _usernameSuffixIcon(),
+            ),
           ),
+          if (_usernameAvailable == false &&
+              _usernameCheckedValue == _usernameController.text.trim()) ...[
+            const SizedBox(height: 4),
+            Text(
+              _usernameReasonText(l10n),
+              style: AppTextStyles.caption.copyWith(color: AppColors.error),
+            ),
+          ],
           const SizedBox(height: 12),
         ],
         TextField(
@@ -480,6 +604,8 @@ class _AuthFormState extends State<_AuthForm> {
             ),
           ),
         ),
+        if (_isSignUp)
+          PasswordRequirementsChecklist(password: _passwordController.text),
         if (!_isSignUp) ...[
           Align(
             alignment: Alignment.centerRight,

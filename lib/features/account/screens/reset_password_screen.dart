@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/auth/auth_service.dart';
+import '../../../core/auth/password_policy.dart';
 import '../../../core/auth/password_recovery_guard.dart';
+import '../../../core/auth/password_requirements_checklist.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 
@@ -30,17 +32,30 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   String? _error;
 
   @override
+  void initState() {
+    super.initState();
+    // Only used to redraw the live password-requirements checklist.
+    _passwordController.addListener(_onPasswordChanged);
+  }
+
+  @override
   void dispose() {
     _passwordController.dispose();
     _confirmController.dispose();
     super.dispose();
   }
 
+  void _onPasswordChanged() => setState(() {});
+
   Future<void> _submit() async {
     final password = _passwordController.text;
     if (password.isEmpty || _isSubmitting) return;
     if (password != _confirmController.text) {
       setState(() => _error = 'Las contraseñas no coinciden');
+      return;
+    }
+    if (!PasswordPolicy.isValid(password)) {
+      setState(() => _error = 'La contraseña no cumple todos los requisitos');
       return;
     }
     setState(() {
@@ -122,7 +137,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
+                PasswordRequirementsChecklist(
+                  password: _passwordController.text,
+                ),
+                const SizedBox(height: 4),
                 TextField(
                   controller: _confirmController,
                   obscureText: _obscure,
