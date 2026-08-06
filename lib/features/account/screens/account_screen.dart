@@ -330,7 +330,7 @@ class _AuthFormState extends State<_AuthForm> {
     }
   }
 
-  /// Prompts for the 6-digit code just emailed to [email] and exchanges it
+  /// Prompts for the 8-digit code just emailed to [email] and exchanges it
   /// for a recovery session — on success `AppShell`'s existing
   /// `AuthChangeEvent.passwordRecovery` listener takes over and pushes
   /// `ResetPasswordScreen`, so there's nothing else to do here.
@@ -352,7 +352,7 @@ class _AuthFormState extends State<_AuthForm> {
               controller: codeController,
               autofocus: true,
               keyboardType: TextInputType.number,
-              maxLength: 6,
+              maxLength: 8,
               decoration: InputDecoration(hintText: l10n.authCodeHint),
             ),
           ],

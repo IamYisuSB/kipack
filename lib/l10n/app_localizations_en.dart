@@ -530,11 +530,11 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String authResetCodeSentBody(String email) {
-    return 'We\'ve sent a 6-digit code to $email. Enter it to continue (check your spam folder too).';
+    return 'We\'ve sent an 8-digit code to $email. Enter it to continue (check your spam folder too).';
   }
 
   @override
-  String get authCodeHint => '6-digit code';
+  String get authCodeHint => '8-digit code';
 
   @override
   String get commonUnderstood => 'Got it';

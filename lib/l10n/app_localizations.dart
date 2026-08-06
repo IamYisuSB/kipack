@@ -997,13 +997,13 @@ abstract class AppLocalizations {
   /// No description provided for @authResetCodeSentBody.
   ///
   /// In es, this message translates to:
-  /// **'Te hemos enviado un código de 6 dígitos a {email}. Introdúcelo para continuar (revisa también la carpeta de spam).'**
+  /// **'Te hemos enviado un código de 8 dígitos a {email}. Introdúcelo para continuar (revisa también la carpeta de spam).'**
   String authResetCodeSentBody(String email);
 
   /// No description provided for @authCodeHint.
   ///
   /// In es, this message translates to:
-  /// **'Código de 6 dígitos'**
+  /// **'Código de 8 dígitos'**
   String get authCodeHint;
 
   /// No description provided for @commonUnderstood.

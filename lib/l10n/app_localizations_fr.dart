@@ -537,11 +537,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String authResetCodeSentBody(String email) {
-    return 'Nous avons envoyé un code à 6 chiffres à $email. Entre-le pour continuer (vérifie aussi le dossier spam).';
+    return 'Nous avons envoyé un code à 8 chiffres à $email. Entre-le pour continuer (vérifie aussi le dossier spam).';
   }
 
   @override
-  String get authCodeHint => 'Code à 6 chiffres';
+  String get authCodeHint => 'Code à 8 chiffres';
 
   @override
   String get commonUnderstood => 'Compris';
