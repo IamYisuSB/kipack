@@ -204,6 +204,7 @@
   "authCodeHint": "8-digit code",
   "commonUnderstood": "Got it",
   "authErrorSendEmailFailed": "Couldn't send the email. Please try again.",
+  "authErrorRateLimited": "You've hit the attempt limit. Try again in a little while.",
   "authTitleSignUp": "Create account",
   "authTitleSignIn": "Sign in",
   "authSubtitle": "With an account you'll be able to sync your trips across devices later on.",

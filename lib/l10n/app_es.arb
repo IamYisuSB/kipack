@@ -204,6 +204,7 @@
   "authCodeHint": "Código de 8 dígitos",
   "commonUnderstood": "Entendido",
   "authErrorSendEmailFailed": "No se pudo enviar el correo. Inténtalo de nuevo.",
+  "authErrorRateLimited": "Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.",
   "authTitleSignUp": "Crear cuenta",
   "authTitleSignIn": "Iniciar sesión",
   "authSubtitle": "Con una cuenta podrás sincronizar tus viajes entre dispositivos más adelante.",

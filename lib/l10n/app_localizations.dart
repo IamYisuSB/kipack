@@ -1018,6 +1018,12 @@ abstract class AppLocalizations {
   /// **'No se pudo enviar el correo. Inténtalo de nuevo.'**
   String get authErrorSendEmailFailed;
 
+  /// No description provided for @authErrorRateLimited.
+  ///
+  /// In es, this message translates to:
+  /// **'Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.'**
+  String get authErrorRateLimited;
+
   /// No description provided for @authTitleSignUp.
   ///
   /// In es, this message translates to:

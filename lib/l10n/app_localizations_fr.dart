@@ -551,6 +551,10 @@ class AppLocalizationsFr extends AppLocalizations {
       'Impossible d\'envoyer l\'e-mail. Réessaie.';
 
   @override
+  String get authErrorRateLimited =>
+      'Tu as atteint la limite de tentatives. Réessaie dans un moment.';
+
+  @override
   String get authTitleSignUp => 'Créer un compte';
 
   @override

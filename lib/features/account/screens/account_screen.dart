@@ -243,6 +243,18 @@ class _AuthFormState extends State<_AuthForm> {
     super.dispose();
   }
 
+  /// Supabase's rate-limit errors ("over_email_send_rate_limit" etc.) come
+  /// back as a raw English message not meant for end users — swap those for
+  /// a friendly localized one; every other AuthException still shows
+  /// Supabase's own message, same as before.
+  String _messageFor(AuthException error) {
+    final l10n = AppLocalizations.of(context);
+    if (error.code?.contains('rate_limit') ?? false) {
+      return l10n.authErrorRateLimited;
+    }
+    return error.message;
+  }
+
   Future<void> _submit() async {
     final username = _usernameController.text.trim();
     final email = _emailController.text.trim();
@@ -279,7 +291,7 @@ class _AuthFormState extends State<_AuthForm> {
       }
     } on AuthException catch (error) {
       if (!mounted) return;
-      setState(() => _error = error.message);
+      setState(() => _error = _messageFor(error));
     } catch (_) {
       if (!mounted) return;
       setState(() => _error = l10n.authErrorGeneric);
@@ -323,7 +335,7 @@ class _AuthFormState extends State<_AuthForm> {
       await _promptResetCode(email);
     } on AuthException catch (error) {
       if (!mounted) return;
-      setState(() => _error = error.message);
+      setState(() => _error = _messageFor(error));
     } catch (_) {
       if (!mounted) return;
       setState(() => _error = l10n.authErrorSendEmailFailed);
@@ -375,7 +387,7 @@ class _AuthFormState extends State<_AuthForm> {
       await authService.verifyPasswordResetCode(email: email, code: code);
     } on AuthException catch (error) {
       if (!mounted) return;
-      setState(() => _error = error.message);
+      setState(() => _error = _messageFor(error));
     } catch (_) {
       if (!mounted) return;
       setState(() => _error = l10n.authErrorGeneric);
@@ -463,9 +475,18 @@ class _AuthFormState extends State<_AuthForm> {
         ],
         if (_error != null) ...[
           const SizedBox(height: 12),
-          Text(
-            _error!,
-            style: AppTextStyles.body.copyWith(color: AppColors.error),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+            decoration: BoxDecoration(
+              color: AppColors.error.withValues(alpha: 0.12),
+              border: Border.all(color: AppColors.error.withValues(alpha: 0.4)),
+              borderRadius: BorderRadius.circular(14),
+            ),
+            child: Text(
+              _error!,
+              style: AppTextStyles.body.copyWith(color: AppColors.error),
+            ),
           ),
         ],
         if (_info != null) ...[

@@ -547,6 +547,10 @@ class AppLocalizationsEs extends AppLocalizations {
       'No se pudo enviar el correo. Inténtalo de nuevo.';
 
   @override
+  String get authErrorRateLimited =>
+      'Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.';
+
+  @override
   String get authTitleSignUp => 'Crear cuenta';
 
   @override
