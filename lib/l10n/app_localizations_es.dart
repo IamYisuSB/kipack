@@ -551,6 +551,16 @@ class AppLocalizationsEs extends AppLocalizations {
       'Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.';
 
   @override
+  String authErrorWrongPasswordAttempts(int count) {
+    return 'Contraseña incorrecta. Te quedan $count intentos.';
+  }
+
+  @override
+  String authErrorLockedOut(int minutes) {
+    return 'Demasiados intentos fallidos. Vuelve a intentarlo en $minutes minutos.';
+  }
+
+  @override
   String get authTitleSignUp => 'Crear cuenta';
 
   @override

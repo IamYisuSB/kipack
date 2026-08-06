@@ -1024,6 +1024,18 @@ abstract class AppLocalizations {
   /// **'Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.'**
   String get authErrorRateLimited;
 
+  /// No description provided for @authErrorWrongPasswordAttempts.
+  ///
+  /// In es, this message translates to:
+  /// **'Contraseña incorrecta. Te quedan {count} intentos.'**
+  String authErrorWrongPasswordAttempts(int count);
+
+  /// No description provided for @authErrorLockedOut.
+  ///
+  /// In es, this message translates to:
+  /// **'Demasiados intentos fallidos. Vuelve a intentarlo en {minutes} minutos.'**
+  String authErrorLockedOut(int minutes);
+
   /// No description provided for @authTitleSignUp.
   ///
   /// In es, this message translates to:

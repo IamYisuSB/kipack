@@ -10,6 +10,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/auth/account_deletion_service.dart';
 import '../../../core/auth/auth_provider.dart';
 import '../../../core/auth/auth_service.dart';
+import '../../../core/auth/login_attempts_service.dart';
 import '../../../core/auth/profile_service.dart';
 import '../../../core/billing/billing_service.dart';
 import '../../../core/feedback/feedback_service.dart';
@@ -270,6 +271,19 @@ class _AuthFormState extends State<_AuthForm> {
       return;
     }
 
+    if (!_isSignUp) {
+      final lockStatus = await loginAttemptsService.check(email);
+      if (!lockStatus.allowed) {
+        if (!mounted) return;
+        setState(
+          () => _error = l10n.authErrorLockedOut(
+            _minutesUntil(lockStatus.lockedUntil),
+          ),
+        );
+        return;
+      }
+    }
+
     setState(() {
       _isSubmitting = true;
       _error = null;
@@ -288,16 +302,38 @@ class _AuthFormState extends State<_AuthForm> {
         }
       } else {
         await authService.signIn(email: email, password: password);
+        await loginAttemptsService.clear(email);
       }
     } on AuthException catch (error) {
       if (!mounted) return;
-      setState(() => _error = _messageFor(error));
+      if (!_isSignUp && _isWrongCredentials(error)) {
+        final status = await loginAttemptsService.recordFailure(email);
+        if (!mounted) return;
+        setState(() {
+          _error = status.allowed
+              ? l10n.authErrorWrongPasswordAttempts(status.remainingAttempts)
+              : l10n.authErrorLockedOut(_minutesUntil(status.lockedUntil));
+        });
+      } else {
+        setState(() => _error = _messageFor(error));
+      }
     } catch (_) {
       if (!mounted) return;
       setState(() => _error = l10n.authErrorGeneric);
     } finally {
       if (mounted) setState(() => _isSubmitting = false);
     }
+  }
+
+  /// Only "wrong password" failures count toward the lockout — a network
+  /// hiccup or an already-rate-limited request shouldn't burn an attempt.
+  bool _isWrongCredentials(AuthException error) =>
+      error.message.toLowerCase().contains('invalid login credentials');
+
+  int _minutesUntil(DateTime? time) {
+    if (time == null) return 0;
+    final diff = time.difference(DateTime.now());
+    return diff.isNegative ? 0 : (diff.inSeconds / 60).ceil();
   }
 
   Future<void> _forgotPassword() async {
