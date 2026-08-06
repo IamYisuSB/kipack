@@ -797,34 +797,21 @@ class _SignedInViewState extends State<_SignedInView> {
   }
 
   Future<void> _changeUsername() async {
-    final l10n = AppLocalizations.of(context);
-    final controller = TextEditingController(text: _displayName ?? '');
     final newName = await showDialog<String>(
       context: context,
-      builder: (context) => AlertDialog(
-        title: Text(l10n.accountChangeUsernameTitle),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        content: TextField(
-          controller: controller,
-          autofocus: true,
-          decoration: InputDecoration(hintText: l10n.authUsernameHint),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(),
-            child: Text(l10n.commonCancel),
-          ),
-          TextButton(
-            onPressed: () => Navigator.of(context).pop(controller.text.trim()),
-            child: Text(l10n.commonSave),
-          ),
-        ],
-      ),
+      builder: (context) => _UsernameEditDialog(currentName: _displayName ?? ''),
     );
     if (newName == null || newName.isEmpty || !mounted) return;
-    await profileService.updateDisplayName(widget.user.id, newName);
-    if (!mounted) return;
-    setState(() => _displayName = newName);
+    try {
+      await profileService.updateDisplayName(widget.user.id, newName);
+      if (!mounted) return;
+      setState(() => _displayName = newName);
+    } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(AppLocalizations.of(context).authUsernameTaken)),
+      );
+    }
   }
 
   Future<void> _changeEmail() async {
@@ -1261,6 +1248,159 @@ class _SignedInViewState extends State<_SignedInView> {
           ),
           subtitle: Text(l10n.accountDeleteSubtitle),
           onTap: _deleteAccount,
+        ),
+      ],
+    );
+  }
+}
+
+/// Same live availability check as the signup form's username field —
+/// found missing here (change-username, for an already-signed-in user)
+/// after only being added to signup originally.
+class _UsernameEditDialog extends StatefulWidget {
+  const _UsernameEditDialog({required this.currentName});
+
+  final String currentName;
+
+  @override
+  State<_UsernameEditDialog> createState() => _UsernameEditDialogState();
+}
+
+class _UsernameEditDialogState extends State<_UsernameEditDialog> {
+  late final _controller = TextEditingController(text: widget.currentName);
+  Timer? _debounce;
+  String? _checkedValue;
+  bool _checking = false;
+  bool? _available;
+  String? _reason;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_onChanged);
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onChanged() {
+    _debounce?.cancel();
+    final value = _controller.text.trim();
+    setState(() {
+      _available = null;
+      _reason = null;
+      _checkedValue = null;
+    });
+    // Unchanged from their current name — nothing to check, it's already
+    // theirs (and would otherwise show as "taken" against themself).
+    if (value == widget.currentName.trim() || value.length < 3) return;
+    _debounce = Timer(const Duration(milliseconds: 450), () => _check(value));
+  }
+
+  Future<void> _check(String value) async {
+    setState(() => _checking = true);
+    try {
+      final rows = await Supabase.instance.client.rpc(
+        'check_username_available',
+        params: {'p_username': value},
+      );
+      if (!mounted || _controller.text.trim() != value) return;
+      final row = (rows as List).first as Map<String, dynamic>;
+      setState(() {
+        _checking = false;
+        _checkedValue = value;
+        _available = row['available'] as bool;
+        _reason = row['reason'] as String?;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _checking = false);
+    }
+  }
+
+  String _reasonText(AppLocalizations l10n) {
+    switch (_reason) {
+      case 'blocked':
+        return l10n.authUsernameBlocked;
+      case 'too_short':
+        return l10n.authUsernameTooShort;
+      default:
+        return l10n.authUsernameTaken;
+    }
+  }
+
+  Widget? _suffixIcon() {
+    final value = _controller.text.trim();
+    if (value == widget.currentName.trim() || value.length < 3) return null;
+    if (_checking) {
+      return const Padding(
+        padding: EdgeInsets.all(14),
+        child: SizedBox(
+          width: 16,
+          height: 16,
+          child: CircularProgressIndicator(strokeWidth: 2),
+        ),
+      );
+    }
+    if (_checkedValue != value) return null;
+    if (_available == true) {
+      return const Icon(Icons.check_circle_rounded, color: AppColors.success);
+    }
+    if (_available == false) {
+      return const Icon(Icons.cancel_rounded, color: AppColors.error);
+    }
+    return null;
+  }
+
+  bool get _canSave {
+    final value = _controller.text.trim();
+    if (value.isEmpty) return false;
+    if (value == widget.currentName.trim()) return true;
+    return _available == true && _checkedValue == value;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    final value = _controller.text.trim();
+    return AlertDialog(
+      title: Text(l10n.accountChangeUsernameTitle),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TextField(
+            controller: _controller,
+            autofocus: true,
+            decoration: InputDecoration(
+              hintText: l10n.authUsernameHint,
+              suffixIcon: _suffixIcon(),
+            ),
+          ),
+          if (_available == false && _checkedValue == value) ...[
+            const SizedBox(height: 4),
+            Text(
+              _reasonText(l10n),
+              style: AppTextStyles.caption.copyWith(color: AppColors.error),
+            ),
+          ],
+        ],
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text(l10n.commonCancel),
+        ),
+        TextButton(
+          onPressed: _canSave
+              ? () => Navigator.of(context).pop(value)
+              : null,
+          child: Text(l10n.commonSave),
         ),
       ],
     );
