@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../trips/models/trip_collaborator.dart';
-import '../../trips/models/trip_member_profile.dart';
 import '../models/packing_category.dart';
 import '../models/packing_item.dart';
 import '../models/suitcase.dart';
@@ -16,10 +14,6 @@ class CategorySection extends StatelessWidget {
     required this.onToggle,
     required this.onRemove,
     required this.onAssignSuitcase,
-    this.collaborators = const [],
-    this.currentUserId,
-    this.onAssignPerson,
-    this.memberProfiles = const {},
   });
 
   final PackingCategory category;
@@ -28,14 +22,6 @@ class CategorySection extends StatelessWidget {
   final ValueChanged<String> onToggle;
   final ValueChanged<String> onRemove;
   final void Function(String itemId, String? suitcaseId) onAssignSuitcase;
-  final List<TripCollaborator> collaborators;
-  final String? currentUserId;
-  final void Function(String itemId, String? userId)? onAssignPerson;
-
-  /// Display name/avatar for every trip owner+collaborator, keyed by user
-  /// id — used to show who packed an item. See `PackingListScreen` for how
-  /// this is assembled (collaborators list + a separate owner lookup).
-  final Map<String, TripMemberProfile> memberProfiles;
 
   @override
   Widget build(BuildContext context) {
@@ -86,12 +72,6 @@ class CategorySection extends StatelessWidget {
               onRemove: () => onRemove(item.id),
               onAssignSuitcase: (suitcaseId) =>
                   onAssignSuitcase(item.id, suitcaseId),
-              collaborators: collaborators,
-              currentUserId: currentUserId,
-              onAssignPerson: onAssignPerson == null
-                  ? null
-                  : (userId) => onAssignPerson!(item.id, userId),
-              memberProfiles: memberProfiles,
             ),
           ),
         ],

@@ -13,7 +13,6 @@ class Trip {
     this.activities = const [],
     this.weather,
     this.countryCode,
-    this.ownerId,
   }) : assert(types.isNotEmpty, 'A trip needs at least one TripType');
 
   final String id;
@@ -31,12 +30,6 @@ class Trip {
   /// ISO 3166-1 alpha-2 country code, lowercase (matches `countries_world_map` ids).
   final String? countryCode;
 
-  /// Supabase user id of whoever created this trip. Null for a trip that's
-  /// never been synced (guest mode, or created before signing in and not
-  /// synced yet) — only the owner can delete a trip or manage who it's
-  /// shared with; collaborators just get read/write access to its content.
-  final String? ownerId;
-
   int get durationInDays => endDate.difference(startDate).inDays + 1;
 
   /// A trip counts as visited once its end date is in the past.
@@ -51,7 +44,6 @@ class Trip {
     List<TripActivity>? activities,
     TripWeather? weather,
     String? countryCode,
-    String? ownerId,
   }) {
     return Trip(
       id: id,
@@ -63,7 +55,6 @@ class Trip {
       activities: activities ?? this.activities,
       weather: weather ?? this.weather,
       countryCode: countryCode ?? this.countryCode,
-      ownerId: ownerId ?? this.ownerId,
     );
   }
 
@@ -77,7 +68,6 @@ class Trip {
     'activities': activities.map((a) => a.name).toList(),
     'weather': weather?.toJson(),
     'countryCode': countryCode,
-    'ownerId': ownerId,
   };
 
   factory Trip.fromJson(Map<String, dynamic> json) => Trip(
@@ -101,6 +91,5 @@ class Trip {
         ? TripWeather.fromJson(json['weather'] as Map<String, dynamic>)
         : null,
     countryCode: json['countryCode'] as String?,
-    ownerId: json['ownerId'] as String?,
   );
 }

@@ -15,7 +15,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get navMap => 'Carte';
 
   @override
-  String get navAccount => 'Compte';
+  String get navAccount => 'Réglages';
 
   @override
   String get languageSectionTitle => 'Langue';
@@ -122,9 +122,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get commonCreate => 'Créer';
 
   @override
-  String get commonSave => 'Enregistrer';
-
-  @override
   String get commonAll => 'Tous';
 
   @override
@@ -137,29 +134,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get packingListItemNameHint => 'Nom de l\'article';
 
   @override
-  String get packingListAiChatFeatureName => 'Chat de suggestions IA';
-
-  @override
   String get packingListAiChatTooltip => 'Demander des ajustements à l\'IA';
 
   @override
-  String get packingListShareFeatureName => 'Partager le voyage';
-
-  @override
   String get packingListShareTooltip => 'Partager et plus';
-
-  @override
-  String get packingListSignInToShare =>
-      'Connecte-toi depuis l\'onglet Compte pour partager des voyages';
-
-  @override
-  String get packingListExportPdfFeatureName => 'Exporter en PDF';
-
-  @override
-  String get packingListWeatherDetailFeatureName => 'Détail météo quotidien';
-
-  @override
-  String get packingListTemplatesFeatureName => 'Modèles de bagages';
 
   @override
   String get packingListNewSuitcaseTitle => 'Nouvelle valise';
@@ -174,9 +152,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String packingListDeleteSuitcaseBody(String name) {
     return '\"$name\" sera supprimée. Les articles assignés resteront sans valise.';
   }
-
-  @override
-  String get shareMenuInvite => 'Partager avec des compagnons';
 
   @override
   String get shareMenuApplyTemplate => 'Appliquer un modèle';
@@ -310,9 +285,6 @@ class AppLocalizationsFr extends AppLocalizations {
   String get newTripTitle => 'Nouveau voyage';
 
   @override
-  String get newTripActivitiesFeatureName => 'Activités spécifiques';
-
-  @override
   String get newTripRemindersFeatureName => 'Rappels de voyage';
 
   @override
@@ -424,33 +396,6 @@ class AppLocalizationsFr extends AppLocalizations {
       'Prévision réelle d\'Open-Meteo pour les dates de ton voyage';
 
   @override
-  String get sharingSheetTitle => 'Partager le voyage';
-
-  @override
-  String get sharingSheetSubtitle =>
-      'Chaque compagnon peut voir la liste et cocher ce que tu lui assignes.';
-
-  @override
-  String get sharingSheetEmpty => 'Tu n\'as encore invité personne.';
-
-  @override
-  String get sharingSheetHasAccess => 'A déjà accès';
-
-  @override
-  String get sharingSheetPending => 'En attente de connexion';
-
-  @override
-  String get sharingSheetInviteHint => 'E-mail de la personne à inviter';
-
-  @override
-  String get sharingSheetInviteError =>
-      'Impossible d\'inviter (déjà invité·e ?)';
-
-  @override
-  String get sharingSheetInviteFootnote =>
-      'Cette personne doit avoir (ou créer) un compte avec cette même adresse e-mail pour y accéder.';
-
-  @override
   String get assignSuitcaseTitle => 'Assigner à une valise';
 
   @override
@@ -461,24 +406,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Tu n\'as pas encore créé de valise. Ajoutes-en une depuis le haut de la liste.';
 
   @override
-  String get assignPersonTitle => 'Assigner à';
-
-  @override
-  String get assignPersonNone => 'Non assigné';
-
-  @override
-  String get assignPersonYou => 'Toi';
-
-  @override
-  String get accountTitle => 'Compte';
-
-  @override
-  String get accountPremiumLockedTitle =>
-      'Le compte est une fonctionnalité Premium';
-
-  @override
-  String get accountPremiumLockedDescription =>
-      'Crée un compte pour gérer ton profil, avec la synchronisation entre appareils à venir.';
+  String get accountTitle => 'Réglages';
 
   @override
   String get accountFeedbackPrompt =>
@@ -501,228 +429,7 @@ class AppLocalizationsFr extends AppLocalizations {
       'Envoyer une notification de test';
 
   @override
-  String get commonSignOut => 'Se déconnecter';
-
-  @override
   String get accountPrivacyPolicyButton => 'Politique de confidentialité';
-
-  @override
-  String get accountSignOutConfirm => 'Es-tu sûr de vouloir te déconnecter ?';
-
-  @override
-  String get authErrorChooseUsername => 'Choisis un nom d\'utilisateur';
-
-  @override
-  String get authErrorPasswordMismatch =>
-      'Les mots de passe ne correspondent pas';
-
-  @override
-  String get authErrorWeakPassword =>
-      'Le mot de passe ne remplit pas toutes les conditions';
-
-  @override
-  String get authInfoAccountCreated =>
-      'Compte créé — vérifie ton e-mail pour le confirmer.';
-
-  @override
-  String get authErrorGeneric => 'Une erreur s\'est produite. Réessaie.';
-
-  @override
-  String get authForgotPasswordTitle => 'Récupérer le mot de passe';
-
-  @override
-  String get authEmailHint => 'Ton adresse e-mail';
-
-  @override
-  String get authSendCodeButton => 'Envoyer le code';
-
-  @override
-  String get authEnterCodeTitle => 'Entre le code';
-
-  @override
-  String authResetCodeSentBody(String email) {
-    return 'Nous avons envoyé un code à 8 chiffres à $email. Entre-le pour continuer (vérifie aussi le dossier spam).';
-  }
-
-  @override
-  String get authCodeHint => 'Code à 8 chiffres';
-
-  @override
-  String get commonUnderstood => 'Compris';
-
-  @override
-  String get authErrorSendEmailFailed =>
-      'Impossible d\'envoyer l\'e-mail. Réessaie.';
-
-  @override
-  String get authErrorRateLimited =>
-      'Tu as atteint la limite de tentatives. Réessaie dans un moment.';
-
-  @override
-  String authErrorWrongPasswordAttempts(int count) {
-    return 'Mot de passe incorrect. Il te reste $count tentatives.';
-  }
-
-  @override
-  String authErrorLockedOut(int minutes) {
-    return 'Trop de tentatives échouées. Réessaie dans $minutes minutes.';
-  }
-
-  @override
-  String get authTitleSignUp => 'Créer un compte';
-
-  @override
-  String get authTitleSignIn => 'Se connecter';
-
-  @override
-  String get authSubtitle =>
-      'Avec un compte, tu pourras synchroniser tes voyages entre appareils plus tard.';
-
-  @override
-  String get authUsernameHint => 'Nom d\'utilisateur';
-
-  @override
-  String get authUsernameTaken => 'Ce nom d\'utilisateur est déjà pris';
-
-  @override
-  String get authUsernameBlocked => 'Ce nom d\'utilisateur n\'est pas autorisé';
-
-  @override
-  String get authUsernameTooShort => '3 caractères minimum';
-
-  @override
-  String get authPasswordReqLength => '8+ caractères';
-
-  @override
-  String get authPasswordReqLower => 'Minuscule';
-
-  @override
-  String get authPasswordReqUpper => 'Majuscule';
-
-  @override
-  String get authPasswordReqDigit => 'Chiffre';
-
-  @override
-  String get authPasswordReqSymbol => 'Symbole';
-
-  @override
-  String get authEmailFieldHint => 'Adresse e-mail';
-
-  @override
-  String get authPasswordHint => 'Mot de passe';
-
-  @override
-  String get authForgotPasswordLink => 'Mot de passe oublié ?';
-
-  @override
-  String get authConfirmPasswordHint => 'Répète le mot de passe';
-
-  @override
-  String get authToggleToSignIn => 'Tu as déjà un compte ? Connecte-toi';
-
-  @override
-  String get authToggleToSignUp => 'Pas encore de compte ? Crées-en un';
-
-  @override
-  String get accountErrorUploadPhoto =>
-      'Impossible d\'envoyer la photo. Réessaie.';
-
-  @override
-  String get accountErrorRemovePhoto =>
-      'Impossible de supprimer la photo. Réessaie.';
-
-  @override
-  String get accountChangeUsernameTitle => 'Changer le nom d\'utilisateur';
-
-  @override
-  String get accountChangeEmailTitle => 'Changer l\'e-mail';
-
-  @override
-  String get accountNewEmailHint => 'Nouvelle adresse e-mail';
-
-  @override
-  String get accountChangeEmailSentNotice =>
-      'Vérifie tes e-mails (ancien et nouveau) pour confirmer le changement';
-
-  @override
-  String get accountChangePasswordTitle => 'Changer le mot de passe';
-
-  @override
-  String get accountCurrentPasswordHint => 'Mot de passe actuel';
-
-  @override
-  String get accountNewPasswordHint => 'Nouveau mot de passe';
-
-  @override
-  String get accountConfirmNewPasswordHint => 'Répète le nouveau mot de passe';
-
-  @override
-  String get accountErrorNewPasswordMismatch =>
-      'Les nouveaux mots de passe ne correspondent pas';
-
-  @override
-  String get accountErrorFillAllFields => 'Remplis tous les champs';
-
-  @override
-  String get accountPasswordUpdated => 'Mot de passe mis à jour';
-
-  @override
-  String get accountDeleteTitle => 'Supprimer le compte';
-
-  @override
-  String get accountDeleteBody =>
-      'Cette action est irréversible. Ton compte, tes voyages, listes de bagages, modèles et toute autre donnée associée seront définitivement supprimés.';
-
-  @override
-  String get accountDeletePremiumWarning =>
-      ' Tu perdras immédiatement l\'accès à Premium.';
-
-  @override
-  String get accountDeleteCodeNotice =>
-      '\n\nPour confirmer, nous t\'enverrons un code par e-mail.';
-
-  @override
-  String get commonContinue => 'Continuer';
-
-  @override
-  String get accountDeletionCodeSent =>
-      'Nous t\'avons envoyé un code par e-mail';
-
-  @override
-  String get accountErrorSendCode => 'Impossible d\'envoyer le code. Réessaie.';
-
-  @override
-  String get accountConfirmDeletionTitle => 'Confirme la suppression';
-
-  @override
-  String get accountConfirmDeletionBody =>
-      'Entre le code à 6 chiffres que nous t\'avons envoyé par e-mail. Cette action est irréversible.';
-
-  @override
-  String get accountErrorEnterSixDigits => 'Entre les 6 chiffres';
-
-  @override
-  String get accountDeletePermanentlyButton => 'Supprimer définitivement';
-
-  @override
-  String get accountDeleteSubtitle =>
-      'Cette action est permanente et irréversible';
-
-  @override
-  String get accountErrorDeleteAccount =>
-      'Impossible de supprimer le compte. Réessaie.';
-
-  @override
-  String get accountSignedInPlaceholder => 'Connecté';
-
-  @override
-  String get accountTakePhoto => 'Prendre une photo';
-
-  @override
-  String get accountChooseFromGallery => 'Choisir depuis la galerie';
-
-  @override
-  String get accountRemovePhoto => 'Supprimer la photo';
 
   @override
   String get feedbackSheetTitle => 'Bug report ou suggestion';
@@ -738,32 +445,15 @@ class AppLocalizationsFr extends AppLocalizations {
       'Dis-nous ce qui s\'est passé ou ce que tu aimerais voir dans l\'appli';
 
   @override
-  String get feedbackEmailNote =>
-      'Ton e-mail ne sera utilisé que pour te contacter si nous avons besoin de plus d\'informations sur ce signalement.';
-
-  @override
-  String get feedbackConsentPrefix => 'J\'ai lu et j\'accepte la ';
-
-  @override
-  String get feedbackConsentLink => 'politique de confidentialité';
-
-  @override
   String get feedbackSignedInContactNote =>
-      'Si nécessaire, nous pourrions te contacter via l\'adresse e-mail associée à ton compte pour te demander des informations complémentaires sur ce signalement.';
+      'Ton app de messagerie s\'ouvrira avec le message prêt à envoyer.';
 
   @override
-  String get feedbackSubmittedThanks => 'Merci ! Nous l\'avons bien reçu.';
-
-  @override
-  String get feedbackErrorSubmit => 'Impossible de l\'envoyer. Réessaie.';
+  String get feedbackErrorSubmit =>
+      'Aucune app de messagerie trouvée. Écris-nous à fooserd@gmail.com';
 
   @override
   String get commonSend => 'Envoyer';
-
-  @override
-  String feedbackWaitSeconds(int seconds) {
-    return 'Attends ${seconds}s';
-  }
 
   @override
   String get onboardingSkip => 'Passer';
@@ -808,13 +498,6 @@ class AppLocalizationsFr extends AppLocalizations {
   @override
   String get onboardingFeatureRemindersDescription =>
       'Des alertes avant de partir s\'il te reste des bagages à faire';
-
-  @override
-  String get onboardingFeatureSharedTitle => 'Voyages partagés';
-
-  @override
-  String get onboardingFeatureSharedDescription =>
-      'Invite tes compagnons de voyage pour que chacun coche ce qui lui revient';
 
   @override
   String get onboardingFeaturePdfTitle => 'Exporter en PDF';
@@ -870,53 +553,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get onboardingTourStep4Subtitle => 'Un seul bouton pour tout ça';
 
   @override
-  String get onboardingShareWithCompanions => 'Partager avec des compagnons';
-
-  @override
   String get onboardingExportPdfRow => 'Exporter en PDF';
 
   @override
   String get onboardingTryAgainButton => 'Recommencer';
-
-  @override
-  String get onboardingPremiumTitle => 'Passe à Premium';
-
-  @override
-  String get onboardingPremiumSubtitle =>
-      'Débloque tout le potentiel de Kipack';
-
-  @override
-  String get onboardingPremiumNoAds => 'Sans publicité';
-
-  @override
-  String get onboardingPremiumMap => 'Carte des pays visités et prévus';
-
-  @override
-  String get onboardingPremiumTemplates => 'Modèles de bagages réutilisables';
-
-  @override
-  String get onboardingPremiumReminders =>
-      'Rappels intelligents avant de partir';
-
-  @override
-  String get onboardingPremiumAiChat => 'Chat avec l\'IA pour ajuster ta liste';
-
-  @override
-  String get onboardingPremiumSharedTrips =>
-      'Voyages partagés et collaboratifs';
-
-  @override
-  String get onboardingPremiumCloudBackup => 'Sauvegarde dans le cloud';
-
-  @override
-  String get onboardingPremiumExportPdf => 'Exporter ta liste en PDF';
-
-  @override
-  String get onboardingTryPremiumButton => 'Essayer Premium (démo)';
-
-  @override
-  String get onboardingContinueFreeButton =>
-      'Continuer avec la version gratuite';
 
   @override
   String get mapTitle => 'Ta carte';
@@ -945,90 +585,32 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get mapPaywallTitle => 'La carte est une fonctionnalité Premium';
+  String get settingsAdPrivacyButton => 'Confidentialité des annonces';
 
   @override
-  String get mapPaywallDescription =>
-      'Débloque la carte des pays visités et prévus, et marque des destinations même sans voyage prévu.';
+  String get onboardingStart => 'Commencer';
 
   @override
-  String premiumUpsellTitle(String featureName) {
-    return '$featureName est une fonctionnalité Premium';
-  }
+  String get themeSectionTitle => 'Thème';
 
   @override
-  String premiumUpsellBody(String featureName) {
-    return 'Débloque $featureName et le reste des fonctionnalités Premium.';
-  }
+  String get themeDialogTitle => 'Choisis un thème';
 
   @override
-  String get premiumActivateButton => 'Activer Premium (démo)';
+  String get themeSystem => 'Automatique (thème de l\'appareil)';
 
   @override
-  String get premiumNotNowButton => 'Pas maintenant';
+  String get themeLight => 'Clair';
 
   @override
-  String pendingInviteWithName(String inviterName, String destination) {
-    return '$inviterName t\'a invité au voyage à $destination';
-  }
+  String get themeDark => 'Sombre';
 
   @override
-  String pendingInviteWithoutName(String destination) {
-    return 'Tu as été invité à un voyage à $destination';
-  }
+  String get settingsPreferencesHeader => 'Préférences';
 
   @override
-  String get pendingInviteAccept => 'Accepter';
+  String get settingsHelpHeader => 'Aide';
 
   @override
-  String get pendingInviteDecline => 'Refuser';
-
-  @override
-  String get pendingInviteActionError =>
-      'Impossible de traiter l\'invitation. Réessaie.';
-
-  @override
-  String get packingItemLocked =>
-      'Seule la personne qui l\'a rangé peut le décocher';
-
-  @override
-  String get premiumSignInRequired =>
-      'Connecte-toi depuis l\'onglet Compte pour t\'abonner à Premium.';
-
-  @override
-  String get premiumOffersUnavailable =>
-      'Impossible de charger les offres Premium. Réessaie plus tard.';
-
-  @override
-  String get premiumOffersError =>
-      'Impossible de charger les offres Premium. Vérifie ta connexion.';
-
-  @override
-  String get premiumPurchaseError =>
-      'Impossible de démarrer l\'achat. Réessaie.';
-
-  @override
-  String premiumOfferMonthly(String price) {
-    return 'Mensuel — $price';
-  }
-
-  @override
-  String premiumOfferAnnual(String price) {
-    return 'Annuel — $price';
-  }
-
-  @override
-  String get premiumRestorePurchases => 'Restaurer les achats';
-
-  @override
-  String get premiumRestoreSuccess => 'Achats restaurés';
-
-  @override
-  String get premiumRestoreError =>
-      'Impossible de restaurer l\'achat. Réessaie.';
-
-  @override
-  String premiumSubscriptionActiveUntil(String date) {
-    return 'Premium actif jusqu\'au $date';
-  }
+  String get settingsPrivacyHeader => 'Confidentialité';
 }

@@ -115,7 +115,7 @@ abstract class AppLocalizations {
   /// No description provided for @navAccount.
   ///
   /// In es, this message translates to:
-  /// **'Cuenta'**
+  /// **'Ajustes'**
   String get navAccount;
 
   /// No description provided for @languageSectionTitle.
@@ -310,12 +310,6 @@ abstract class AppLocalizations {
   /// **'Crear'**
   String get commonCreate;
 
-  /// No description provided for @commonSave.
-  ///
-  /// In es, this message translates to:
-  /// **'Guardar'**
-  String get commonSave;
-
   /// No description provided for @commonAll.
   ///
   /// In es, this message translates to:
@@ -340,53 +334,17 @@ abstract class AppLocalizations {
   /// **'Nombre del artículo'**
   String get packingListItemNameHint;
 
-  /// No description provided for @packingListAiChatFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Chat de sugerencias de la IA'**
-  String get packingListAiChatFeatureName;
-
   /// No description provided for @packingListAiChatTooltip.
   ///
   /// In es, this message translates to:
   /// **'Pedir ajustes a la IA'**
   String get packingListAiChatTooltip;
 
-  /// No description provided for @packingListShareFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Compartir viaje'**
-  String get packingListShareFeatureName;
-
   /// No description provided for @packingListShareTooltip.
   ///
   /// In es, this message translates to:
   /// **'Compartir y más'**
   String get packingListShareTooltip;
-
-  /// No description provided for @packingListSignInToShare.
-  ///
-  /// In es, this message translates to:
-  /// **'Inicia sesión desde la pestaña Cuenta para compartir viajes'**
-  String get packingListSignInToShare;
-
-  /// No description provided for @packingListExportPdfFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Exportar como PDF'**
-  String get packingListExportPdfFeatureName;
-
-  /// No description provided for @packingListWeatherDetailFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Detalle diario del clima'**
-  String get packingListWeatherDetailFeatureName;
-
-  /// No description provided for @packingListTemplatesFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Plantillas de equipaje'**
-  String get packingListTemplatesFeatureName;
 
   /// No description provided for @packingListNewSuitcaseTitle.
   ///
@@ -411,12 +369,6 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Se eliminará \"{name}\". Los ítems asignados quedarán sin maleta.'**
   String packingListDeleteSuitcaseBody(String name);
-
-  /// No description provided for @shareMenuInvite.
-  ///
-  /// In es, this message translates to:
-  /// **'Compartir con acompañantes'**
-  String get shareMenuInvite;
 
   /// No description provided for @shareMenuApplyTemplate.
   ///
@@ -616,12 +568,6 @@ abstract class AppLocalizations {
   /// **'Nuevo viaje'**
   String get newTripTitle;
 
-  /// No description provided for @newTripActivitiesFeatureName.
-  ///
-  /// In es, this message translates to:
-  /// **'Actividades específicas'**
-  String get newTripActivitiesFeatureName;
-
   /// No description provided for @newTripRemindersFeatureName.
   ///
   /// In es, this message translates to:
@@ -796,54 +742,6 @@ abstract class AppLocalizations {
   /// **'Previsión real de Open-Meteo para las fechas de tu viaje'**
   String get weatherDetailSubtitle;
 
-  /// No description provided for @sharingSheetTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Compartir viaje'**
-  String get sharingSheetTitle;
-
-  /// No description provided for @sharingSheetSubtitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Cada acompañante puede ver la lista y marcar lo que le asignes.'**
-  String get sharingSheetSubtitle;
-
-  /// No description provided for @sharingSheetEmpty.
-  ///
-  /// In es, this message translates to:
-  /// **'Todavía no has invitado a nadie.'**
-  String get sharingSheetEmpty;
-
-  /// No description provided for @sharingSheetHasAccess.
-  ///
-  /// In es, this message translates to:
-  /// **'Ya tiene acceso'**
-  String get sharingSheetHasAccess;
-
-  /// No description provided for @sharingSheetPending.
-  ///
-  /// In es, this message translates to:
-  /// **'Pendiente de que inicie sesión'**
-  String get sharingSheetPending;
-
-  /// No description provided for @sharingSheetInviteHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Correo de la persona a invitar'**
-  String get sharingSheetInviteHint;
-
-  /// No description provided for @sharingSheetInviteError.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo invitar (¿ya estaba invitado?)'**
-  String get sharingSheetInviteError;
-
-  /// No description provided for @sharingSheetInviteFootnote.
-  ///
-  /// In es, this message translates to:
-  /// **'La persona debe tener (o crear) una cuenta con este mismo correo para acceder.'**
-  String get sharingSheetInviteFootnote;
-
   /// No description provided for @assignSuitcaseTitle.
   ///
   /// In es, this message translates to:
@@ -862,41 +760,11 @@ abstract class AppLocalizations {
   /// **'Aún no has creado ninguna maleta. Añádela desde la parte superior de la lista.'**
   String get assignSuitcaseEmptyHint;
 
-  /// No description provided for @assignPersonTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Asignar a'**
-  String get assignPersonTitle;
-
-  /// No description provided for @assignPersonNone.
-  ///
-  /// In es, this message translates to:
-  /// **'Sin asignar'**
-  String get assignPersonNone;
-
-  /// No description provided for @assignPersonYou.
-  ///
-  /// In es, this message translates to:
-  /// **'Tú'**
-  String get assignPersonYou;
-
   /// No description provided for @accountTitle.
   ///
   /// In es, this message translates to:
-  /// **'Cuenta'**
+  /// **'Ajustes'**
   String get accountTitle;
-
-  /// No description provided for @accountPremiumLockedTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'La cuenta es una función Premium'**
-  String get accountPremiumLockedTitle;
-
-  /// No description provided for @accountPremiumLockedDescription.
-  ///
-  /// In es, this message translates to:
-  /// **'Crea una cuenta para gestionar tu perfil, con sincronización entre dispositivos más adelante.'**
-  String get accountPremiumLockedDescription;
 
   /// No description provided for @accountFeedbackPrompt.
   ///
@@ -928,407 +796,11 @@ abstract class AppLocalizations {
   /// **'Enviar notificación de prueba'**
   String get accountSendTestNotificationButton;
 
-  /// No description provided for @commonSignOut.
-  ///
-  /// In es, this message translates to:
-  /// **'Cerrar sesión'**
-  String get commonSignOut;
-
   /// No description provided for @accountPrivacyPolicyButton.
   ///
   /// In es, this message translates to:
   /// **'Política de privacidad'**
   String get accountPrivacyPolicyButton;
-
-  /// No description provided for @accountSignOutConfirm.
-  ///
-  /// In es, this message translates to:
-  /// **'¿Estás seguro de que quieres cerrar sesión?'**
-  String get accountSignOutConfirm;
-
-  /// No description provided for @authErrorChooseUsername.
-  ///
-  /// In es, this message translates to:
-  /// **'Elige un nombre de usuario'**
-  String get authErrorChooseUsername;
-
-  /// No description provided for @authErrorPasswordMismatch.
-  ///
-  /// In es, this message translates to:
-  /// **'Las contraseñas no coinciden'**
-  String get authErrorPasswordMismatch;
-
-  /// No description provided for @authErrorWeakPassword.
-  ///
-  /// In es, this message translates to:
-  /// **'La contraseña no cumple todos los requisitos'**
-  String get authErrorWeakPassword;
-
-  /// No description provided for @authInfoAccountCreated.
-  ///
-  /// In es, this message translates to:
-  /// **'Cuenta creada — revisa tu correo para confirmarla.'**
-  String get authInfoAccountCreated;
-
-  /// No description provided for @authErrorGeneric.
-  ///
-  /// In es, this message translates to:
-  /// **'Algo ha fallado. Inténtalo de nuevo.'**
-  String get authErrorGeneric;
-
-  /// No description provided for @authForgotPasswordTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Recuperar contraseña'**
-  String get authForgotPasswordTitle;
-
-  /// No description provided for @authEmailHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Tu correo electrónico'**
-  String get authEmailHint;
-
-  /// No description provided for @authSendCodeButton.
-  ///
-  /// In es, this message translates to:
-  /// **'Enviar código'**
-  String get authSendCodeButton;
-
-  /// No description provided for @authEnterCodeTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Introduce el código'**
-  String get authEnterCodeTitle;
-
-  /// No description provided for @authResetCodeSentBody.
-  ///
-  /// In es, this message translates to:
-  /// **'Te hemos enviado un código de 8 dígitos a {email}. Introdúcelo para continuar (revisa también la carpeta de spam).'**
-  String authResetCodeSentBody(String email);
-
-  /// No description provided for @authCodeHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Código de 8 dígitos'**
-  String get authCodeHint;
-
-  /// No description provided for @commonUnderstood.
-  ///
-  /// In es, this message translates to:
-  /// **'Entendido'**
-  String get commonUnderstood;
-
-  /// No description provided for @authErrorSendEmailFailed.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo enviar el correo. Inténtalo de nuevo.'**
-  String get authErrorSendEmailFailed;
-
-  /// No description provided for @authErrorRateLimited.
-  ///
-  /// In es, this message translates to:
-  /// **'Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.'**
-  String get authErrorRateLimited;
-
-  /// No description provided for @authErrorWrongPasswordAttempts.
-  ///
-  /// In es, this message translates to:
-  /// **'Contraseña incorrecta. Te quedan {count} intentos.'**
-  String authErrorWrongPasswordAttempts(int count);
-
-  /// No description provided for @authErrorLockedOut.
-  ///
-  /// In es, this message translates to:
-  /// **'Demasiados intentos fallidos. Vuelve a intentarlo en {minutes} minutos.'**
-  String authErrorLockedOut(int minutes);
-
-  /// No description provided for @authTitleSignUp.
-  ///
-  /// In es, this message translates to:
-  /// **'Crear cuenta'**
-  String get authTitleSignUp;
-
-  /// No description provided for @authTitleSignIn.
-  ///
-  /// In es, this message translates to:
-  /// **'Iniciar sesión'**
-  String get authTitleSignIn;
-
-  /// No description provided for @authSubtitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Con una cuenta podrás sincronizar tus viajes entre dispositivos más adelante.'**
-  String get authSubtitle;
-
-  /// No description provided for @authUsernameHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Nombre de usuario'**
-  String get authUsernameHint;
-
-  /// No description provided for @authUsernameTaken.
-  ///
-  /// In es, this message translates to:
-  /// **'Ese nombre de usuario ya está en uso'**
-  String get authUsernameTaken;
-
-  /// No description provided for @authUsernameBlocked.
-  ///
-  /// In es, this message translates to:
-  /// **'Ese nombre de usuario no está permitido'**
-  String get authUsernameBlocked;
-
-  /// No description provided for @authUsernameTooShort.
-  ///
-  /// In es, this message translates to:
-  /// **'Mínimo 3 caracteres'**
-  String get authUsernameTooShort;
-
-  /// No description provided for @authPasswordReqLength.
-  ///
-  /// In es, this message translates to:
-  /// **'8+ caracteres'**
-  String get authPasswordReqLength;
-
-  /// No description provided for @authPasswordReqLower.
-  ///
-  /// In es, this message translates to:
-  /// **'Minúscula'**
-  String get authPasswordReqLower;
-
-  /// No description provided for @authPasswordReqUpper.
-  ///
-  /// In es, this message translates to:
-  /// **'Mayúscula'**
-  String get authPasswordReqUpper;
-
-  /// No description provided for @authPasswordReqDigit.
-  ///
-  /// In es, this message translates to:
-  /// **'Número'**
-  String get authPasswordReqDigit;
-
-  /// No description provided for @authPasswordReqSymbol.
-  ///
-  /// In es, this message translates to:
-  /// **'Símbolo'**
-  String get authPasswordReqSymbol;
-
-  /// No description provided for @authEmailFieldHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Correo electrónico'**
-  String get authEmailFieldHint;
-
-  /// No description provided for @authPasswordHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Contraseña'**
-  String get authPasswordHint;
-
-  /// No description provided for @authForgotPasswordLink.
-  ///
-  /// In es, this message translates to:
-  /// **'¿Olvidaste tu contraseña?'**
-  String get authForgotPasswordLink;
-
-  /// No description provided for @authConfirmPasswordHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Repite la contraseña'**
-  String get authConfirmPasswordHint;
-
-  /// No description provided for @authToggleToSignIn.
-  ///
-  /// In es, this message translates to:
-  /// **'¿Ya tienes cuenta? Inicia sesión'**
-  String get authToggleToSignIn;
-
-  /// No description provided for @authToggleToSignUp.
-  ///
-  /// In es, this message translates to:
-  /// **'¿No tienes cuenta? Créala'**
-  String get authToggleToSignUp;
-
-  /// No description provided for @accountErrorUploadPhoto.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo subir la foto. Inténtalo de nuevo.'**
-  String get accountErrorUploadPhoto;
-
-  /// No description provided for @accountErrorRemovePhoto.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo quitar la foto. Inténtalo de nuevo.'**
-  String get accountErrorRemovePhoto;
-
-  /// No description provided for @accountChangeUsernameTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Cambiar nombre de usuario'**
-  String get accountChangeUsernameTitle;
-
-  /// No description provided for @accountChangeEmailTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Cambiar correo'**
-  String get accountChangeEmailTitle;
-
-  /// No description provided for @accountNewEmailHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Nuevo correo electrónico'**
-  String get accountNewEmailHint;
-
-  /// No description provided for @accountChangeEmailSentNotice.
-  ///
-  /// In es, this message translates to:
-  /// **'Revisa tu correo (el actual y el nuevo) para confirmar el cambio'**
-  String get accountChangeEmailSentNotice;
-
-  /// No description provided for @accountChangePasswordTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Cambiar contraseña'**
-  String get accountChangePasswordTitle;
-
-  /// No description provided for @accountCurrentPasswordHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Contraseña actual'**
-  String get accountCurrentPasswordHint;
-
-  /// No description provided for @accountNewPasswordHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Nueva contraseña'**
-  String get accountNewPasswordHint;
-
-  /// No description provided for @accountConfirmNewPasswordHint.
-  ///
-  /// In es, this message translates to:
-  /// **'Repite la nueva contraseña'**
-  String get accountConfirmNewPasswordHint;
-
-  /// No description provided for @accountErrorNewPasswordMismatch.
-  ///
-  /// In es, this message translates to:
-  /// **'Las contraseñas nuevas no coinciden'**
-  String get accountErrorNewPasswordMismatch;
-
-  /// No description provided for @accountErrorFillAllFields.
-  ///
-  /// In es, this message translates to:
-  /// **'Rellena todos los campos'**
-  String get accountErrorFillAllFields;
-
-  /// No description provided for @accountPasswordUpdated.
-  ///
-  /// In es, this message translates to:
-  /// **'Contraseña actualizada'**
-  String get accountPasswordUpdated;
-
-  /// No description provided for @accountDeleteTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Eliminar cuenta'**
-  String get accountDeleteTitle;
-
-  /// No description provided for @accountDeleteBody.
-  ///
-  /// In es, this message translates to:
-  /// **'Esta acción es irreversible. Se eliminarán de forma permanente tu cuenta, tus viajes, listas de equipaje, plantillas y cualquier otro dato asociado.'**
-  String get accountDeleteBody;
-
-  /// No description provided for @accountDeletePremiumWarning.
-  ///
-  /// In es, this message translates to:
-  /// **' Perderás el acceso a Premium inmediatamente.'**
-  String get accountDeletePremiumWarning;
-
-  /// No description provided for @accountDeleteCodeNotice.
-  ///
-  /// In es, this message translates to:
-  /// **'\n\nPara confirmarlo, te enviaremos un código a tu correo.'**
-  String get accountDeleteCodeNotice;
-
-  /// No description provided for @commonContinue.
-  ///
-  /// In es, this message translates to:
-  /// **'Continuar'**
-  String get commonContinue;
-
-  /// No description provided for @accountDeletionCodeSent.
-  ///
-  /// In es, this message translates to:
-  /// **'Te hemos enviado un código a tu correo'**
-  String get accountDeletionCodeSent;
-
-  /// No description provided for @accountErrorSendCode.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo enviar el código. Inténtalo de nuevo.'**
-  String get accountErrorSendCode;
-
-  /// No description provided for @accountConfirmDeletionTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Confirma la eliminación'**
-  String get accountConfirmDeletionTitle;
-
-  /// No description provided for @accountConfirmDeletionBody.
-  ///
-  /// In es, this message translates to:
-  /// **'Introduce el código de 6 dígitos que te hemos enviado por correo. Esta acción no se puede deshacer.'**
-  String get accountConfirmDeletionBody;
-
-  /// No description provided for @accountErrorEnterSixDigits.
-  ///
-  /// In es, this message translates to:
-  /// **'Introduce los 6 dígitos'**
-  String get accountErrorEnterSixDigits;
-
-  /// No description provided for @accountDeletePermanentlyButton.
-  ///
-  /// In es, this message translates to:
-  /// **'Eliminar definitivamente'**
-  String get accountDeletePermanentlyButton;
-
-  /// No description provided for @accountDeleteSubtitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Esta acción es permanente e irreversible'**
-  String get accountDeleteSubtitle;
-
-  /// No description provided for @accountErrorDeleteAccount.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo eliminar la cuenta. Inténtalo de nuevo.'**
-  String get accountErrorDeleteAccount;
-
-  /// No description provided for @accountSignedInPlaceholder.
-  ///
-  /// In es, this message translates to:
-  /// **'Sesión iniciada'**
-  String get accountSignedInPlaceholder;
-
-  /// No description provided for @accountTakePhoto.
-  ///
-  /// In es, this message translates to:
-  /// **'Hacer una foto'**
-  String get accountTakePhoto;
-
-  /// No description provided for @accountChooseFromGallery.
-  ///
-  /// In es, this message translates to:
-  /// **'Elegir de la galería'**
-  String get accountChooseFromGallery;
-
-  /// No description provided for @accountRemovePhoto.
-  ///
-  /// In es, this message translates to:
-  /// **'Quitar foto'**
-  String get accountRemovePhoto;
 
   /// No description provided for @feedbackSheetTitle.
   ///
@@ -1354,40 +826,16 @@ abstract class AppLocalizations {
   /// **'Cuéntanos qué ha pasado o qué te gustaría que tuviera la app'**
   String get feedbackMessageHint;
 
-  /// No description provided for @feedbackEmailNote.
-  ///
-  /// In es, this message translates to:
-  /// **'Tu correo se usará únicamente para contactarte si necesitamos más información sobre este reporte.'**
-  String get feedbackEmailNote;
-
-  /// No description provided for @feedbackConsentPrefix.
-  ///
-  /// In es, this message translates to:
-  /// **'He leído y acepto la '**
-  String get feedbackConsentPrefix;
-
-  /// No description provided for @feedbackConsentLink.
-  ///
-  /// In es, this message translates to:
-  /// **'política de privacidad'**
-  String get feedbackConsentLink;
-
   /// No description provided for @feedbackSignedInContactNote.
   ///
   /// In es, this message translates to:
-  /// **'Si fuera necesario, podríamos ponernos en contacto contigo a través del correo electrónico asociado a tu cuenta para solicitarte información adicional sobre este reporte.'**
+  /// **'Se abrirá tu app de correo con el mensaje listo para enviar.'**
   String get feedbackSignedInContactNote;
-
-  /// No description provided for @feedbackSubmittedThanks.
-  ///
-  /// In es, this message translates to:
-  /// **'¡Gracias! Lo hemos recibido.'**
-  String get feedbackSubmittedThanks;
 
   /// No description provided for @feedbackErrorSubmit.
   ///
   /// In es, this message translates to:
-  /// **'No se pudo enviar. Inténtalo de nuevo.'**
+  /// **'No se encontró ninguna app de correo. Escríbenos a fooserd@gmail.com'**
   String get feedbackErrorSubmit;
 
   /// No description provided for @commonSend.
@@ -1395,12 +843,6 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Enviar'**
   String get commonSend;
-
-  /// No description provided for @feedbackWaitSeconds.
-  ///
-  /// In es, this message translates to:
-  /// **'Espera {seconds}s'**
-  String feedbackWaitSeconds(int seconds);
 
   /// No description provided for @onboardingSkip.
   ///
@@ -1479,18 +921,6 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Avisos antes de salir si aún te falta hacer la maleta'**
   String get onboardingFeatureRemindersDescription;
-
-  /// No description provided for @onboardingFeatureSharedTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Viajes compartidos'**
-  String get onboardingFeatureSharedTitle;
-
-  /// No description provided for @onboardingFeatureSharedDescription.
-  ///
-  /// In es, this message translates to:
-  /// **'Invita a tus acompañantes y que cada uno marque lo suyo'**
-  String get onboardingFeatureSharedDescription;
 
   /// No description provided for @onboardingFeaturePdfTitle.
   ///
@@ -1594,12 +1024,6 @@ abstract class AppLocalizations {
   /// **'Un solo botón para todo esto'**
   String get onboardingTourStep4Subtitle;
 
-  /// No description provided for @onboardingShareWithCompanions.
-  ///
-  /// In es, this message translates to:
-  /// **'Compartir con acompañantes'**
-  String get onboardingShareWithCompanions;
-
   /// No description provided for @onboardingExportPdfRow.
   ///
   /// In es, this message translates to:
@@ -1611,78 +1035,6 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Volver a probar'**
   String get onboardingTryAgainButton;
-
-  /// No description provided for @onboardingPremiumTitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Hazte Premium'**
-  String get onboardingPremiumTitle;
-
-  /// No description provided for @onboardingPremiumSubtitle.
-  ///
-  /// In es, this message translates to:
-  /// **'Desbloquea todo el potencial de Kipack'**
-  String get onboardingPremiumSubtitle;
-
-  /// No description provided for @onboardingPremiumNoAds.
-  ///
-  /// In es, this message translates to:
-  /// **'Sin anuncios'**
-  String get onboardingPremiumNoAds;
-
-  /// No description provided for @onboardingPremiumMap.
-  ///
-  /// In es, this message translates to:
-  /// **'Mapa de países visitados y programados'**
-  String get onboardingPremiumMap;
-
-  /// No description provided for @onboardingPremiumTemplates.
-  ///
-  /// In es, this message translates to:
-  /// **'Plantillas de equipaje reutilizables'**
-  String get onboardingPremiumTemplates;
-
-  /// No description provided for @onboardingPremiumReminders.
-  ///
-  /// In es, this message translates to:
-  /// **'Recordatorios inteligentes antes de salir'**
-  String get onboardingPremiumReminders;
-
-  /// No description provided for @onboardingPremiumAiChat.
-  ///
-  /// In es, this message translates to:
-  /// **'Chat con la IA para ajustar tu lista'**
-  String get onboardingPremiumAiChat;
-
-  /// No description provided for @onboardingPremiumSharedTrips.
-  ///
-  /// In es, this message translates to:
-  /// **'Viajes compartidos y colaborativos'**
-  String get onboardingPremiumSharedTrips;
-
-  /// No description provided for @onboardingPremiumCloudBackup.
-  ///
-  /// In es, this message translates to:
-  /// **'Copia de seguridad en la nube'**
-  String get onboardingPremiumCloudBackup;
-
-  /// No description provided for @onboardingPremiumExportPdf.
-  ///
-  /// In es, this message translates to:
-  /// **'Exportar tu lista como PDF'**
-  String get onboardingPremiumExportPdf;
-
-  /// No description provided for @onboardingTryPremiumButton.
-  ///
-  /// In es, this message translates to:
-  /// **'Probar Premium (demo)'**
-  String get onboardingTryPremiumButton;
-
-  /// No description provided for @onboardingContinueFreeButton.
-  ///
-  /// In es, this message translates to:
-  /// **'Continuar con la versión gratis'**
-  String get onboardingContinueFreeButton;
 
   /// No description provided for @mapTitle.
   ///
@@ -1720,137 +1072,65 @@ abstract class AppLocalizations {
   /// **'{count, plural, one{1 país visitado} other{{count} países visitados}}'**
   String mapVisitedCountriesCount(int count);
 
-  /// No description provided for @mapPaywallTitle.
+  /// No description provided for @settingsAdPrivacyButton.
   ///
   /// In es, this message translates to:
-  /// **'El mapa es una función Premium'**
-  String get mapPaywallTitle;
+  /// **'Privacidad de anuncios'**
+  String get settingsAdPrivacyButton;
 
-  /// No description provided for @mapPaywallDescription.
+  /// No description provided for @onboardingStart.
   ///
   /// In es, this message translates to:
-  /// **'Desbloquea el mapa de países visitados y programados, y marca destinos aunque no tengas un viaje planeado.'**
-  String get mapPaywallDescription;
+  /// **'Empezar'**
+  String get onboardingStart;
 
-  /// No description provided for @premiumUpsellTitle.
+  /// No description provided for @themeSectionTitle.
   ///
   /// In es, this message translates to:
-  /// **'{featureName} es Premium'**
-  String premiumUpsellTitle(String featureName);
+  /// **'Tema'**
+  String get themeSectionTitle;
 
-  /// No description provided for @premiumUpsellBody.
+  /// No description provided for @themeDialogTitle.
   ///
   /// In es, this message translates to:
-  /// **'Desbloquea {featureName} y el resto de funciones Premium.'**
-  String premiumUpsellBody(String featureName);
+  /// **'Elige un tema'**
+  String get themeDialogTitle;
 
-  /// No description provided for @premiumActivateButton.
+  /// No description provided for @themeSystem.
   ///
   /// In es, this message translates to:
-  /// **'Activar Premium (demo)'**
-  String get premiumActivateButton;
+  /// **'Automático (tema del dispositivo)'**
+  String get themeSystem;
 
-  /// No description provided for @premiumNotNowButton.
+  /// No description provided for @themeLight.
   ///
   /// In es, this message translates to:
-  /// **'Ahora no'**
-  String get premiumNotNowButton;
+  /// **'Claro'**
+  String get themeLight;
 
-  /// No description provided for @pendingInviteWithName.
+  /// No description provided for @themeDark.
   ///
   /// In es, this message translates to:
-  /// **'{inviterName} te invitó al viaje a {destination}'**
-  String pendingInviteWithName(String inviterName, String destination);
+  /// **'Oscuro'**
+  String get themeDark;
 
-  /// No description provided for @pendingInviteWithoutName.
+  /// No description provided for @settingsPreferencesHeader.
   ///
   /// In es, this message translates to:
-  /// **'Te han invitado a un viaje a {destination}'**
-  String pendingInviteWithoutName(String destination);
+  /// **'Preferencias'**
+  String get settingsPreferencesHeader;
 
-  /// No description provided for @pendingInviteAccept.
+  /// No description provided for @settingsHelpHeader.
   ///
   /// In es, this message translates to:
-  /// **'Aceptar'**
-  String get pendingInviteAccept;
+  /// **'Ayuda'**
+  String get settingsHelpHeader;
 
-  /// No description provided for @pendingInviteDecline.
+  /// No description provided for @settingsPrivacyHeader.
   ///
   /// In es, this message translates to:
-  /// **'Rechazar'**
-  String get pendingInviteDecline;
-
-  /// No description provided for @pendingInviteActionError.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo procesar la invitación. Inténtalo de nuevo.'**
-  String get pendingInviteActionError;
-
-  /// No description provided for @packingItemLocked.
-  ///
-  /// In es, this message translates to:
-  /// **'Solo quien lo marcó puede desmarcarlo'**
-  String get packingItemLocked;
-
-  /// No description provided for @premiumSignInRequired.
-  ///
-  /// In es, this message translates to:
-  /// **'Inicia sesión desde la pestaña Cuenta para suscribirte a Premium.'**
-  String get premiumSignInRequired;
-
-  /// No description provided for @premiumOffersUnavailable.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudieron cargar los planes de Premium. Inténtalo más tarde.'**
-  String get premiumOffersUnavailable;
-
-  /// No description provided for @premiumOffersError.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudieron cargar los planes de Premium. Comprueba tu conexión.'**
-  String get premiumOffersError;
-
-  /// No description provided for @premiumPurchaseError.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo iniciar la compra. Inténtalo de nuevo.'**
-  String get premiumPurchaseError;
-
-  /// No description provided for @premiumOfferMonthly.
-  ///
-  /// In es, this message translates to:
-  /// **'Mensual — {price}'**
-  String premiumOfferMonthly(String price);
-
-  /// No description provided for @premiumOfferAnnual.
-  ///
-  /// In es, this message translates to:
-  /// **'Anual — {price}'**
-  String premiumOfferAnnual(String price);
-
-  /// No description provided for @premiumRestorePurchases.
-  ///
-  /// In es, this message translates to:
-  /// **'Restaurar compras'**
-  String get premiumRestorePurchases;
-
-  /// No description provided for @premiumRestoreSuccess.
-  ///
-  /// In es, this message translates to:
-  /// **'Compras restauradas'**
-  String get premiumRestoreSuccess;
-
-  /// No description provided for @premiumRestoreError.
-  ///
-  /// In es, this message translates to:
-  /// **'No se pudo restaurar la compra. Inténtalo de nuevo.'**
-  String get premiumRestoreError;
-
-  /// No description provided for @premiumSubscriptionActiveUntil.
-  ///
-  /// In es, this message translates to:
-  /// **'Premium activo hasta {date}'**
-  String premiumSubscriptionActiveUntil(String date);
+  /// **'Privacidad'**
+  String get settingsPrivacyHeader;
 }
 
 class _AppLocalizationsDelegate

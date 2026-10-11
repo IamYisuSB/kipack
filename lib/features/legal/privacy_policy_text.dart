@@ -8,62 +8,61 @@
 /// having it checked by a professional before relying on it for real users
 /// or Play Store submission.
 const String privacyPolicyText = '''
-Última actualización: agosto de 2026
+Última actualización: octubre de 2026
 
 # 1. Responsable del tratamiento
 
 Jesús David Guerrero (DNI 74537721B), como persona física responsable del desarrollo y explotación de la aplicación Kipack ("la App", "nosotros"), es el responsable del tratamiento de los datos personales que se describen en esta política.
 
-Correo de contacto: info@fooserd.com
+Correo de contacto: fooserd@gmail.com
 Teléfono de contacto: 642355835
 
 Para cualquier consulta relacionada con tus datos personales o el ejercicio de tus derechos, puedes escribirnos a la dirección anterior.
 
 # 2. Qué datos tratamos
 
-Según cómo uses Kipack, podemos tratar los siguientes datos:
+Kipack no tiene cuentas de usuario ni servidores propios. Tus viajes, listas de equipaje, maletas, plantillas y países marcados se guardan únicamente en tu dispositivo, y se borran si desinstalas la App. No tenemos acceso a ellos.
 
-- Datos de cuenta: correo electrónico, nombre de usuario y contraseña (almacenada de forma cifrada, nunca en texto plano).
-- Foto de perfil, si decides subir una.
-- Datos de tus viajes: destino, fechas, tipo de viaje, actividades, número de acompañantes y las listas de equipaje que generes o edites.
-- Datos de viajes compartidos: si invitas a otras personas a colaborar en un viaje, tratamos el correo electrónico que nos facilites de esa persona con esa única finalidad.
-- Reportes de errores o sugerencias que nos envíes, y el correo electrónico de contacto que nos facilites si nos escribes sin haber iniciado sesión.
-- Datos técnicos básicos generados por el uso de la App y necesarios para su funcionamiento (por ejemplo, registros de acceso a nuestros servidores).
+Para que algunas funciones funcionen, la App envía ciertos datos directamente a servicios de terceros:
+
+- Generación de listas con IA: el destino, las fechas, el tipo de viaje, las actividades, el número de personas, el clima previsto y, si usas el chat, los mensajes que escribas, se envían a OpenRouter para generar o ajustar tu lista. No se envía tu nombre ni ningún dato que te identifique.
+- Clima y búsqueda de destinos: el nombre del destino que escribes y sus coordenadas se envían a Open-Meteo para buscar la ciudad y obtener la previsión o el clima histórico.
+- Publicidad: la App muestra anuncios mediante Google AdMob. Google puede tratar el identificador de publicidad de tu dispositivo, tu dirección IP, información técnica del dispositivo y datos de interacción con los anuncios.
+- Reportes de errores o sugerencias: se envían desde tu propia aplicación de correo, por lo que recibimos tu dirección de correo electrónico y el contenido del mensaje.
 
 No solicitamos ni tratamos categorías especiales de datos (salud, ideología, origen étnico, etc.).
 
 # 3. Con qué finalidad tratamos tus datos
 
-- Crear y gestionar tu cuenta de usuario.
-- Generar y sincronizar tus listas de equipaje y viajes entre tus dispositivos.
-- Permitirte compartir viajes con otras personas si así lo decides.
-- Responder a tus reportes de errores, sugerencias y consultas de soporte, incluyendo contactarte por correo electrónico si necesitamos más información para resolver tu incidencia.
-- Garantizar la seguridad, el correcto funcionamiento y la mejora continua de la App.
+- Generar tu lista de equipaje y adaptarla al clima de tu destino.
+- Mostrar anuncios, que es lo que permite que la App sea gratuita. Si estás en el Espacio Económico Europeo o en el Reino Unido, te pediremos tu consentimiento antes de mostrar anuncios personalizados; puedes cambiar tu elección en cualquier momento desde Ajustes > Privacidad de anuncios.
+- Responder a tus reportes de errores, sugerencias y consultas de soporte.
 
 # 4. Base legal
 
 El tratamiento de tus datos se basa en:
 
-- La ejecución del contrato/relación de uso que aceptas al crear una cuenta o usar la App (art. 6.1.b RGPD).
-- Tu consentimiento expreso cuando nos facilitas datos de forma voluntaria (por ejemplo, tu correo al enviar un reporte sin haber iniciado sesión), que puedes retirar en cualquier momento.
-- Nuestro interés legítimo en mantener la seguridad del servicio y responder a incidencias.
+- La prestación del servicio que solicitas al usar la App (art. 6.1.b RGPD), para la generación de listas y la consulta del clima.
+- Tu consentimiento (art. 6.1.a RGPD) para la publicidad personalizada, que puedes retirar en cualquier momento.
+- Tu consentimiento cuando nos escribes voluntariamente por correo electrónico.
 
 # 5. Con quién compartimos tus datos
 
-No vendemos ni cedemos tus datos a terceros con fines comerciales. Para poder prestar el servicio, trabajamos con los siguientes encargados de tratamiento, que solo acceden a los datos estrictamente necesarios para prestarnos sus servicios:
+No vendemos tus datos. Los terceros que intervienen son:
 
-- Supabase Inc. — base de datos, autenticación y almacenamiento de archivos (fotos de perfil), alojados sobre infraestructura de Amazon Web Services (AWS).
-- Resend — envío de correos electrónicos transaccionales (confirmación de cuenta, restablecimiento de contraseña, avisos).
+- Google Ireland Ltd. (Google AdMob) — publicidad. Más información en https://policies.google.com/technologies/partner-sites
+- OpenRouter, Inc. y el proveedor del modelo de IA que utilice — generación de listas de equipaje.
+- Open-Meteo — previsión meteorológica y búsqueda de destinos.
 
-Algunos de estos proveedores pueden estar ubicados fuera del Espacio Económico Europeo. En ese caso, nos aseguramos de que la transferencia cuente con garantías adecuadas conforme al RGPD (como las Cláusulas Contractuales Tipo de la Comisión Europea).
+Algunos de estos proveedores pueden estar ubicados fuera del Espacio Económico Europeo. En ese caso, la transferencia se ampara en garantías adecuadas conforme al RGPD (como las Cláusulas Contractuales Tipo de la Comisión Europea).
 
 # 6. Cuánto tiempo conservamos tus datos
 
-Conservamos tus datos mientras mantengas tu cuenta activa. Si eliminas tu cuenta, o nos solicitas la supresión de tus datos, los eliminaremos salvo que debamos conservarlos por obligación legal. Los reportes de errores o sugerencias se conservan el tiempo necesario para resolver la incidencia y, como máximo, 24 meses.
+Los datos de tus viajes permanecen en tu dispositivo hasta que los borres o desinstales la App. Los correos que nos envíes se conservan el tiempo necesario para resolver la incidencia y, como máximo, 24 meses. Los datos tratados por los terceros indicados se rigen por sus propias políticas de conservación.
 
 # 7. Tus derechos
 
-Tienes derecho a acceder, rectificar y suprimir tus datos, así como a solicitar la limitación de su tratamiento, oponerte a él o ejercer tu derecho a la portabilidad, escribiéndonos a info@fooserd.com. También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es) si consideras que no hemos tratado tus datos correctamente.
+Tienes derecho a acceder, rectificar y suprimir tus datos, así como a solicitar la limitación de su tratamiento, oponerte a él o ejercer tu derecho a la portabilidad, escribiéndonos a fooserd@gmail.com. También tienes derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (www.aepd.es) si consideras que no hemos tratado tus datos correctamente.
 
 # 8. Menores de edad
 
@@ -71,7 +70,7 @@ Kipack no está dirigida a menores de 14 años. Si eres menor de edad, necesitas
 
 # 9. Seguridad
 
-Aplicamos medidas técnicas y organizativas razonables (cifrado en tránsito, contraseñas cifradas, control de acceso) para proteger tus datos frente a accesos no autorizados, pérdida o alteración.
+Todas las comunicaciones de la App con los servicios indicados se realizan de forma cifrada (HTTPS). Tus datos de viaje no salen de tu dispositivo salvo en los casos descritos en esta política.
 
 # 10. Cambios en esta política
 

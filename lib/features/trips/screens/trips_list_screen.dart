@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/auth/auth_provider.dart';
+import '../../../core/ads/banner_ad_slot.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../l10n/app_localizations.dart';
@@ -10,10 +10,8 @@ import '../../packing_list/screens/packing_list_screen.dart';
 import '../../weather/models/trip_weather.dart';
 import '../../weather/services/weather_service.dart';
 import '../models/trip.dart';
-import '../providers/pending_invites_provider.dart';
 import '../providers/trips_provider.dart';
 import '../services/reminders_service.dart';
-import '../widgets/pending_invites_banner.dart';
 import '../widgets/trip_card.dart';
 import 'new_trip_screen.dart';
 
@@ -42,7 +40,6 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
   @override
   Widget build(BuildContext context) {
     final trips = ref.watch(tripsProvider);
-    final currentUserId = ref.watch(authStateProvider).asData?.value?.id;
     final onSurface = Theme.of(context).colorScheme.onSurface;
     final secondary = Theme.of(context).textTheme.bodySmall?.color;
     final selectedChipFg = AppColors.chipSelectedForeground(context);
@@ -62,12 +59,7 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
 
     return Scaffold(
       body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () => Future.wait([
-            ref.read(tripsProvider.notifier).refreshFromRemote(),
-            ref.read(pendingInvitesProvider.notifier).refresh(),
-          ]),
-          child: CustomScrollView(
+        child: CustomScrollView(
             slivers: [
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
@@ -90,7 +82,7 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
               ),
               SliverPadding(
                 padding: const EdgeInsets.fromLTRB(24, 8, 24, 0),
-                sliver: const SliverToBoxAdapter(child: PendingInvitesBanner()),
+                sliver: const SliverToBoxAdapter(child: BannerAdSlot()),
               ),
               if (trips.isNotEmpty)
                 SliverPadding(
@@ -183,9 +175,6 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
                       final trip = filtered[index];
                       return TripCard(
                         trip: trip,
-                        isOwner:
-                            trip.ownerId == null ||
-                            trip.ownerId == currentUserId,
                         onTap: () => _openPackingList(context, trip),
                         onDuplicate: () => _duplicateTrip(context, ref, trip),
                         onDelete: () => _confirmDelete(context, ref, trip),
@@ -195,7 +184,6 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
                 ),
             ],
           ),
-        ),
       ),
       floatingActionButton: trips.isEmpty
           ? null

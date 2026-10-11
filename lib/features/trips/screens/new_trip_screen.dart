@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import '../../../core/premium/premium_gate.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../l10n/app_localizations.dart';
@@ -113,12 +112,6 @@ class _NewTripScreenState extends ConsumerState<NewTripScreen> {
       setState(() => _selectedActivities.remove(activity));
       return;
     }
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).newTripActivitiesFeatureName,
-    );
-    if (!allowed || !mounted) return;
     setState(() => _selectedActivities.add(activity));
   }
 
@@ -127,24 +120,12 @@ class _NewTripScreenState extends ConsumerState<NewTripScreen> {
       setState(() => _remindersEnabled = false);
       return;
     }
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).newTripRemindersFeatureName,
-    );
-    if (!allowed || !mounted) return;
     await RemindersService.instance.requestPermission();
     if (!mounted) return;
     setState(() => _remindersEnabled = true);
   }
 
   Future<void> _manageTemplates() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).packingListTemplatesFeatureName,
-    );
-    if (!allowed || !mounted) return;
     Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (_) => const TemplatesScreen()));
@@ -205,6 +186,7 @@ class _NewTripScreenState extends ConsumerState<NewTripScreen> {
           builder: (_) => PackingListScreen(
             trip: trip,
             templateItemsToApply: _selectedTemplate?.items,
+            isNewTrip: true,
           ),
         ),
       );

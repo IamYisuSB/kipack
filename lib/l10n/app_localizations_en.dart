@@ -15,7 +15,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get navMap => 'Map';
 
   @override
-  String get navAccount => 'Account';
+  String get navAccount => 'Settings';
 
   @override
   String get languageSectionTitle => 'Language';
@@ -122,9 +122,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonCreate => 'Create';
 
   @override
-  String get commonSave => 'Save';
-
-  @override
   String get commonAll => 'All';
 
   @override
@@ -137,29 +134,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get packingListItemNameHint => 'Item name';
 
   @override
-  String get packingListAiChatFeatureName => 'AI suggestions chat';
-
-  @override
   String get packingListAiChatTooltip => 'Ask the AI for adjustments';
 
   @override
-  String get packingListShareFeatureName => 'Share trip';
-
-  @override
   String get packingListShareTooltip => 'Share and more';
-
-  @override
-  String get packingListSignInToShare =>
-      'Sign in from the Account tab to share trips';
-
-  @override
-  String get packingListExportPdfFeatureName => 'Export as PDF';
-
-  @override
-  String get packingListWeatherDetailFeatureName => 'Daily weather detail';
-
-  @override
-  String get packingListTemplatesFeatureName => 'Packing templates';
 
   @override
   String get packingListNewSuitcaseTitle => 'New suitcase';
@@ -174,9 +152,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String packingListDeleteSuitcaseBody(String name) {
     return '\"$name\" will be deleted. Assigned items will be left unassigned.';
   }
-
-  @override
-  String get shareMenuInvite => 'Share with companions';
 
   @override
   String get shareMenuApplyTemplate => 'Apply template';
@@ -308,9 +283,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get newTripTitle => 'New trip';
 
   @override
-  String get newTripActivitiesFeatureName => 'Specific activities';
-
-  @override
   String get newTripRemindersFeatureName => 'Trip reminders';
 
   @override
@@ -422,33 +394,6 @@ class AppLocalizationsEn extends AppLocalizations {
       'Real Open-Meteo forecast for your trip dates';
 
   @override
-  String get sharingSheetTitle => 'Share trip';
-
-  @override
-  String get sharingSheetSubtitle =>
-      'Each companion can see the list and check off what you assign them.';
-
-  @override
-  String get sharingSheetEmpty => 'You haven\'t invited anyone yet.';
-
-  @override
-  String get sharingSheetHasAccess => 'Already has access';
-
-  @override
-  String get sharingSheetPending => 'Waiting for them to sign in';
-
-  @override
-  String get sharingSheetInviteHint => 'Email of the person to invite';
-
-  @override
-  String get sharingSheetInviteError =>
-      'Couldn\'t invite them (already invited?)';
-
-  @override
-  String get sharingSheetInviteFootnote =>
-      'They need to have (or create) an account with this same email to access it.';
-
-  @override
   String get assignSuitcaseTitle => 'Assign to suitcase';
 
   @override
@@ -459,23 +404,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'You haven\'t created any suitcases yet. Add one from the top of the list.';
 
   @override
-  String get assignPersonTitle => 'Assign to';
-
-  @override
-  String get assignPersonNone => 'Unassigned';
-
-  @override
-  String get assignPersonYou => 'You';
-
-  @override
-  String get accountTitle => 'Account';
-
-  @override
-  String get accountPremiumLockedTitle => 'Account is a Premium feature';
-
-  @override
-  String get accountPremiumLockedDescription =>
-      'Create an account to manage your profile, with cross-device sync coming later.';
+  String get accountTitle => 'Settings';
 
   @override
   String get accountFeedbackPrompt =>
@@ -495,226 +424,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get accountSendTestNotificationButton => 'Send test notification';
 
   @override
-  String get commonSignOut => 'Sign out';
-
-  @override
   String get accountPrivacyPolicyButton => 'Privacy policy';
-
-  @override
-  String get accountSignOutConfirm => 'Are you sure you want to sign out?';
-
-  @override
-  String get authErrorChooseUsername => 'Choose a username';
-
-  @override
-  String get authErrorPasswordMismatch => 'Passwords don\'t match';
-
-  @override
-  String get authErrorWeakPassword =>
-      'The password doesn\'t meet all the requirements';
-
-  @override
-  String get authInfoAccountCreated =>
-      'Account created — check your email to confirm it.';
-
-  @override
-  String get authErrorGeneric => 'Something went wrong. Please try again.';
-
-  @override
-  String get authForgotPasswordTitle => 'Recover password';
-
-  @override
-  String get authEmailHint => 'Your email address';
-
-  @override
-  String get authSendCodeButton => 'Send code';
-
-  @override
-  String get authEnterCodeTitle => 'Enter the code';
-
-  @override
-  String authResetCodeSentBody(String email) {
-    return 'We\'ve sent an 8-digit code to $email. Enter it to continue (check your spam folder too).';
-  }
-
-  @override
-  String get authCodeHint => '8-digit code';
-
-  @override
-  String get commonUnderstood => 'Got it';
-
-  @override
-  String get authErrorSendEmailFailed =>
-      'Couldn\'t send the email. Please try again.';
-
-  @override
-  String get authErrorRateLimited =>
-      'You\'ve hit the attempt limit. Try again in a little while.';
-
-  @override
-  String authErrorWrongPasswordAttempts(int count) {
-    return 'Wrong password. You have $count attempts left.';
-  }
-
-  @override
-  String authErrorLockedOut(int minutes) {
-    return 'Too many failed attempts. Try again in $minutes minutes.';
-  }
-
-  @override
-  String get authTitleSignUp => 'Create account';
-
-  @override
-  String get authTitleSignIn => 'Sign in';
-
-  @override
-  String get authSubtitle =>
-      'With an account you\'ll be able to sync your trips across devices later on.';
-
-  @override
-  String get authUsernameHint => 'Username';
-
-  @override
-  String get authUsernameTaken => 'That username is already taken';
-
-  @override
-  String get authUsernameBlocked => 'That username isn\'t allowed';
-
-  @override
-  String get authUsernameTooShort => '3 characters minimum';
-
-  @override
-  String get authPasswordReqLength => '8+ characters';
-
-  @override
-  String get authPasswordReqLower => 'Lowercase';
-
-  @override
-  String get authPasswordReqUpper => 'Uppercase';
-
-  @override
-  String get authPasswordReqDigit => 'Number';
-
-  @override
-  String get authPasswordReqSymbol => 'Symbol';
-
-  @override
-  String get authEmailFieldHint => 'Email address';
-
-  @override
-  String get authPasswordHint => 'Password';
-
-  @override
-  String get authForgotPasswordLink => 'Forgot your password?';
-
-  @override
-  String get authConfirmPasswordHint => 'Repeat password';
-
-  @override
-  String get authToggleToSignIn => 'Already have an account? Sign in';
-
-  @override
-  String get authToggleToSignUp => 'Don\'t have an account? Create one';
-
-  @override
-  String get accountErrorUploadPhoto =>
-      'Couldn\'t upload the photo. Please try again.';
-
-  @override
-  String get accountErrorRemovePhoto =>
-      'Couldn\'t remove the photo. Please try again.';
-
-  @override
-  String get accountChangeUsernameTitle => 'Change username';
-
-  @override
-  String get accountChangeEmailTitle => 'Change email';
-
-  @override
-  String get accountNewEmailHint => 'New email address';
-
-  @override
-  String get accountChangeEmailSentNotice =>
-      'Check your email (both old and new) to confirm the change';
-
-  @override
-  String get accountChangePasswordTitle => 'Change password';
-
-  @override
-  String get accountCurrentPasswordHint => 'Current password';
-
-  @override
-  String get accountNewPasswordHint => 'New password';
-
-  @override
-  String get accountConfirmNewPasswordHint => 'Repeat new password';
-
-  @override
-  String get accountErrorNewPasswordMismatch => 'New passwords don\'t match';
-
-  @override
-  String get accountErrorFillAllFields => 'Fill in all fields';
-
-  @override
-  String get accountPasswordUpdated => 'Password updated';
-
-  @override
-  String get accountDeleteTitle => 'Delete account';
-
-  @override
-  String get accountDeleteBody =>
-      'This action is irreversible. Your account, trips, packing lists, templates and any other associated data will be permanently deleted.';
-
-  @override
-  String get accountDeletePremiumWarning =>
-      ' You\'ll lose access to Premium immediately.';
-
-  @override
-  String get accountDeleteCodeNotice =>
-      '\n\nTo confirm, we\'ll send a code to your email.';
-
-  @override
-  String get commonContinue => 'Continue';
-
-  @override
-  String get accountDeletionCodeSent => 'We\'ve sent a code to your email';
-
-  @override
-  String get accountErrorSendCode =>
-      'Couldn\'t send the code. Please try again.';
-
-  @override
-  String get accountConfirmDeletionTitle => 'Confirm deletion';
-
-  @override
-  String get accountConfirmDeletionBody =>
-      'Enter the 6-digit code we sent to your email. This action cannot be undone.';
-
-  @override
-  String get accountErrorEnterSixDigits => 'Enter all 6 digits';
-
-  @override
-  String get accountDeletePermanentlyButton => 'Delete permanently';
-
-  @override
-  String get accountDeleteSubtitle =>
-      'This action is permanent and irreversible';
-
-  @override
-  String get accountErrorDeleteAccount =>
-      'Couldn\'t delete the account. Please try again.';
-
-  @override
-  String get accountSignedInPlaceholder => 'Signed in';
-
-  @override
-  String get accountTakePhoto => 'Take a photo';
-
-  @override
-  String get accountChooseFromGallery => 'Choose from gallery';
-
-  @override
-  String get accountRemovePhoto => 'Remove photo';
 
   @override
   String get feedbackSheetTitle => 'Bug report or suggestion';
@@ -730,32 +440,15 @@ class AppLocalizationsEn extends AppLocalizations {
       'Tell us what happened or what you\'d like the app to have';
 
   @override
-  String get feedbackEmailNote =>
-      'Your email will only be used to contact you if we need more information about this report.';
-
-  @override
-  String get feedbackConsentPrefix => 'I\'ve read and accept the ';
-
-  @override
-  String get feedbackConsentLink => 'privacy policy';
-
-  @override
   String get feedbackSignedInContactNote =>
-      'If needed, we may contact you through the email address linked to your account to ask for more information about this report.';
+      'Your email app will open with the message ready to send.';
 
   @override
-  String get feedbackSubmittedThanks => 'Thanks! We\'ve received it.';
-
-  @override
-  String get feedbackErrorSubmit => 'Couldn\'t send it. Please try again.';
+  String get feedbackErrorSubmit =>
+      'No email app found. Write to us at fooserd@gmail.com';
 
   @override
   String get commonSend => 'Send';
-
-  @override
-  String feedbackWaitSeconds(int seconds) {
-    return 'Wait ${seconds}s';
-  }
 
   @override
   String get onboardingSkip => 'Skip';
@@ -800,13 +493,6 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get onboardingFeatureRemindersDescription =>
       'Alerts before you leave if you still haven\'t packed';
-
-  @override
-  String get onboardingFeatureSharedTitle => 'Shared trips';
-
-  @override
-  String get onboardingFeatureSharedDescription =>
-      'Invite your travel companions so everyone can check off their own items';
 
   @override
   String get onboardingFeaturePdfTitle => 'Export to PDF';
@@ -862,49 +548,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get onboardingTourStep4Subtitle => 'One button for all of this';
 
   @override
-  String get onboardingShareWithCompanions => 'Share with companions';
-
-  @override
   String get onboardingExportPdfRow => 'Export as PDF';
 
   @override
   String get onboardingTryAgainButton => 'Try it again';
-
-  @override
-  String get onboardingPremiumTitle => 'Go Premium';
-
-  @override
-  String get onboardingPremiumSubtitle => 'Unlock the full potential of Kipack';
-
-  @override
-  String get onboardingPremiumNoAds => 'No ads';
-
-  @override
-  String get onboardingPremiumMap => 'Map of visited and planned countries';
-
-  @override
-  String get onboardingPremiumTemplates => 'Reusable packing templates';
-
-  @override
-  String get onboardingPremiumReminders => 'Smart reminders before you leave';
-
-  @override
-  String get onboardingPremiumAiChat => 'AI chat to adjust your list';
-
-  @override
-  String get onboardingPremiumSharedTrips => 'Shared, collaborative trips';
-
-  @override
-  String get onboardingPremiumCloudBackup => 'Cloud backup';
-
-  @override
-  String get onboardingPremiumExportPdf => 'Export your list as PDF';
-
-  @override
-  String get onboardingTryPremiumButton => 'Try Premium (demo)';
-
-  @override
-  String get onboardingContinueFreeButton => 'Continue with the free version';
 
   @override
   String get mapTitle => 'Your map';
@@ -933,89 +580,32 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get mapPaywallTitle => 'The map is a Premium feature';
+  String get settingsAdPrivacyButton => 'Ad privacy';
 
   @override
-  String get mapPaywallDescription =>
-      'Unlock the map of visited and planned countries, and mark destinations even without a planned trip.';
+  String get onboardingStart => 'Get started';
 
   @override
-  String premiumUpsellTitle(String featureName) {
-    return '$featureName is Premium';
-  }
+  String get themeSectionTitle => 'Theme';
 
   @override
-  String premiumUpsellBody(String featureName) {
-    return 'Unlock $featureName and the rest of the Premium features.';
-  }
+  String get themeDialogTitle => 'Choose a theme';
 
   @override
-  String get premiumActivateButton => 'Activate Premium (demo)';
+  String get themeSystem => 'Automatic (device theme)';
 
   @override
-  String get premiumNotNowButton => 'Not now';
+  String get themeLight => 'Light';
 
   @override
-  String pendingInviteWithName(String inviterName, String destination) {
-    return '$inviterName invited you to the trip to $destination';
-  }
+  String get themeDark => 'Dark';
 
   @override
-  String pendingInviteWithoutName(String destination) {
-    return 'You\'ve been invited to a trip to $destination';
-  }
+  String get settingsPreferencesHeader => 'Preferences';
 
   @override
-  String get pendingInviteAccept => 'Accept';
+  String get settingsHelpHeader => 'Help';
 
   @override
-  String get pendingInviteDecline => 'Decline';
-
-  @override
-  String get pendingInviteActionError =>
-      'Couldn\'t process the invite. Please try again.';
-
-  @override
-  String get packingItemLocked => 'Only whoever packed it can unpack it';
-
-  @override
-  String get premiumSignInRequired =>
-      'Sign in from the Account tab to subscribe to Premium.';
-
-  @override
-  String get premiumOffersUnavailable =>
-      'Couldn\'t load Premium plans. Please try again later.';
-
-  @override
-  String get premiumOffersError =>
-      'Couldn\'t load Premium plans. Check your connection.';
-
-  @override
-  String get premiumPurchaseError =>
-      'Couldn\'t start the purchase. Please try again.';
-
-  @override
-  String premiumOfferMonthly(String price) {
-    return 'Monthly — $price';
-  }
-
-  @override
-  String premiumOfferAnnual(String price) {
-    return 'Annual — $price';
-  }
-
-  @override
-  String get premiumRestorePurchases => 'Restore purchases';
-
-  @override
-  String get premiumRestoreSuccess => 'Purchases restored';
-
-  @override
-  String get premiumRestoreError =>
-      'Couldn\'t restore your purchase. Please try again.';
-
-  @override
-  String premiumSubscriptionActiveUntil(String date) {
-    return 'Premium active until $date';
-  }
+  String get settingsPrivacyHeader => 'Privacy';
 }

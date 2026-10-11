@@ -13,17 +13,12 @@ class TripCard extends StatelessWidget {
     required this.onTap,
     required this.onDuplicate,
     required this.onDelete,
-    this.isOwner = true,
   });
 
   final Trip trip;
   final VoidCallback onTap;
   final VoidCallback onDuplicate;
   final VoidCallback onDelete;
-
-  /// Hides "Eliminar" for a shared trip you don't own — RLS would reject
-  /// the remote delete anyway, so offering it would just be misleading.
-  final bool isOwner;
 
   @override
   Widget build(BuildContext context) {
@@ -127,8 +122,7 @@ class TripCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    if (isOwner)
-                      PopupMenuItem(
+                    PopupMenuItem(
                         value: _TripAction.delete,
                         child: Row(
                           children: [

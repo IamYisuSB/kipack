@@ -1,74 +1,36 @@
-import 'package:flutter/foundation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-import '../storage/local_store.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum FeedbackType { bug, suggestion }
 
-const _lastSubmitKey = 'feedback_last_submit_at_ms';
+const supportEmail = 'fooserd@gmail.com';
 
-/// Thrown by [FeedbackService.submit] when called again before
-/// [FeedbackService.cooldown] has passed since the last successful send.
-class FeedbackCooldownException implements Exception {
-  const FeedbackCooldownException(this.remaining);
-
-  final Duration remaining;
-}
-
-/// Sends a bug report or suggestion to the `feedback` table. Works for
-/// guests too (no account needed) — the table's RLS policy allows inserts
-/// from the anon role.
-///
-/// Guarded against spam/abuse on two layers: a client-side cooldown here
-/// (persisted, so restarting the app doesn't reset it) stops one device
-/// from hammering the button, and a server-side trigger on the `feedback`
-/// table (`enforce_feedback_rate_limit`) caps inserts per user/anonymous
-/// caller regardless of client — a scripted attacker hitting the REST
-/// endpoint directly, bypassing the app, would still be capped there.
+/// Opens the user's email app with a pre-filled message to [supportEmail].
+/// No backend involved — the user sends it from their own mail account, so
+/// replies go straight back to them.
 class FeedbackService {
   const FeedbackService();
 
-  static const cooldown = Duration(seconds: 60);
-
-  /// Time left before another submission is allowed, or null if none.
-  Future<Duration?> remainingCooldown() async {
-    final lastMs = await LocalStore.instance.readInt(_lastSubmitKey);
-    if (lastMs == null) return null;
-    final elapsed = DateTime.now().difference(
-      DateTime.fromMillisecondsSinceEpoch(lastMs),
-    );
-    final remaining = cooldown - elapsed;
-    return remaining.isNegative || remaining == Duration.zero
-        ? null
-        : remaining;
-  }
-
-  Future<void> submit({
+  /// Returns false if no email app could handle the `mailto:` link.
+  Future<bool> openEmail({
     required FeedbackType type,
     required String message,
-    String? contactEmail,
   }) async {
-    final remaining = await remainingCooldown();
-    if (remaining != null) {
-      throw FeedbackCooldownException(remaining);
-    }
-
-    final client = Supabase.instance.client;
+    final info = await PackageInfo.fromPlatform();
+    final label = type == FeedbackType.bug ? 'Bug' : 'Sugerencia';
+    final subject = '[Kipack] $label';
+    final body = '$message\n\n---\nKipack v${info.version} (${info.buildNumber})';
+    // Encoded by hand: Uri(queryParameters:) turns spaces into '+', which
+    // most mail apps then show literally.
+    final uri = Uri.parse(
+      'mailto:$supportEmail'
+      '?subject=${Uri.encodeComponent(subject)}'
+      '&body=${Uri.encodeComponent(body)}',
+    );
     try {
-      await client.from('feedback').insert({
-        'type': type.name,
-        'message': message,
-        'user_id': client.auth.currentUser?.id,
-        'contact_email': contactEmail,
-      });
-      await LocalStore.instance.writeInt(
-        _lastSubmitKey,
-        DateTime.now().millisecondsSinceEpoch,
-      );
-    } catch (error) {
-      // Rethrown so the UI can still show its own "failed" message, but
-      // logged first since that generic UI message alone can't tell us why.
-      debugPrint('No se pudo enviar el feedback: $error');
-      rethrow;
+      return await launchUrl(uri);
+    } catch (_) {
+      return false;
     }
   }
 }

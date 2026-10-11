@@ -1,20 +1,16 @@
 {
   "@@locale": "es",
-
   "navTrips": "Viajes",
   "navMap": "Mapa",
-  "navAccount": "Cuenta",
-
+  "navAccount": "Ajustes",
   "languageSectionTitle": "Idioma",
   "languageDialogTitle": "Elige un idioma",
   "languageSystemDefault": "Automático (idioma del dispositivo)",
-
   "tripTypeBeach": "Playa",
   "tripTypeMountain": "Montaña",
   "tripTypeCity": "Ciudad",
   "tripTypeBusiness": "Negocios",
   "tripTypeBackpacker": "Mochilero",
-
   "tripActivityDiving": "Buceo",
   "tripActivityHiking": "Senderismo",
   "tripActivitySkiing": "Esquí",
@@ -23,13 +19,11 @@
   "tripActivityCamping": "Camping",
   "tripActivityPhotography": "Fotografía",
   "tripActivityRunning": "Running",
-
   "packingCategoryClothing": "Ropa",
   "packingCategoryToiletries": "Higiene",
   "packingCategoryElectronics": "Electrónica",
   "packingCategoryDocuments": "Documentación",
   "packingCategoryMisc": "Otros",
-
   "weatherConditionClear": "Despejado",
   "weatherConditionPartlyCloudy": "Parcialmente nublado",
   "weatherConditionCloudy": "Nublado",
@@ -37,57 +31,71 @@
   "weatherConditionRain": "Lluvia",
   "weatherConditionStorm": "Tormenta",
   "weatherConditionSnow": "Nieve",
-
   "tripSummaryLine": "{dateRange} · {types} · {peopleCount, plural, one{1 persona} other{{peopleCount} personas}}",
   "@tripSummaryLine": {
     "placeholders": {
-      "dateRange": {"type": "String"},
-      "types": {"type": "String"},
-      "peopleCount": {"type": "int"}
+      "dateRange": {
+        "type": "String"
+      },
+      "types": {
+        "type": "String"
+      },
+      "peopleCount": {
+        "type": "int"
+      }
     }
   },
-
   "commonCancel": "Cancelar",
   "commonDelete": "Eliminar",
   "commonCreate": "Crear",
-  "commonSave": "Guardar",
   "commonAll": "Todas",
   "commonAdd": "Añadir",
-
   "packingListAddItemTitle": "Añadir ítem",
   "packingListItemNameHint": "Nombre del artículo",
-  "packingListAiChatFeatureName": "Chat de sugerencias de la IA",
   "packingListAiChatTooltip": "Pedir ajustes a la IA",
-  "packingListShareFeatureName": "Compartir viaje",
   "packingListShareTooltip": "Compartir y más",
-  "packingListSignInToShare": "Inicia sesión desde la pestaña Cuenta para compartir viajes",
-  "packingListExportPdfFeatureName": "Exportar como PDF",
-  "packingListWeatherDetailFeatureName": "Detalle diario del clima",
-  "packingListTemplatesFeatureName": "Plantillas de equipaje",
   "packingListNewSuitcaseTitle": "Nueva maleta",
   "packingListNewSuitcaseHint": "Ej. Maleta grande",
   "packingListDeleteSuitcaseTitle": "Eliminar maleta",
   "packingListDeleteSuitcaseBody": "Se eliminará \"{name}\". Los ítems asignados quedarán sin maleta.",
   "@packingListDeleteSuitcaseBody": {
-    "placeholders": { "name": {"type": "String"} }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
-  "shareMenuInvite": "Compartir con acompañantes",
   "shareMenuApplyTemplate": "Aplicar plantilla",
   "shareMenuExportPdf": "Exportar como PDF",
   "packingListProgressLine": "{packed} de {total} empacados",
   "@packingListProgressLine": {
-    "placeholders": { "packed": {"type": "int"}, "total": {"type": "int"} }
+    "placeholders": {
+      "packed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   },
   "packingListEmptySuitcase": "No hay ítems en esta maleta todavía.",
   "templatesEmptyHint": "Aún no tienes plantillas guardadas. Guarda la lista de un viaje como plantilla para reutilizarla aquí.",
   "templateItemsCount": "{count, plural, one{1 artículo} other{{count} artículos}}",
   "@templateItemsCount": {
-    "placeholders": { "count": {"type": "int"} }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "templateDeleteTitle": "Eliminar plantilla",
   "templateDeleteConfirm": "¿Seguro que quieres eliminar \"{name}\"?",
   "@templateDeleteConfirm": {
-    "placeholders": { "name": {"type": "String"} }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
   "aiThinking1": "La IA está pensando",
   "aiThinking2": "Analizando el clima de tu destino",
@@ -95,14 +103,25 @@
   "aiThinking4": "Afinando las cantidades",
   "aiThinking5": "Ya casi está",
   "aiGeneratingPleaseWait": "Esta acción puede tardar unos segundos, por favor espera",
-
   "templateApplyAllAlreadyIn": "Todos los artículos de \"{name}\" ya estaban en la lista",
-  "@templateApplyAllAlreadyIn": { "placeholders": { "name": {"type": "String"} } },
+  "@templateApplyAllAlreadyIn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "templateApplyAddedCount": "{count, plural, one{Se añadió 1 artículo de \"{name}\"} other{Se añadieron {count} artículos de \"{name}\"}}",
   "@templateApplyAddedCount": {
-    "placeholders": { "count": {"type": "int"}, "name": {"type": "String"} }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
   },
-
   "tripsListTitle": "Tus viajes",
   "tripsListSubtitle": "Prepara el equipaje perfecto para cada destino",
   "tripsListSearchHint": "Buscar por ciudad",
@@ -111,20 +130,29 @@
   "tripsFilterPast": "Pasados",
   "newTripButton": "Nuevo viaje",
   "duplicateTripNewDatesFor": "Nuevas fechas para {destination}",
-  "@duplicateTripNewDatesFor": { "placeholders": { "destination": {"type": "String"} } },
+  "@duplicateTripNewDatesFor": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "deleteTripTitle": "Eliminar viaje",
   "deleteTripConfirm": "¿Seguro que quieres eliminar \"{destination}\"? Esta acción no se puede deshacer.",
-  "@deleteTripConfirm": { "placeholders": { "destination": {"type": "String"} } },
+  "@deleteTripConfirm": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "tripsEmptyTitle": "Aún no tienes viajes",
   "tripsEmptyBody": "Crea tu primer viaje y genera una lista de equipaje a tu medida en segundos.",
   "tripsNoResults": "Ningún viaje coincide con tu búsqueda o filtro",
   "duplicateTripAction": "Duplicar viaje",
-
   "commonChange": "Cambiar",
   "commonManage": "Gestionar",
-
   "newTripTitle": "Nuevo viaje",
-  "newTripActivitiesFeatureName": "Actividades específicas",
   "newTripRemindersFeatureName": "Recordatorios de viaje",
   "newTripDestinationLabel": "Destino",
   "newTripDestinationHint": "Busca una ciudad, ej. Roma",
@@ -139,141 +167,80 @@
   "newTripRemindersSubtitle": "Aviso 3 días y 1 día antes de salir si aún te falta hacer la maleta",
   "newTripPeopleLabel": "Número de personas",
   "newTripPeopleCount": "{count, plural, one{1 persona} other{{count} personas}}",
-  "@newTripPeopleCount": { "placeholders": { "count": {"type": "int"} } },
+  "@newTripPeopleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "newTripCheckingWeather": "Consultando el clima…",
   "newTripGenerateButton": "Generar lista de equipaje",
-
   "seasonWinter": "invierno",
   "seasonSpring": "primavera",
   "seasonSummer": "verano",
   "seasonAutumn": "otoño",
   "weatherCardTitle": "Clima en {destination}",
-  "@weatherCardTitle": { "placeholders": { "destination": {"type": "String"} } },
+  "@weatherCardTitle": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "weatherCardSouthernHemisphere": "hemisferio sur",
   "weatherCardNoData": "Aún no hay datos de clima disponibles para este destino.",
   "weatherCardRainLikely": "probable que llueva ({pct}%)",
-  "@weatherCardRainLikely": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainLikely": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardRainPossible": "algo de lluvia posible ({pct}%)",
-  "@weatherCardRainPossible": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainPossible": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardRainUnlikely": "poca probabilidad de lluvia ({pct}%)",
-  "@weatherCardRainUnlikely": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainUnlikely": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardHistoricalNote": "Estimación orientativa basada en años anteriores — aún faltan más de 15 días para el viaje. Se actualizará automáticamente con la previsión real más cerca de la fecha.",
-
   "weatherDetailTitle": "Clima día a día en {destination}",
-  "@weatherDetailTitle": { "placeholders": { "destination": {"type": "String"} } },
+  "@weatherDetailTitle": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "weatherDetailSubtitle": "Previsión real de Open-Meteo para las fechas de tu viaje",
-
-  "sharingSheetTitle": "Compartir viaje",
-  "sharingSheetSubtitle": "Cada acompañante puede ver la lista y marcar lo que le asignes.",
-  "sharingSheetEmpty": "Todavía no has invitado a nadie.",
-  "sharingSheetHasAccess": "Ya tiene acceso",
-  "sharingSheetPending": "Pendiente de que inicie sesión",
-  "sharingSheetInviteHint": "Correo de la persona a invitar",
-  "sharingSheetInviteError": "No se pudo invitar (¿ya estaba invitado?)",
-  "sharingSheetInviteFootnote": "La persona debe tener (o crear) una cuenta con este mismo correo para acceder.",
-
   "assignSuitcaseTitle": "Asignar a maleta",
   "assignSuitcaseNone": "Sin maleta",
   "assignSuitcaseEmptyHint": "Aún no has creado ninguna maleta. Añádela desde la parte superior de la lista.",
-  "assignPersonTitle": "Asignar a",
-  "assignPersonNone": "Sin asignar",
-  "assignPersonYou": "Tú",
-
-  "accountTitle": "Cuenta",
-  "accountPremiumLockedTitle": "La cuenta es una función Premium",
-  "accountPremiumLockedDescription": "Crea una cuenta para gestionar tu perfil, con sincronización entre dispositivos más adelante.",
+  "accountTitle": "Ajustes",
   "accountFeedbackPrompt": "¿Algo no funciona o se te ocurre una mejora?",
   "accountSendFeedbackButton": "Enviar bug report o sugerencia",
   "accountNotifTestPrompt": "¿No sabes si te llegan las notificaciones?",
   "accountNotifTestSubtitle": "Prueba a enviarte una ahora mismo — si aparece, tu dispositivo las tiene bien configuradas.",
   "accountSendTestNotificationButton": "Enviar notificación de prueba",
-  "commonSignOut": "Cerrar sesión",
   "accountPrivacyPolicyButton": "Política de privacidad",
-  "accountSignOutConfirm": "¿Estás seguro de que quieres cerrar sesión?",
-
-  "authErrorChooseUsername": "Elige un nombre de usuario",
-  "authErrorPasswordMismatch": "Las contraseñas no coinciden",
-  "authErrorWeakPassword": "La contraseña no cumple todos los requisitos",
-  "authInfoAccountCreated": "Cuenta creada — revisa tu correo para confirmarla.",
-  "authErrorGeneric": "Algo ha fallado. Inténtalo de nuevo.",
-  "authForgotPasswordTitle": "Recuperar contraseña",
-  "authEmailHint": "Tu correo electrónico",
-  "authSendCodeButton": "Enviar código",
-  "authEnterCodeTitle": "Introduce el código",
-  "authResetCodeSentBody": "Te hemos enviado un código de 8 dígitos a {email}. Introdúcelo para continuar (revisa también la carpeta de spam).",
-  "@authResetCodeSentBody": { "placeholders": { "email": {"type": "String"} } },
-  "authCodeHint": "Código de 8 dígitos",
-  "commonUnderstood": "Entendido",
-  "authErrorSendEmailFailed": "No se pudo enviar el correo. Inténtalo de nuevo.",
-  "authErrorRateLimited": "Has excedido el límite de intentos. Prueba de nuevo dentro de un rato.",
-  "authErrorWrongPasswordAttempts": "Contraseña incorrecta. Te quedan {count} intentos.",
-  "@authErrorWrongPasswordAttempts": { "placeholders": { "count": {"type": "int"} } },
-  "authErrorLockedOut": "Demasiados intentos fallidos. Vuelve a intentarlo en {minutes} minutos.",
-  "@authErrorLockedOut": { "placeholders": { "minutes": {"type": "int"} } },
-  "authTitleSignUp": "Crear cuenta",
-  "authTitleSignIn": "Iniciar sesión",
-  "authSubtitle": "Con una cuenta podrás sincronizar tus viajes entre dispositivos más adelante.",
-  "authUsernameHint": "Nombre de usuario",
-  "authUsernameTaken": "Ese nombre de usuario ya está en uso",
-  "authUsernameBlocked": "Ese nombre de usuario no está permitido",
-  "authUsernameTooShort": "Mínimo 3 caracteres",
-  "authPasswordReqLength": "8+ caracteres",
-  "authPasswordReqLower": "Minúscula",
-  "authPasswordReqUpper": "Mayúscula",
-  "authPasswordReqDigit": "Número",
-  "authPasswordReqSymbol": "Símbolo",
-  "authEmailFieldHint": "Correo electrónico",
-  "authPasswordHint": "Contraseña",
-  "authForgotPasswordLink": "¿Olvidaste tu contraseña?",
-  "authConfirmPasswordHint": "Repite la contraseña",
-  "authToggleToSignIn": "¿Ya tienes cuenta? Inicia sesión",
-  "authToggleToSignUp": "¿No tienes cuenta? Créala",
-
-  "accountErrorUploadPhoto": "No se pudo subir la foto. Inténtalo de nuevo.",
-  "accountErrorRemovePhoto": "No se pudo quitar la foto. Inténtalo de nuevo.",
-  "accountChangeUsernameTitle": "Cambiar nombre de usuario",
-  "accountChangeEmailTitle": "Cambiar correo",
-  "accountNewEmailHint": "Nuevo correo electrónico",
-  "accountChangeEmailSentNotice": "Revisa tu correo (el actual y el nuevo) para confirmar el cambio",
-  "accountChangePasswordTitle": "Cambiar contraseña",
-  "accountCurrentPasswordHint": "Contraseña actual",
-  "accountNewPasswordHint": "Nueva contraseña",
-  "accountConfirmNewPasswordHint": "Repite la nueva contraseña",
-  "accountErrorNewPasswordMismatch": "Las contraseñas nuevas no coinciden",
-  "accountErrorFillAllFields": "Rellena todos los campos",
-  "accountPasswordUpdated": "Contraseña actualizada",
-  "accountDeleteTitle": "Eliminar cuenta",
-  "accountDeleteBody": "Esta acción es irreversible. Se eliminarán de forma permanente tu cuenta, tus viajes, listas de equipaje, plantillas y cualquier otro dato asociado.",
-  "accountDeletePremiumWarning": " Perderás el acceso a Premium inmediatamente.",
-  "accountDeleteCodeNotice": "\n\nPara confirmarlo, te enviaremos un código a tu correo.",
-  "commonContinue": "Continuar",
-  "accountDeletionCodeSent": "Te hemos enviado un código a tu correo",
-  "accountErrorSendCode": "No se pudo enviar el código. Inténtalo de nuevo.",
-  "accountConfirmDeletionTitle": "Confirma la eliminación",
-  "accountConfirmDeletionBody": "Introduce el código de 6 dígitos que te hemos enviado por correo. Esta acción no se puede deshacer.",
-  "accountErrorEnterSixDigits": "Introduce los 6 dígitos",
-  "accountDeletePermanentlyButton": "Eliminar definitivamente",
-  "accountDeleteSubtitle": "Esta acción es permanente e irreversible",
-  "accountErrorDeleteAccount": "No se pudo eliminar la cuenta. Inténtalo de nuevo.",
-  "accountSignedInPlaceholder": "Sesión iniciada",
-  "accountTakePhoto": "Hacer una foto",
-  "accountChooseFromGallery": "Elegir de la galería",
-  "accountRemovePhoto": "Quitar foto",
-
   "feedbackSheetTitle": "Bug report o sugerencia",
   "feedbackTypeBug": "Bug",
   "feedbackTypeSuggestion": "Sugerencia",
   "feedbackMessageHint": "Cuéntanos qué ha pasado o qué te gustaría que tuviera la app",
-  "feedbackEmailNote": "Tu correo se usará únicamente para contactarte si necesitamos más información sobre este reporte.",
-  "feedbackConsentPrefix": "He leído y acepto la ",
-  "feedbackConsentLink": "política de privacidad",
-  "feedbackSignedInContactNote": "Si fuera necesario, podríamos ponernos en contacto contigo a través del correo electrónico asociado a tu cuenta para solicitarte información adicional sobre este reporte.",
-  "feedbackSubmittedThanks": "¡Gracias! Lo hemos recibido.",
-  "feedbackErrorSubmit": "No se pudo enviar. Inténtalo de nuevo.",
+  "feedbackSignedInContactNote": "Se abrirá tu app de correo con el mensaje listo para enviar.",
+  "feedbackErrorSubmit": "No se encontró ninguna app de correo. Escríbenos a fooserd@gmail.com",
   "commonSend": "Enviar",
-  "feedbackWaitSeconds": "Espera {seconds}s",
-  "@feedbackWaitSeconds": { "placeholders": { "seconds": {"type": "int"} } },
-
   "onboardingSkip": "Saltar",
   "onboardingNext": "Siguiente",
   "onboardingWelcomeTitle": "Bienvenido a Kipack",
@@ -287,8 +254,6 @@
   "onboardingFeatureTemplatesDescription": "Guarda listas reutilizables para tus tipos de viaje habituales",
   "onboardingFeatureRemindersTitle": "Recordatorios",
   "onboardingFeatureRemindersDescription": "Avisos antes de salir si aún te falta hacer la maleta",
-  "onboardingFeatureSharedTitle": "Viajes compartidos",
-  "onboardingFeatureSharedDescription": "Invita a tus acompañantes y que cada uno marque lo suyo",
   "onboardingFeaturePdfTitle": "Exportar en PDF",
   "onboardingFeaturePdfDescription": "Comparte tu lista lista para imprimir o enviar",
   "onboardingTourTitle": "Pruébalo tú mismo",
@@ -306,60 +271,29 @@
   "onboardingSeeHowToShareButton": "Ver cómo compartir",
   "onboardingTourStep4Title": "4. Comparte o exporta",
   "onboardingTourStep4Subtitle": "Un solo botón para todo esto",
-  "onboardingShareWithCompanions": "Compartir con acompañantes",
   "onboardingExportPdfRow": "Exportar como PDF",
   "onboardingTryAgainButton": "Volver a probar",
-  "onboardingPremiumTitle": "Hazte Premium",
-  "onboardingPremiumSubtitle": "Desbloquea todo el potencial de Kipack",
-  "onboardingPremiumNoAds": "Sin anuncios",
-  "onboardingPremiumMap": "Mapa de países visitados y programados",
-  "onboardingPremiumTemplates": "Plantillas de equipaje reutilizables",
-  "onboardingPremiumReminders": "Recordatorios inteligentes antes de salir",
-  "onboardingPremiumAiChat": "Chat con la IA para ajustar tu lista",
-  "onboardingPremiumSharedTrips": "Viajes compartidos y colaborativos",
-  "onboardingPremiumCloudBackup": "Copia de seguridad en la nube",
-  "onboardingPremiumExportPdf": "Exportar tu lista como PDF",
-  "onboardingTryPremiumButton": "Probar Premium (demo)",
-  "onboardingContinueFreeButton": "Continuar con la versión gratis",
-
   "mapTitle": "Tu mapa",
   "mapSubtitle": "Países visitados y programados",
   "mapLegendVisited": "Visitado",
   "mapLegendPlanned": "Programado",
   "mapLegendManual": "Marcado",
   "mapVisitedCountriesCount": "{count, plural, one{1 país visitado} other{{count} países visitados}}",
-  "@mapVisitedCountriesCount": { "placeholders": { "count": {"type": "int"} } },
-  "mapPaywallTitle": "El mapa es una función Premium",
-  "mapPaywallDescription": "Desbloquea el mapa de países visitados y programados, y marca destinos aunque no tengas un viaje planeado.",
-
-  "premiumUpsellTitle": "{featureName} es Premium",
-  "@premiumUpsellTitle": { "placeholders": { "featureName": {"type": "String"} } },
-  "premiumUpsellBody": "Desbloquea {featureName} y el resto de funciones Premium.",
-  "@premiumUpsellBody": { "placeholders": { "featureName": {"type": "String"} } },
-  "premiumActivateButton": "Activar Premium (demo)",
-  "premiumNotNowButton": "Ahora no",
-
-  "pendingInviteWithName": "{inviterName} te invitó al viaje a {destination}",
-  "@pendingInviteWithName": { "placeholders": { "inviterName": {"type": "String"}, "destination": {"type": "String"} } },
-  "pendingInviteWithoutName": "Te han invitado a un viaje a {destination}",
-  "@pendingInviteWithoutName": { "placeholders": { "destination": {"type": "String"} } },
-  "pendingInviteAccept": "Aceptar",
-  "pendingInviteDecline": "Rechazar",
-  "pendingInviteActionError": "No se pudo procesar la invitación. Inténtalo de nuevo.",
-
-  "packingItemLocked": "Solo quien lo marcó puede desmarcarlo",
-
-  "premiumSignInRequired": "Inicia sesión desde la pestaña Cuenta para suscribirte a Premium.",
-  "premiumOffersUnavailable": "No se pudieron cargar los planes de Premium. Inténtalo más tarde.",
-  "premiumOffersError": "No se pudieron cargar los planes de Premium. Comprueba tu conexión.",
-  "premiumPurchaseError": "No se pudo iniciar la compra. Inténtalo de nuevo.",
-  "premiumOfferMonthly": "Mensual — {price}",
-  "@premiumOfferMonthly": { "placeholders": { "price": {"type": "String"} } },
-  "premiumOfferAnnual": "Anual — {price}",
-  "@premiumOfferAnnual": { "placeholders": { "price": {"type": "String"} } },
-  "premiumRestorePurchases": "Restaurar compras",
-  "premiumRestoreSuccess": "Compras restauradas",
-  "premiumRestoreError": "No se pudo restaurar la compra. Inténtalo de nuevo.",
-  "premiumSubscriptionActiveUntil": "Premium activo hasta {date}",
-  "@premiumSubscriptionActiveUntil": { "placeholders": { "date": {"type": "String"} } }
+  "@mapVisitedCountriesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAdPrivacyButton": "Privacidad de anuncios",
+  "onboardingStart": "Empezar",
+  "themeSectionTitle": "Tema",
+  "themeDialogTitle": "Elige un tema",
+  "themeSystem": "Automático (tema del dispositivo)",
+  "themeLight": "Claro",
+  "themeDark": "Oscuro",
+  "settingsPreferencesHeader": "Preferencias",
+  "settingsHelpHeader": "Ayuda",
+  "settingsPrivacyHeader": "Privacidad"
 }

@@ -6,8 +6,7 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../l10n/app_localizations.dart';
 
 /// First-run welcome flow: what Kipack does, its main features, a quick
-/// tour of how it works, and — on the last page — a Premium offer. Shown
-/// once (see [OnboardingNotifier]) before the real app shell.
+/// tour of how it works. Shown once (see [OnboardingNotifier]) before the real app shell.
 class OnboardingScreen extends ConsumerStatefulWidget {
   const OnboardingScreen({super.key});
 
@@ -19,7 +18,7 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
   final _controller = PageController();
   int _page = 0;
 
-  static const _pageCount = 4;
+  static const _pageCount = 3;
   bool get _isLastPage => _page == _pageCount - 1;
 
   @override
@@ -71,27 +70,22 @@ class _OnboardingScreenState extends ConsumerState<OnboardingScreen> {
               child: PageView(
                 controller: _controller,
                 onPageChanged: (index) => setState(() => _page = index),
-                children: [
-                  const _WelcomePage(),
-                  const _FeaturesPage(),
-                  const _TourPage(),
-                  _PremiumOfferPage(onContinueFree: _finish),
-                ],
+                children: const [_WelcomePage(), _FeaturesPage(), _TourPage()],
               ),
             ),
-            if (!_isLastPage) ...[
-              _DotsIndicator(count: _pageCount, index: _page),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ElevatedButton(
-                    onPressed: _next,
-                    child: Text(l10n.onboardingNext),
+            _DotsIndicator(count: _pageCount, index: _page),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 20, 24, 24),
+              child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: _next,
+                  child: Text(
+                    _isLastPage ? l10n.onboardingStart : l10n.onboardingNext,
                   ),
                 ),
               ),
-            ],
+            ),
           ],
         ),
       ),
@@ -266,11 +260,6 @@ class _FeaturesPage extends StatelessWidget {
             icon: Icons.notifications_active_rounded,
             title: l10n.onboardingFeatureRemindersTitle,
             description: l10n.onboardingFeatureRemindersDescription,
-          ),
-          _FeatureRow(
-            icon: Icons.group_rounded,
-            title: l10n.onboardingFeatureSharedTitle,
-            description: l10n.onboardingFeatureSharedDescription,
           ),
           _FeatureRow(
             icon: Icons.picture_as_pdf_outlined,
@@ -541,11 +530,6 @@ class _TourPageState extends State<_TourPage> {
         ),
         const SizedBox(height: 12),
         _buildShareMenuRow(
-          Icons.group_add_outlined,
-          l10n.onboardingShareWithCompanions,
-          onSurface,
-        ),
-        _buildShareMenuRow(
           Icons.playlist_add_rounded,
           l10n.shareMenuApplyTemplate,
           onSurface,
@@ -577,162 +561,6 @@ class _TourPageState extends State<_TourPage> {
           Icon(icon, size: 18, color: onSurface),
           const SizedBox(width: 10),
           Text(label, style: AppTextStyles.body.copyWith(color: onSurface)),
-        ],
-      ),
-    );
-  }
-}
-
-class _PremiumFeatureLine extends StatelessWidget {
-  const _PremiumFeatureLine(this.text, {this.leading});
-
-  final String text;
-
-  /// Defaults to a plain checkmark; the "sin anuncios" line passes a
-  /// [_NoAdsIcon] instead since a checkmark doesn't read as "removed".
-  final Widget? leading;
-
-  @override
-  Widget build(BuildContext context) {
-    final onSurface = Theme.of(context).colorScheme.onSurface;
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
-      child: Row(
-        children: [
-          leading ??
-              const Icon(
-                Icons.check_circle_rounded,
-                size: 18,
-                color: AppColors.accent,
-              ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(
-              text,
-              style: AppTextStyles.body.copyWith(color: onSurface),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// "AD" badge with a diagonal strike-through — a no-ads symbol, since the
-/// classic Material Icons font (what this project uses) doesn't ship the
-/// newer Material Symbols "ad_off" glyph.
-class _NoAdsIcon extends StatelessWidget {
-  const _NoAdsIcon({this.size = 18});
-
-  final double size;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size,
-      height: size,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColors.accent, width: 1.6),
-            ),
-          ),
-          Text(
-            'AD',
-            style: TextStyle(
-              fontSize: size * 0.4,
-              fontWeight: FontWeight.w800,
-              color: AppColors.accent,
-              height: 1,
-            ),
-          ),
-          Transform.rotate(
-            angle: -0.785398, // -45°
-            child: Container(
-              width: size * 0.95,
-              height: 1.6,
-              color: AppColors.accent,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _PremiumOfferPage extends StatelessWidget {
-  const _PremiumOfferPage({required this.onContinueFree});
-
-  final VoidCallback onContinueFree;
-
-  @override
-  Widget build(BuildContext context) {
-    final onSurface = Theme.of(context).colorScheme.onSurface;
-    final secondary = Theme.of(context).textTheme.bodySmall?.color;
-    final l10n = AppLocalizations.of(context);
-
-    return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 88,
-            height: 88,
-            decoration: const BoxDecoration(
-              color: AppColors.accent,
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.workspace_premium_rounded,
-              size: 40,
-              color: AppColors.primary,
-            ),
-          ),
-          const SizedBox(height: 24),
-          Text(
-            l10n.onboardingPremiumTitle,
-            style: AppTextStyles.headline.copyWith(color: onSurface),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 6),
-          Text(
-            l10n.onboardingPremiumSubtitle,
-            style: AppTextStyles.body.copyWith(color: secondary),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 24),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _PremiumFeatureLine(
-                  l10n.onboardingPremiumNoAds,
-                  leading: const _NoAdsIcon(),
-                ),
-                _PremiumFeatureLine(l10n.onboardingPremiumMap),
-                _PremiumFeatureLine(l10n.onboardingPremiumTemplates),
-                _PremiumFeatureLine(l10n.onboardingPremiumReminders),
-                _PremiumFeatureLine(l10n.onboardingPremiumAiChat),
-                _PremiumFeatureLine(l10n.onboardingPremiumSharedTrips),
-                _PremiumFeatureLine(l10n.onboardingPremiumCloudBackup),
-                _PremiumFeatureLine(l10n.onboardingPremiumExportPdf),
-              ],
-            ),
-          ),
-          const SizedBox(height: 16),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: onContinueFree,
-              child: Text(l10n.onboardingContinueFreeButton),
-            ),
-          ),
-          const SizedBox(height: 16),
         ],
       ),
     );

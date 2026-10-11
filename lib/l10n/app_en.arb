@@ -1,20 +1,16 @@
 {
   "@@locale": "en",
-
   "navTrips": "Trips",
   "navMap": "Map",
-  "navAccount": "Account",
-
+  "navAccount": "Settings",
   "languageSectionTitle": "Language",
   "languageDialogTitle": "Choose a language",
   "languageSystemDefault": "Automatic (device language)",
-
   "tripTypeBeach": "Beach",
   "tripTypeMountain": "Mountain",
   "tripTypeCity": "City",
   "tripTypeBusiness": "Business",
   "tripTypeBackpacker": "Backpacking",
-
   "tripActivityDiving": "Diving",
   "tripActivityHiking": "Hiking",
   "tripActivitySkiing": "Skiing",
@@ -23,13 +19,11 @@
   "tripActivityCamping": "Camping",
   "tripActivityPhotography": "Photography",
   "tripActivityRunning": "Running",
-
   "packingCategoryClothing": "Clothing",
   "packingCategoryToiletries": "Toiletries",
   "packingCategoryElectronics": "Electronics",
   "packingCategoryDocuments": "Documents",
   "packingCategoryMisc": "Other",
-
   "weatherConditionClear": "Clear",
   "weatherConditionPartlyCloudy": "Partly cloudy",
   "weatherConditionCloudy": "Cloudy",
@@ -37,57 +31,71 @@
   "weatherConditionRain": "Rain",
   "weatherConditionStorm": "Storm",
   "weatherConditionSnow": "Snow",
-
   "tripSummaryLine": "{dateRange} · {types} · {peopleCount, plural, one{1 person} other{{peopleCount} people}}",
   "@tripSummaryLine": {
     "placeholders": {
-      "dateRange": {"type": "String"},
-      "types": {"type": "String"},
-      "peopleCount": {"type": "int"}
+      "dateRange": {
+        "type": "String"
+      },
+      "types": {
+        "type": "String"
+      },
+      "peopleCount": {
+        "type": "int"
+      }
     }
   },
-
   "commonCancel": "Cancel",
   "commonDelete": "Delete",
   "commonCreate": "Create",
-  "commonSave": "Save",
   "commonAll": "All",
   "commonAdd": "Add",
-
   "packingListAddItemTitle": "Add item",
   "packingListItemNameHint": "Item name",
-  "packingListAiChatFeatureName": "AI suggestions chat",
   "packingListAiChatTooltip": "Ask the AI for adjustments",
-  "packingListShareFeatureName": "Share trip",
   "packingListShareTooltip": "Share and more",
-  "packingListSignInToShare": "Sign in from the Account tab to share trips",
-  "packingListExportPdfFeatureName": "Export as PDF",
-  "packingListWeatherDetailFeatureName": "Daily weather detail",
-  "packingListTemplatesFeatureName": "Packing templates",
   "packingListNewSuitcaseTitle": "New suitcase",
   "packingListNewSuitcaseHint": "E.g. Large suitcase",
   "packingListDeleteSuitcaseTitle": "Delete suitcase",
   "packingListDeleteSuitcaseBody": "\"{name}\" will be deleted. Assigned items will be left unassigned.",
   "@packingListDeleteSuitcaseBody": {
-    "placeholders": { "name": {"type": "String"} }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
-  "shareMenuInvite": "Share with companions",
   "shareMenuApplyTemplate": "Apply template",
   "shareMenuExportPdf": "Export as PDF",
   "packingListProgressLine": "{packed} of {total} packed",
   "@packingListProgressLine": {
-    "placeholders": { "packed": {"type": "int"}, "total": {"type": "int"} }
+    "placeholders": {
+      "packed": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
   },
   "packingListEmptySuitcase": "No items in this suitcase yet.",
   "templatesEmptyHint": "You don't have any saved templates yet. Save a trip's list as a template to reuse it here.",
   "templateItemsCount": "{count, plural, one{1 item} other{{count} items}}",
   "@templateItemsCount": {
-    "placeholders": { "count": {"type": "int"} }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
   },
   "templateDeleteTitle": "Delete template",
   "templateDeleteConfirm": "Are you sure you want to delete \"{name}\"?",
   "@templateDeleteConfirm": {
-    "placeholders": { "name": {"type": "String"} }
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
   },
   "aiThinking1": "The AI is thinking",
   "aiThinking2": "Analyzing the weather at your destination",
@@ -95,14 +103,25 @@
   "aiThinking4": "Fine-tuning the quantities",
   "aiThinking5": "Almost there",
   "aiGeneratingPleaseWait": "This may take a few seconds, please wait",
-
   "templateApplyAllAlreadyIn": "All the items from \"{name}\" were already in the list",
-  "@templateApplyAllAlreadyIn": { "placeholders": { "name": {"type": "String"} } },
+  "@templateApplyAllAlreadyIn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
   "templateApplyAddedCount": "{count, plural, one{Added 1 item from \"{name}\"} other{Added {count} items from \"{name}\"}}",
   "@templateApplyAddedCount": {
-    "placeholders": { "count": {"type": "int"}, "name": {"type": "String"} }
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
   },
-
   "tripsListTitle": "Your trips",
   "tripsListSubtitle": "Prepare the perfect packing for every destination",
   "tripsListSearchHint": "Search by city",
@@ -111,20 +130,29 @@
   "tripsFilterPast": "Past",
   "newTripButton": "New trip",
   "duplicateTripNewDatesFor": "New dates for {destination}",
-  "@duplicateTripNewDatesFor": { "placeholders": { "destination": {"type": "String"} } },
+  "@duplicateTripNewDatesFor": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "deleteTripTitle": "Delete trip",
   "deleteTripConfirm": "Are you sure you want to delete \"{destination}\"? This action can't be undone.",
-  "@deleteTripConfirm": { "placeholders": { "destination": {"type": "String"} } },
+  "@deleteTripConfirm": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "tripsEmptyTitle": "No trips yet",
   "tripsEmptyBody": "Create your first trip and generate a tailored packing list in seconds.",
   "tripsNoResults": "No trips match your search or filter",
   "duplicateTripAction": "Duplicate trip",
-
   "commonChange": "Change",
   "commonManage": "Manage",
-
   "newTripTitle": "New trip",
-  "newTripActivitiesFeatureName": "Specific activities",
   "newTripRemindersFeatureName": "Trip reminders",
   "newTripDestinationLabel": "Destination",
   "newTripDestinationHint": "Search for a city, e.g. Rome",
@@ -139,141 +167,80 @@
   "newTripRemindersSubtitle": "A heads-up 3 days and 1 day before you leave if you still haven't packed",
   "newTripPeopleLabel": "Number of people",
   "newTripPeopleCount": "{count, plural, one{1 person} other{{count} people}}",
-  "@newTripPeopleCount": { "placeholders": { "count": {"type": "int"} } },
+  "@newTripPeopleCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "newTripCheckingWeather": "Checking the weather…",
   "newTripGenerateButton": "Generate packing list",
-
   "seasonWinter": "winter",
   "seasonSpring": "spring",
   "seasonSummer": "summer",
   "seasonAutumn": "autumn",
   "weatherCardTitle": "Weather in {destination}",
-  "@weatherCardTitle": { "placeholders": { "destination": {"type": "String"} } },
+  "@weatherCardTitle": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "weatherCardSouthernHemisphere": "southern hemisphere",
   "weatherCardNoData": "No weather data available for this destination yet.",
   "weatherCardRainLikely": "rain is likely ({pct}%)",
-  "@weatherCardRainLikely": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainLikely": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardRainPossible": "some rain possible ({pct}%)",
-  "@weatherCardRainPossible": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainPossible": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardRainUnlikely": "low chance of rain ({pct}%)",
-  "@weatherCardRainUnlikely": { "placeholders": { "pct": {"type": "int"} } },
+  "@weatherCardRainUnlikely": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
   "weatherCardHistoricalNote": "Rough estimate based on previous years — the trip is still more than 15 days away. It'll update automatically to a real forecast closer to the date.",
-
   "weatherDetailTitle": "Day-by-day weather in {destination}",
-  "@weatherDetailTitle": { "placeholders": { "destination": {"type": "String"} } },
+  "@weatherDetailTitle": {
+    "placeholders": {
+      "destination": {
+        "type": "String"
+      }
+    }
+  },
   "weatherDetailSubtitle": "Real Open-Meteo forecast for your trip dates",
-
-  "sharingSheetTitle": "Share trip",
-  "sharingSheetSubtitle": "Each companion can see the list and check off what you assign them.",
-  "sharingSheetEmpty": "You haven't invited anyone yet.",
-  "sharingSheetHasAccess": "Already has access",
-  "sharingSheetPending": "Waiting for them to sign in",
-  "sharingSheetInviteHint": "Email of the person to invite",
-  "sharingSheetInviteError": "Couldn't invite them (already invited?)",
-  "sharingSheetInviteFootnote": "They need to have (or create) an account with this same email to access it.",
-
   "assignSuitcaseTitle": "Assign to suitcase",
   "assignSuitcaseNone": "No suitcase",
   "assignSuitcaseEmptyHint": "You haven't created any suitcases yet. Add one from the top of the list.",
-  "assignPersonTitle": "Assign to",
-  "assignPersonNone": "Unassigned",
-  "assignPersonYou": "You",
-
-  "accountTitle": "Account",
-  "accountPremiumLockedTitle": "Account is a Premium feature",
-  "accountPremiumLockedDescription": "Create an account to manage your profile, with cross-device sync coming later.",
+  "accountTitle": "Settings",
   "accountFeedbackPrompt": "Something not working, or an idea for an improvement?",
   "accountSendFeedbackButton": "Send bug report or suggestion",
   "accountNotifTestPrompt": "Not sure if notifications reach you?",
   "accountNotifTestSubtitle": "Try sending yourself one right now — if it shows up, your device is set up correctly.",
   "accountSendTestNotificationButton": "Send test notification",
-  "commonSignOut": "Sign out",
   "accountPrivacyPolicyButton": "Privacy policy",
-  "accountSignOutConfirm": "Are you sure you want to sign out?",
-
-  "authErrorChooseUsername": "Choose a username",
-  "authErrorPasswordMismatch": "Passwords don't match",
-  "authErrorWeakPassword": "The password doesn't meet all the requirements",
-  "authInfoAccountCreated": "Account created — check your email to confirm it.",
-  "authErrorGeneric": "Something went wrong. Please try again.",
-  "authForgotPasswordTitle": "Recover password",
-  "authEmailHint": "Your email address",
-  "authSendCodeButton": "Send code",
-  "authEnterCodeTitle": "Enter the code",
-  "authResetCodeSentBody": "We've sent an 8-digit code to {email}. Enter it to continue (check your spam folder too).",
-  "@authResetCodeSentBody": { "placeholders": { "email": {"type": "String"} } },
-  "authCodeHint": "8-digit code",
-  "commonUnderstood": "Got it",
-  "authErrorSendEmailFailed": "Couldn't send the email. Please try again.",
-  "authErrorRateLimited": "You've hit the attempt limit. Try again in a little while.",
-  "authErrorWrongPasswordAttempts": "Wrong password. You have {count} attempts left.",
-  "@authErrorWrongPasswordAttempts": { "placeholders": { "count": {"type": "int"} } },
-  "authErrorLockedOut": "Too many failed attempts. Try again in {minutes} minutes.",
-  "@authErrorLockedOut": { "placeholders": { "minutes": {"type": "int"} } },
-  "authTitleSignUp": "Create account",
-  "authTitleSignIn": "Sign in",
-  "authSubtitle": "With an account you'll be able to sync your trips across devices later on.",
-  "authUsernameHint": "Username",
-  "authUsernameTaken": "That username is already taken",
-  "authUsernameBlocked": "That username isn't allowed",
-  "authUsernameTooShort": "3 characters minimum",
-  "authPasswordReqLength": "8+ characters",
-  "authPasswordReqLower": "Lowercase",
-  "authPasswordReqUpper": "Uppercase",
-  "authPasswordReqDigit": "Number",
-  "authPasswordReqSymbol": "Symbol",
-  "authEmailFieldHint": "Email address",
-  "authPasswordHint": "Password",
-  "authForgotPasswordLink": "Forgot your password?",
-  "authConfirmPasswordHint": "Repeat password",
-  "authToggleToSignIn": "Already have an account? Sign in",
-  "authToggleToSignUp": "Don't have an account? Create one",
-
-  "accountErrorUploadPhoto": "Couldn't upload the photo. Please try again.",
-  "accountErrorRemovePhoto": "Couldn't remove the photo. Please try again.",
-  "accountChangeUsernameTitle": "Change username",
-  "accountChangeEmailTitle": "Change email",
-  "accountNewEmailHint": "New email address",
-  "accountChangeEmailSentNotice": "Check your email (both old and new) to confirm the change",
-  "accountChangePasswordTitle": "Change password",
-  "accountCurrentPasswordHint": "Current password",
-  "accountNewPasswordHint": "New password",
-  "accountConfirmNewPasswordHint": "Repeat new password",
-  "accountErrorNewPasswordMismatch": "New passwords don't match",
-  "accountErrorFillAllFields": "Fill in all fields",
-  "accountPasswordUpdated": "Password updated",
-  "accountDeleteTitle": "Delete account",
-  "accountDeleteBody": "This action is irreversible. Your account, trips, packing lists, templates and any other associated data will be permanently deleted.",
-  "accountDeletePremiumWarning": " You'll lose access to Premium immediately.",
-  "accountDeleteCodeNotice": "\n\nTo confirm, we'll send a code to your email.",
-  "commonContinue": "Continue",
-  "accountDeletionCodeSent": "We've sent a code to your email",
-  "accountErrorSendCode": "Couldn't send the code. Please try again.",
-  "accountConfirmDeletionTitle": "Confirm deletion",
-  "accountConfirmDeletionBody": "Enter the 6-digit code we sent to your email. This action cannot be undone.",
-  "accountErrorEnterSixDigits": "Enter all 6 digits",
-  "accountDeletePermanentlyButton": "Delete permanently",
-  "accountDeleteSubtitle": "This action is permanent and irreversible",
-  "accountErrorDeleteAccount": "Couldn't delete the account. Please try again.",
-  "accountSignedInPlaceholder": "Signed in",
-  "accountTakePhoto": "Take a photo",
-  "accountChooseFromGallery": "Choose from gallery",
-  "accountRemovePhoto": "Remove photo",
-
   "feedbackSheetTitle": "Bug report or suggestion",
   "feedbackTypeBug": "Bug",
   "feedbackTypeSuggestion": "Suggestion",
   "feedbackMessageHint": "Tell us what happened or what you'd like the app to have",
-  "feedbackEmailNote": "Your email will only be used to contact you if we need more information about this report.",
-  "feedbackConsentPrefix": "I've read and accept the ",
-  "feedbackConsentLink": "privacy policy",
-  "feedbackSignedInContactNote": "If needed, we may contact you through the email address linked to your account to ask for more information about this report.",
-  "feedbackSubmittedThanks": "Thanks! We've received it.",
-  "feedbackErrorSubmit": "Couldn't send it. Please try again.",
+  "feedbackSignedInContactNote": "Your email app will open with the message ready to send.",
+  "feedbackErrorSubmit": "No email app found. Write to us at fooserd@gmail.com",
   "commonSend": "Send",
-  "feedbackWaitSeconds": "Wait {seconds}s",
-  "@feedbackWaitSeconds": { "placeholders": { "seconds": {"type": "int"} } },
-
   "onboardingSkip": "Skip",
   "onboardingNext": "Next",
   "onboardingWelcomeTitle": "Welcome to Kipack",
@@ -287,8 +254,6 @@
   "onboardingFeatureTemplatesDescription": "Save reusable lists for your usual types of trips",
   "onboardingFeatureRemindersTitle": "Reminders",
   "onboardingFeatureRemindersDescription": "Alerts before you leave if you still haven't packed",
-  "onboardingFeatureSharedTitle": "Shared trips",
-  "onboardingFeatureSharedDescription": "Invite your travel companions so everyone can check off their own items",
   "onboardingFeaturePdfTitle": "Export to PDF",
   "onboardingFeaturePdfDescription": "Share your list ready to print or send",
   "onboardingTourTitle": "Try it yourself",
@@ -306,60 +271,29 @@
   "onboardingSeeHowToShareButton": "See how to share",
   "onboardingTourStep4Title": "4. Share or export",
   "onboardingTourStep4Subtitle": "One button for all of this",
-  "onboardingShareWithCompanions": "Share with companions",
   "onboardingExportPdfRow": "Export as PDF",
   "onboardingTryAgainButton": "Try it again",
-  "onboardingPremiumTitle": "Go Premium",
-  "onboardingPremiumSubtitle": "Unlock the full potential of Kipack",
-  "onboardingPremiumNoAds": "No ads",
-  "onboardingPremiumMap": "Map of visited and planned countries",
-  "onboardingPremiumTemplates": "Reusable packing templates",
-  "onboardingPremiumReminders": "Smart reminders before you leave",
-  "onboardingPremiumAiChat": "AI chat to adjust your list",
-  "onboardingPremiumSharedTrips": "Shared, collaborative trips",
-  "onboardingPremiumCloudBackup": "Cloud backup",
-  "onboardingPremiumExportPdf": "Export your list as PDF",
-  "onboardingTryPremiumButton": "Try Premium (demo)",
-  "onboardingContinueFreeButton": "Continue with the free version",
-
   "mapTitle": "Your map",
   "mapSubtitle": "Visited and planned countries",
   "mapLegendVisited": "Visited",
   "mapLegendPlanned": "Planned",
   "mapLegendManual": "Marked",
   "mapVisitedCountriesCount": "{count, plural, one{1 country visited} other{{count} countries visited}}",
-  "@mapVisitedCountriesCount": { "placeholders": { "count": {"type": "int"} } },
-  "mapPaywallTitle": "The map is a Premium feature",
-  "mapPaywallDescription": "Unlock the map of visited and planned countries, and mark destinations even without a planned trip.",
-
-  "premiumUpsellTitle": "{featureName} is Premium",
-  "@premiumUpsellTitle": { "placeholders": { "featureName": {"type": "String"} } },
-  "premiumUpsellBody": "Unlock {featureName} and the rest of the Premium features.",
-  "@premiumUpsellBody": { "placeholders": { "featureName": {"type": "String"} } },
-  "premiumActivateButton": "Activate Premium (demo)",
-  "premiumNotNowButton": "Not now",
-
-  "pendingInviteWithName": "{inviterName} invited you to the trip to {destination}",
-  "@pendingInviteWithName": { "placeholders": { "inviterName": {"type": "String"}, "destination": {"type": "String"} } },
-  "pendingInviteWithoutName": "You've been invited to a trip to {destination}",
-  "@pendingInviteWithoutName": { "placeholders": { "destination": {"type": "String"} } },
-  "pendingInviteAccept": "Accept",
-  "pendingInviteDecline": "Decline",
-  "pendingInviteActionError": "Couldn't process the invite. Please try again.",
-
-  "packingItemLocked": "Only whoever packed it can unpack it",
-
-  "premiumSignInRequired": "Sign in from the Account tab to subscribe to Premium.",
-  "premiumOffersUnavailable": "Couldn't load Premium plans. Please try again later.",
-  "premiumOffersError": "Couldn't load Premium plans. Check your connection.",
-  "premiumPurchaseError": "Couldn't start the purchase. Please try again.",
-  "premiumOfferMonthly": "Monthly — {price}",
-  "@premiumOfferMonthly": { "placeholders": { "price": {"type": "String"} } },
-  "premiumOfferAnnual": "Annual — {price}",
-  "@premiumOfferAnnual": { "placeholders": { "price": {"type": "String"} } },
-  "premiumRestorePurchases": "Restore purchases",
-  "premiumRestoreSuccess": "Purchases restored",
-  "premiumRestoreError": "Couldn't restore your purchase. Please try again.",
-  "premiumSubscriptionActiveUntil": "Premium active until {date}",
-  "@premiumSubscriptionActiveUntil": { "placeholders": { "date": {"type": "String"} } }
+  "@mapVisitedCountriesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsAdPrivacyButton": "Ad privacy",
+  "onboardingStart": "Get started",
+  "themeSectionTitle": "Theme",
+  "themeDialogTitle": "Choose a theme",
+  "themeSystem": "Automatic (device theme)",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "settingsPreferencesHeader": "Preferences",
+  "settingsHelpHeader": "Help",
+  "settingsPrivacyHeader": "Privacy"
 }

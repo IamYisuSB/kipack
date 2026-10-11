@@ -4,16 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:printing/printing.dart';
-import '../../../core/auth/auth_provider.dart';
-import '../../../core/premium/premium_gate.dart';
+import '../../../core/ads/ads_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../trips/models/trip.dart';
-import '../../trips/models/trip_collaborator.dart';
-import '../../trips/models/trip_member_profile.dart';
-import '../../trips/providers/collaborators_provider.dart';
-import '../../trips/providers/trip_member_profile_provider.dart';
-import '../../trips/widgets/trip_sharing_sheet.dart';
 import '../../trips/widgets/weather_card.dart';
 import '../../trips/widgets/weather_detail_sheet.dart';
 import '../models/packing_category.dart';
@@ -28,13 +22,14 @@ import '../widgets/category_section.dart';
 import '../../../l10n/app_localizations.dart';
 import 'packing_chat_sheet.dart';
 
-enum _ShareMenuAction { invite, template, exportPdf }
+enum _ShareMenuAction { template, exportPdf }
 
 class PackingListScreen extends ConsumerStatefulWidget {
   const PackingListScreen({
     super.key,
     required this.trip,
     this.templateItemsToApply,
+    this.isNewTrip = false,
   });
 
   final Trip trip;
@@ -42,6 +37,10 @@ class PackingListScreen extends ConsumerStatefulWidget {
   /// Items from a template picked at trip-creation time, merged into the
   /// list right after it's generated (once, not on every reopen).
   final List<TemplateItem>? templateItemsToApply;
+
+  /// True right after creating the trip — the list is being generated, so
+  /// that wait is when an interstitial ad is shown.
+  final bool isNewTrip;
 
   @override
   ConsumerState<PackingListScreen> createState() => _PackingListScreenState();
@@ -55,9 +54,11 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final language = Localizations.localeOf(context).languageCode;
-      await ref
+      final generation = ref
           .read(packingListProvider(widget.trip.id).notifier)
           .ensureGenerated(widget.trip, language: language);
+      if (widget.isNewTrip) adsService.showInterstitial();
+      await generation;
       if (!mounted) return;
       final templateItems = widget.templateItemsToApply;
       if (templateItems != null && templateItems.isNotEmpty) {
@@ -173,12 +174,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
   }
 
   Future<void> _openAiChat() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).packingListAiChatFeatureName,
-    );
-    if (!allowed || !mounted) return;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -187,43 +182,7 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
     );
   }
 
-  Future<void> _openSharing() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).packingListShareFeatureName,
-    );
-    if (!allowed || !mounted) return;
-
-    final currentUserId = ref.read(authStateProvider).asData?.value?.id;
-    if (currentUserId == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(AppLocalizations.of(context).packingListSignInToShare),
-        ),
-      );
-      return;
-    }
-
-    final isOwner =
-        widget.trip.ownerId == null || widget.trip.ownerId == currentUserId;
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) =>
-          TripSharingSheet(tripId: widget.trip.id, isOwner: isOwner),
-    );
-  }
-
   Future<void> _exportPdf() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).packingListExportPdfFeatureName,
-    );
-    if (!allowed || !mounted) return;
-
     final items = ref.read(packingListProvider(widget.trip.id));
     final bytes = await packingListPdfService.build(
       trip: widget.trip,
@@ -237,14 +196,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
   }
 
   Future<void> _openWeatherDetail() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(
-        context,
-      ).packingListWeatherDetailFeatureName,
-    );
-    if (!allowed || !mounted) return;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -257,13 +208,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
   }
 
   Future<void> _applyTemplate() async {
-    final allowed = await requirePremium(
-      context,
-      ref,
-      featureName: AppLocalizations.of(context).packingListTemplatesFeatureName,
-    );
-    if (!allowed || !mounted) return;
-
     final selected = await showModalBottomSheet<PackingTemplate>(
       context: context,
       isScrollControlled: true,
@@ -359,26 +303,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
   Widget build(BuildContext context) {
     final items = ref.watch(packingListProvider(widget.trip.id));
     final suitcases = ref.watch(suitcasesProvider(widget.trip.id));
-    final currentUserId = ref.watch(authStateProvider).asData?.value?.id;
-    final collaborators = currentUserId == null
-        ? const <TripCollaborator>[]
-        : ref.watch(collaboratorsProvider(widget.trip.id));
-    // Collaborators already carry their own name/avatar (joined in
-    // collaboratorsProvider's query); the owner needs a separate lookup
-    // since they have no `trip_collaborators` row of their own.
-    final ownerId = widget.trip.ownerId;
-    final ownerProfile = collaborators.isEmpty || ownerId == null
-        ? null
-        : ref.watch(tripMemberProfileProvider(ownerId)).value;
-    final memberProfiles = <String, TripMemberProfile>{
-      for (final c in collaborators)
-        if (c.userId != null)
-          c.userId!: TripMemberProfile(
-            displayName: c.displayName,
-            avatarUrl: c.avatarUrl,
-          ),
-      if (ownerId != null && ownerProfile != null) ownerId: ownerProfile,
-    };
     final secondary = Theme.of(context).textTheme.bodySmall?.color;
     final selectedChipFg = AppColors.chipSelectedForeground(context);
     final dateFormat = DateFormat(
@@ -413,8 +337,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
             tooltip: menuL10n.packingListShareTooltip,
             onSelected: (action) {
               switch (action) {
-                case _ShareMenuAction.invite:
-                  _openSharing();
                 case _ShareMenuAction.template:
                   _applyTemplate();
                 case _ShareMenuAction.exportPdf:
@@ -422,16 +344,6 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
               }
             },
             itemBuilder: (context) => [
-              PopupMenuItem(
-                value: _ShareMenuAction.invite,
-                child: Row(
-                  children: [
-                    const Icon(Icons.group_add_outlined, size: 18),
-                    const SizedBox(width: 10),
-                    Text(menuL10n.shareMenuInvite),
-                  ],
-                ),
-              ),
               PopupMenuItem(
                 value: _ShareMenuAction.template,
                 child: Row(
@@ -463,20 +375,7 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
       body: SafeArea(
         child: items.isEmpty
             ? const _GeneratingListIndicator()
-            : RefreshIndicator(
-                onRefresh: () => Future.wait([
-                  ref
-                      .read(packingListProvider(widget.trip.id).notifier)
-                      .refresh(),
-                  ref
-                      .read(suitcasesProvider(widget.trip.id).notifier)
-                      .refresh(),
-                  if (currentUserId != null)
-                    ref
-                        .read(collaboratorsProvider(widget.trip.id).notifier)
-                        .refresh(),
-                ]),
-                child: ListView(
+            : ListView(
                   padding: const EdgeInsets.fromLTRB(24, 8, 24, 100),
                   children: [
                     Text(
@@ -600,7 +499,7 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
                                 .read(
                                   packingListProvider(widget.trip.id).notifier,
                                 )
-                                .togglePacked(id, userId: currentUserId),
+                                .togglePacked(id),
                             onRemove: (id) => ref
                                 .read(
                                   packingListProvider(widget.trip.id).notifier,
@@ -611,19 +510,10 @@ class _PackingListScreenState extends ConsumerState<PackingListScreen> {
                                   packingListProvider(widget.trip.id).notifier,
                                 )
                                 .assignSuitcase(itemId, suitcaseId),
-                            collaborators: collaborators,
-                            currentUserId: currentUserId,
-                            onAssignPerson: (itemId, userId) => ref
-                                .read(
-                                  packingListProvider(widget.trip.id).notifier,
-                                )
-                                .assignPerson(itemId, userId),
-                            memberProfiles: memberProfiles,
                           ),
                         ),
                   ],
                 ),
-              ),
       ),
     );
   }

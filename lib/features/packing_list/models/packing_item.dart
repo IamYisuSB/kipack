@@ -8,7 +8,6 @@ class PackingItem {
     this.quantity = 1,
     this.isPacked = false,
     this.suitcaseId,
-    this.assignedUserId,
   });
 
   final String id;
@@ -18,14 +17,9 @@ class PackingItem {
   final bool isPacked;
   final String? suitcaseId;
 
-  /// Supabase user id of the collaborator this item is assigned to — "cada
-  /// acompañante marca lo suyo". Null means unassigned; only meaningful
-  /// for shared trips.
-  final String? assignedUserId;
-
   static const _unset = Object();
 
-  /// Pass `suitcaseId`/`assignedUserId: null` to explicitly unassign; omit
+  /// Pass `suitcaseId: null` to explicitly unassign; omit
   /// to leave unchanged.
   PackingItem copyWith({
     String? name,
@@ -33,7 +27,6 @@ class PackingItem {
     int? quantity,
     bool? isPacked,
     Object? suitcaseId = _unset,
-    Object? assignedUserId = _unset,
   }) {
     return PackingItem(
       id: id,
@@ -44,9 +37,6 @@ class PackingItem {
       suitcaseId: identical(suitcaseId, _unset)
           ? this.suitcaseId
           : suitcaseId as String?,
-      assignedUserId: identical(assignedUserId, _unset)
-          ? this.assignedUserId
-          : assignedUserId as String?,
     );
   }
 
@@ -57,7 +47,6 @@ class PackingItem {
     'quantity': quantity,
     'isPacked': isPacked,
     'suitcaseId': suitcaseId,
-    'assignedUserId': assignedUserId,
   };
 
   factory PackingItem.fromJson(Map<String, dynamic> json) => PackingItem(
@@ -67,6 +56,5 @@ class PackingItem {
     quantity: json['quantity'] as int,
     isPacked: json['isPacked'] as bool,
     suitcaseId: json['suitcaseId'] as String?,
-    assignedUserId: json['assignedUserId'] as String?,
   );
 }

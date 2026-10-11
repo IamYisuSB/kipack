@@ -9,8 +9,6 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <!-- Lets scheduled reminders survive a phone reboot (see ScheduledNotificationBootReceiver below). -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <!-- Lets the profile-photo picker offer "take a photo" as well as "choose from gallery". -->
-    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:label="Kipack"
         android:name="${applicationName}"
@@ -36,15 +34,11 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-            <!-- Opens the app when the user taps the link in the "confirm
-                 your email" signup email (see AuthService.emailConfirmRedirect). -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="kipack" android:host="confirm-callback"/>
-            </intent-filter>
         </activity>
+        <!-- AdMob app id (the ad unit ids go in lib/core/ads/ad_config.dart). -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-6412956832732753~9405936470"/>
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data
@@ -71,6 +65,11 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Lets the feedback button find an email app (url_launcher). -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO"/>
+            <data android:scheme="mailto"/>
         </intent>
     </queries>
 </manifest>
