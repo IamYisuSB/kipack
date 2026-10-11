@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/ads/ads_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../l10n/app_localizations.dart';
 import '../../trips/models/trip.dart';
 import '../providers/packing_chat_provider.dart';
 import '../providers/packing_list_provider.dart';
@@ -10,6 +12,11 @@ import '../services/ai_packing_list_service.dart';
 /// Lets the user ask the AI, in free text, to adjust the already-generated
 /// packing list — "no llevo mucho espacio, optimiza la maleta", "añade
 /// cosas para hacer submarinismo" — rather than editing items by hand.
+///
+/// Every request costs one rewarded ad: the user watches it to the end and
+/// the request goes out. If no ad can be shown at all (no fill, offline)
+/// the request goes through anyway — the feature shouldn't break over an
+/// ad that isn't there.
 class PackingChatSheet extends ConsumerStatefulWidget {
   const PackingChatSheet({super.key, required this.trip});
 
@@ -26,6 +33,10 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
   final _scrollController = ScrollController();
   bool _isSending = false;
 
+  /// Set when the user closed the ad early — swaps the ad notice for a
+  /// "watch the whole ad" hint until the next attempt.
+  bool _adDismissed = false;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -36,11 +47,24 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
   Future<void> _send() async {
     final text = _controller.text.trim();
     if (text.isEmpty || _isSending) return;
+
+    setState(() {
+      _isSending = true;
+      _adDismissed = false;
+    });
+    final outcome = await adsService.showRewarded();
+    if (!mounted) return;
+    if (outcome == RewardOutcome.dismissed) {
+      setState(() {
+        _isSending = false;
+        _adDismissed = true;
+      });
+      return;
+    }
     _controller.clear();
 
     final chat = ref.read(packingChatProvider(widget.trip.id).notifier);
     chat.addUser(text);
-    setState(() => _isSending = true);
     _scrollToBottom();
 
     try {
@@ -173,6 +197,29 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
                   style: AppTextStyles.caption.copyWith(color: secondary),
                 ),
               ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.smart_display_outlined,
+                    size: 16,
+                    color: _adDismissed ? AppColors.error : secondary,
+                  ),
+                  const SizedBox(width: 6),
+                  Expanded(
+                    child: Text(
+                      _adDismissed
+                          ? AppLocalizations.of(context).chatAdDismissed
+                          : AppLocalizations.of(context).chatAdNotice,
+                      style: AppTextStyles.caption.copyWith(
+                        color: _adDismissed ? AppColors.error : secondary,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             Row(
               children: [
                 Expanded(
@@ -188,7 +235,8 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
                 const SizedBox(width: 8),
                 IconButton.filled(
                   onPressed: _isSending ? null : _send,
-                  icon: const Icon(Icons.send_rounded),
+                  tooltip: AppLocalizations.of(context).chatSendWithAdTooltip,
+                  icon: const Icon(Icons.smart_display_rounded),
                 ),
               ],
             ),

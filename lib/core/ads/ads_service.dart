@@ -4,14 +4,30 @@ import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'ad_config.dart';
 
+/// How a rewarded ad attempt ended.
+enum RewardOutcome {
+  /// Watched to the end — grant the reward.
+  earned,
+
+  /// Closed before the reward was earned.
+  dismissed,
+
+  /// No ad could be shown (no fill, offline, ads not allowed). Callers
+  /// should let the user through rather than block the feature.
+  unavailable,
+}
+
 /// Owns everything ad-related: the GDPR consent flow (Google's UMP form,
 /// required to serve ads to EU users), SDK init, and a single preloaded
 /// interstitial.
 ///
-/// Interstitials are deliberately rationed: they're only requested at two
-/// moments (while a new trip's list is generating, and when opening the
-/// map), and never more than once per [_minInterval] no matter which of
-/// those triggers it.
+/// Rewarded ads gate each AI chat request: the user chooses to watch one
+/// in exchange for the request (see [showRewarded]).
+///
+/// Interstitials are deliberately rationed: they're only requested at a
+/// few moments (while a new trip's list is generating, opening a saved
+/// trip, opening the map), and never more than once per [_minInterval] no
+/// matter which of those triggers it.
 class AdsService {
   AdsService._();
 
@@ -23,6 +39,8 @@ class AdsService {
 
   InterstitialAd? _interstitial;
   bool _isLoadingInterstitial = false;
+  RewardedAd? _rewarded;
+  bool _isLoadingRewarded = false;
   DateTime? _lastInterstitialAt;
   Future<void>? _init;
 
@@ -35,6 +53,7 @@ class AdsService {
     await MobileAds.instance.initialize();
     ready.value = true;
     _loadInterstitial();
+    _loadRewarded();
   }
 
   Future<void> _gatherConsent() {
@@ -97,6 +116,59 @@ class AdsService {
       },
     );
     ad.show();
+  }
+
+  void _loadRewarded() {
+    if (_rewarded != null || _isLoadingRewarded) return;
+    _isLoadingRewarded = true;
+    RewardedAd.load(
+      adUnitId: AdConfig.rewardedId,
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          _isLoadingRewarded = false;
+          _rewarded = ad;
+        },
+        onAdFailedToLoad: (error) {
+          _isLoadingRewarded = false;
+          debugPrint('Rewarded ad failed to load: ${error.message}');
+        },
+      ),
+    );
+  }
+
+  /// Shows the preloaded rewarded ad and completes once it's closed.
+  Future<RewardOutcome> showRewarded() async {
+    final ad = _rewarded;
+    if (ad == null) {
+      if (ready.value) _loadRewarded();
+      return RewardOutcome.unavailable;
+    }
+    _rewarded = null;
+
+    final outcome = Completer<RewardOutcome>();
+    var earned = false;
+    ad.fullScreenContentCallback = FullScreenContentCallback(
+      onAdDismissedFullScreenContent: (ad) {
+        ad.dispose();
+        _loadRewarded();
+        // The user just sat through an ad — don't follow it with an
+        // interstitial straight away.
+        _lastInterstitialAt = DateTime.now();
+        if (!outcome.isCompleted) {
+          outcome.complete(
+            earned ? RewardOutcome.earned : RewardOutcome.dismissed,
+          );
+        }
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        ad.dispose();
+        _loadRewarded();
+        if (!outcome.isCompleted) outcome.complete(RewardOutcome.unavailable);
+      },
+    );
+    await ad.show(onUserEarnedReward: (_, _) => earned = true);
+    return outcome.future;
   }
 
   /// Whether the user must be offered a way to change their ad consent

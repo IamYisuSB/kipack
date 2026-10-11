@@ -295,5 +295,8 @@
   "themeDark": "Dark",
   "settingsPreferencesHeader": "Preferences",
   "settingsHelpHeader": "Help",
-  "settingsPrivacyHeader": "Privacy"
+  "settingsPrivacyHeader": "Privacy",
+  "chatAdNotice": "Each AI request requires watching a short ad.",
+  "chatAdDismissed": "Watch the full ad to send your request to the AI.",
+  "chatSendWithAdTooltip": "Watch ad and send"
 }

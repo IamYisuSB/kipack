@@ -608,4 +608,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get settingsPrivacyHeader => 'Privacy';
+
+  @override
+  String get chatAdNotice => 'Each AI request requires watching a short ad.';
+
+  @override
+  String get chatAdDismissed =>
+      'Watch the full ad to send your request to the AI.';
+
+  @override
+  String get chatSendWithAdTooltip => 'Watch ad and send';
 }

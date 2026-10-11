@@ -12,9 +12,11 @@ class AdConfig {
   static const _releaseBannerId = 'ca-app-pub-6412956832732753/3026107176';
   static const _releaseInterstitialId =
       'ca-app-pub-6412956832732753/5427900077';
+  static const _releaseRewardedId = 'ca-app-pub-6412956832732753/2967142287';
 
   static const _testBannerId = 'ca-app-pub-3940256099942544/9214589741';
   static const _testInterstitialId = 'ca-app-pub-3940256099942544/1033173712';
+  static const _testRewardedId = 'ca-app-pub-3940256099942544/5224354917';
 
   static String get bannerId =>
       kReleaseMode && _releaseBannerId.isNotEmpty
@@ -25,4 +27,9 @@ class AdConfig {
       kReleaseMode && _releaseInterstitialId.isNotEmpty
           ? _releaseInterstitialId
           : _testInterstitialId;
+
+  static String get rewardedId =>
+      kReleaseMode && _releaseRewardedId.isNotEmpty
+          ? _releaseRewardedId
+          : _testRewardedId;
 }

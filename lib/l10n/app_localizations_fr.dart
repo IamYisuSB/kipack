@@ -613,4 +613,15 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get settingsPrivacyHeader => 'Confidentialité';
+
+  @override
+  String get chatAdNotice =>
+      'Chaque demande à l\'IA nécessite de regarder une courte publicité.';
+
+  @override
+  String get chatAdDismissed =>
+      'Regarde la publicité en entier pour envoyer ta demande à l\'IA.';
+
+  @override
+  String get chatSendWithAdTooltip => 'Voir la pub et envoyer';
 }

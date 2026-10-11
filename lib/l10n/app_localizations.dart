@@ -1131,6 +1131,24 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Privacidad'**
   String get settingsPrivacyHeader;
+
+  /// No description provided for @chatAdNotice.
+  ///
+  /// In es, this message translates to:
+  /// **'Cada petición a la IA requiere ver un anuncio breve.'**
+  String get chatAdNotice;
+
+  /// No description provided for @chatAdDismissed.
+  ///
+  /// In es, this message translates to:
+  /// **'Mira el anuncio completo para enviar tu petición a la IA.'**
+  String get chatAdDismissed;
+
+  /// No description provided for @chatSendWithAdTooltip.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver anuncio y enviar'**
+  String get chatSendWithAdTooltip;
 }
 
 class _AppLocalizationsDelegate

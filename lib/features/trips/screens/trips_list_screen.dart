@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/ads/ads_service.dart';
 import '../../../core/ads/banner_ad_slot.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
@@ -208,6 +209,9 @@ class _TripsListScreenState extends ConsumerState<TripsListScreen> {
   }
 
   void _openPackingList(BuildContext context, Trip trip) {
+    // Rationed by AdsService's shared cooldown, so browsing several trips
+    // in a row shows at most one.
+    adsService.showInterstitial();
     Navigator.of(
       context,
     ).push(MaterialPageRoute(builder: (_) => PackingListScreen(trip: trip)));

@@ -610,4 +610,15 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get settingsPrivacyHeader => 'Privacidad';
+
+  @override
+  String get chatAdNotice =>
+      'Cada petición a la IA requiere ver un anuncio breve.';
+
+  @override
+  String get chatAdDismissed =>
+      'Mira el anuncio completo para enviar tu petición a la IA.';
+
+  @override
+  String get chatSendWithAdTooltip => 'Ver anuncio y enviar';
 }

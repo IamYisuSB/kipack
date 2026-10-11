@@ -295,5 +295,8 @@
   "themeDark": "Oscuro",
   "settingsPreferencesHeader": "Preferencias",
   "settingsHelpHeader": "Ayuda",
-  "settingsPrivacyHeader": "Privacidad"
+  "settingsPrivacyHeader": "Privacidad",
+  "chatAdNotice": "Cada petición a la IA requiere ver un anuncio breve.",
+  "chatAdDismissed": "Mira el anuncio completo para enviar tu petición a la IA.",
+  "chatSendWithAdTooltip": "Ver anuncio y enviar"
 }
