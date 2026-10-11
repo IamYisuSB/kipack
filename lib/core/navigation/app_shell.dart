@@ -4,6 +4,7 @@ import '../../features/map/screens/trips_map_screen.dart';
 import '../../features/settings/screens/settings_screen.dart';
 import '../../features/trips/screens/trips_list_screen.dart';
 import '../ads/ads_service.dart';
+import '../billing/remove_ads_sheet.dart';
 import '../../l10n/app_localizations.dart';
 import 'floating_nav_bar.dart';
 
@@ -34,6 +35,9 @@ class _AppShellState extends ConsumerState<AppShell> {
   @override
   void initState() {
     super.initState();
+    adsService.onInterstitialDismissed = () {
+      if (mounted) maybeOfferRemoveAds(context);
+    };
     adsService.init();
   }
 

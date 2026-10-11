@@ -1149,6 +1149,90 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Ver anuncio y enviar'**
   String get chatSendWithAdTooltip;
+
+  /// No description provided for @removeAdsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Te molestan los anuncios?'**
+  String get removeAdsTitle;
+
+  /// No description provided for @removeAdsBody.
+  ///
+  /// In es, this message translates to:
+  /// **'Quítalos para siempre con un único pago. Sin suscripciones.'**
+  String get removeAdsBody;
+
+  /// No description provided for @removeAdsPerkNoAds.
+  ///
+  /// In es, this message translates to:
+  /// **'Sin anuncios en toda la app'**
+  String get removeAdsPerkNoAds;
+
+  /// No description provided for @removeAdsPerkAiChat.
+  ///
+  /// In es, this message translates to:
+  /// **'Chat con la IA sin ver anuncios'**
+  String get removeAdsPerkAiChat;
+
+  /// No description provided for @removeAdsPerkForever.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago único: es tuyo para siempre'**
+  String get removeAdsPerkForever;
+
+  /// No description provided for @removeAdsBuyButton.
+  ///
+  /// In es, this message translates to:
+  /// **'Quitar anuncios · {price}'**
+  String removeAdsBuyButton(String price);
+
+  /// No description provided for @removeAdsNotNow.
+  ///
+  /// In es, this message translates to:
+  /// **'Ahora no'**
+  String get removeAdsNotNow;
+
+  /// No description provided for @removeAdsRestore.
+  ///
+  /// In es, this message translates to:
+  /// **'Restaurar compra'**
+  String get removeAdsRestore;
+
+  /// No description provided for @removeAdsUnavailable.
+  ///
+  /// In es, this message translates to:
+  /// **'La compra no está disponible ahora mismo. Inténtalo más tarde.'**
+  String get removeAdsUnavailable;
+
+  /// No description provided for @removeAdsThanks.
+  ///
+  /// In es, this message translates to:
+  /// **'¡Gracias! Ya no verás anuncios.'**
+  String get removeAdsThanks;
+
+  /// No description provided for @removeAdsSettingsTitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Quitar anuncios'**
+  String get removeAdsSettingsTitle;
+
+  /// No description provided for @removeAdsSettingsSubtitle.
+  ///
+  /// In es, this message translates to:
+  /// **'Pago único de {price}'**
+  String removeAdsSettingsSubtitle(String price);
+
+  /// No description provided for @removeAdsSettingsOwned.
+  ///
+  /// In es, this message translates to:
+  /// **'Anuncios eliminados. ¡Gracias por tu apoyo!'**
+  String get removeAdsSettingsOwned;
+
+  /// No description provided for @settingsAdsHeader.
+  ///
+  /// In es, this message translates to:
+  /// **'Anuncios'**
+  String get settingsAdsHeader;
 }
 
 class _AppLocalizationsDelegate

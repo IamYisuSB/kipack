@@ -18,18 +18,16 @@ class AdConfig {
   static const _testInterstitialId = 'ca-app-pub-3940256099942544/1033173712';
   static const _testRewardedId = 'ca-app-pub-3940256099942544/5224354917';
 
-  static String get bannerId =>
-      kReleaseMode && _releaseBannerId.isNotEmpty
-          ? _releaseBannerId
-          : _testBannerId;
+  static String get bannerId => kReleaseMode && _releaseBannerId.isNotEmpty
+      ? _releaseBannerId
+      : _testBannerId;
 
   static String get interstitialId =>
       kReleaseMode && _releaseInterstitialId.isNotEmpty
-          ? _releaseInterstitialId
-          : _testInterstitialId;
+      ? _releaseInterstitialId
+      : _testInterstitialId;
 
-  static String get rewardedId =>
-      kReleaseMode && _releaseRewardedId.isNotEmpty
-          ? _releaseRewardedId
-          : _testRewardedId;
+  static String get rewardedId => kReleaseMode && _releaseRewardedId.isNotEmpty
+      ? _releaseRewardedId
+      : _testRewardedId;
 }

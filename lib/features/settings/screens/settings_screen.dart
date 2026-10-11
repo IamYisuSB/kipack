@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
 import '../../../core/ads/ads_service.dart';
+import '../../../core/billing/remove_ads_service.dart';
+import '../../../core/billing/remove_ads_sheet.dart';
 import '../../../core/feedback/feedback_service.dart';
 import '../../../core/locale/locale_provider.dart';
 import '../../../core/theme/app_colors.dart';
@@ -29,6 +32,7 @@ class SettingsScreen extends ConsumerWidget {
         child: ListView(
           padding: const EdgeInsets.fromLTRB(24, 8, 24, 110),
           children: [
+            const _RemoveAdsGroup(),
             _SettingsGroup(
               title: l10n.settingsPreferencesHeader,
               tiles: [
@@ -162,7 +166,11 @@ class SettingsScreen extends ConsumerWidget {
         title: Text(l10n.themeDialogTitle),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         children: [
-          for (final mode in [ThemeMode.system, ThemeMode.light, ThemeMode.dark])
+          for (final mode in [
+            ThemeMode.system,
+            ThemeMode.light,
+            ThemeMode.dark,
+          ])
             RadioListTile<ThemeMode>(
               value: mode,
               // ignore: deprecated_member_use
@@ -184,6 +192,48 @@ class SettingsScreen extends ConsumerWidget {
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
       builder: (context) => const _FeedbackSheet(),
+    );
+  }
+}
+
+/// "Quitar anuncios" (or a thank-you once bought) plus "Restaurar compra".
+class _RemoveAdsGroup extends StatelessWidget {
+  const _RemoveAdsGroup();
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
+    return ValueListenableBuilder<bool>(
+      valueListenable: removeAdsService.adsRemoved,
+      builder: (context, adsRemoved, _) =>
+          ValueListenableBuilder<ProductDetails?>(
+            valueListenable: removeAdsService.product,
+            builder: (context, product, _) => _SettingsGroup(
+              title: l10n.settingsAdsHeader,
+              tiles: [
+                if (adsRemoved)
+                  _SettingsTile(
+                    icon: Icons.favorite_rounded,
+                    title: l10n.removeAdsSettingsOwned,
+                    onTap: () {},
+                  )
+                else
+                  _SettingsTile(
+                    icon: Icons.block_rounded,
+                    title: l10n.removeAdsSettingsTitle,
+                    value: l10n.removeAdsSettingsSubtitle(
+                      product?.price ?? '4,99 €',
+                    ),
+                    onTap: () => showRemoveAdsSheet(context),
+                  ),
+                _SettingsTile(
+                  icon: Icons.restore_rounded,
+                  title: l10n.removeAdsRestore,
+                  onTap: removeAdsService.restore,
+                ),
+              ],
+            ),
+          ),
     );
   }
 }

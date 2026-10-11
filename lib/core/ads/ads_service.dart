@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import '../billing/remove_ads_service.dart';
 import 'ad_config.dart';
 
 /// How a rewarded ad attempt ended.
@@ -43,11 +44,31 @@ class AdsService {
   bool _isLoadingRewarded = false;
   DateTime? _lastInterstitialAt;
   Future<void>? _init;
+  Future<void>? _sdkInit;
+
+  /// Called after an interstitial is closed — the app uses it to offer the
+  /// "remove ads" purchase at the moment it's most relevant.
+  VoidCallback? onInterstitialDismissed;
+
+  bool get _adsRemoved => removeAdsService.adsRemoved.value;
 
   /// Safe to call more than once; only the first call does anything.
+  /// Users who bought "remove ads" never see the consent form or load the
+  /// ads SDK — unless the purchase later goes away (refund), in which case
+  /// ads start up then.
   Future<void> init() => _init ??= _doInit();
 
   Future<void> _doInit() async {
+    await removeAdsService.init();
+    removeAdsService.adsRemoved.addListener(() {
+      if (!_adsRemoved) _startSdk();
+    });
+    if (!_adsRemoved) await _startSdk();
+  }
+
+  Future<void> _startSdk() => _sdkInit ??= _doStartSdk();
+
+  Future<void> _doStartSdk() async {
     await _gatherConsent();
     if (!await ConsentInformation.instance.canRequestAds()) return;
     await MobileAds.instance.initialize();
@@ -95,6 +116,7 @@ class AdsService {
   /// passed; otherwise does nothing. Never waits for an ad to load — the
   /// user is never kept waiting on an ad.
   void showInterstitial() {
+    if (_adsRemoved) return;
     final ad = _interstitial;
     final last = _lastInterstitialAt;
     if (ad == null) {
@@ -109,6 +131,7 @@ class AdsService {
       onAdDismissedFullScreenContent: (ad) {
         ad.dispose();
         _loadInterstitial();
+        onInterstitialDismissed?.call();
       },
       onAdFailedToShowFullScreenContent: (ad, error) {
         ad.dispose();
@@ -138,7 +161,9 @@ class AdsService {
   }
 
   /// Shows the preloaded rewarded ad and completes once it's closed.
+  /// Users who bought "remove ads" skip straight to [RewardOutcome.earned].
   Future<RewardOutcome> showRewarded() async {
+    if (_adsRemoved) return RewardOutcome.earned;
     final ad = _rewarded;
     if (ad == null) {
       if (ready.value) _loadRewarded();

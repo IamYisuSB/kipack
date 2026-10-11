@@ -298,5 +298,19 @@
   "settingsPrivacyHeader": "Privacy",
   "chatAdNotice": "Each AI request requires watching a short ad.",
   "chatAdDismissed": "Watch the full ad to send your request to the AI.",
-  "chatSendWithAdTooltip": "Watch ad and send"
+  "chatSendWithAdTooltip": "Watch ad and send",
+  "removeAdsTitle": "Tired of ads?",
+  "removeAdsBody": "Remove them forever with a one-time payment. No subscription.",
+  "removeAdsPerkNoAds": "No ads anywhere in the app",
+  "removeAdsPerkAiChat": "AI chat without watching ads",
+  "removeAdsPerkForever": "One-time payment: yours forever",
+  "removeAdsBuyButton": "Remove ads · {price}",
+  "removeAdsNotNow": "Not now",
+  "removeAdsRestore": "Restore purchase",
+  "removeAdsUnavailable": "The purchase isn't available right now. Please try again later.",
+  "removeAdsThanks": "Thank you! You won't see ads anymore.",
+  "removeAdsSettingsTitle": "Remove ads",
+  "removeAdsSettingsSubtitle": "One-time payment of {price}",
+  "removeAdsSettingsOwned": "Ads removed. Thanks for your support!",
+  "settingsAdsHeader": "Ads"
 }

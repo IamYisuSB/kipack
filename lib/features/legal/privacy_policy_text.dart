@@ -27,6 +27,7 @@ Para que algunas funciones funcionen, la App envía ciertos datos directamente a
 - Generación de listas con IA: el destino, las fechas, el tipo de viaje, las actividades, el número de personas, el clima previsto y, si usas el chat, los mensajes que escribas, se envían a OpenRouter para generar o ajustar tu lista. No se envía tu nombre ni ningún dato que te identifique.
 - Clima y búsqueda de destinos: el nombre del destino que escribes y sus coordenadas se envían a Open-Meteo para buscar la ciudad y obtener la previsión o el clima histórico.
 - Publicidad: la App muestra anuncios mediante Google AdMob. Google puede tratar el identificador de publicidad de tu dispositivo, tu dirección IP, información técnica del dispositivo y datos de interacción con los anuncios.
+- Compra "Quitar anuncios": si decides comprarla, el pago lo gestiona íntegramente Google Play. No recibimos tus datos de pago; la App solo consulta a Google Play si la compra está activa en tu cuenta.
 - Reportes de errores o sugerencias: se envían desde tu propia aplicación de correo, por lo que recibimos tu dirección de correo electrónico y el contenido del mensaje.
 
 No solicitamos ni tratamos categorías especiales de datos (salud, ideología, origen étnico, etc.).

@@ -618,4 +618,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get chatSendWithAdTooltip => 'Watch ad and send';
+
+  @override
+  String get removeAdsTitle => 'Tired of ads?';
+
+  @override
+  String get removeAdsBody =>
+      'Remove them forever with a one-time payment. No subscription.';
+
+  @override
+  String get removeAdsPerkNoAds => 'No ads anywhere in the app';
+
+  @override
+  String get removeAdsPerkAiChat => 'AI chat without watching ads';
+
+  @override
+  String get removeAdsPerkForever => 'One-time payment: yours forever';
+
+  @override
+  String removeAdsBuyButton(String price) {
+    return 'Remove ads · $price';
+  }
+
+  @override
+  String get removeAdsNotNow => 'Not now';
+
+  @override
+  String get removeAdsRestore => 'Restore purchase';
+
+  @override
+  String get removeAdsUnavailable =>
+      'The purchase isn\'t available right now. Please try again later.';
+
+  @override
+  String get removeAdsThanks => 'Thank you! You won\'t see ads anymore.';
+
+  @override
+  String get removeAdsSettingsTitle => 'Remove ads';
+
+  @override
+  String removeAdsSettingsSubtitle(String price) {
+    return 'One-time payment of $price';
+  }
+
+  @override
+  String get removeAdsSettingsOwned => 'Ads removed. Thanks for your support!';
+
+  @override
+  String get settingsAdsHeader => 'Ads';
 }

@@ -624,4 +624,53 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get chatSendWithAdTooltip => 'Voir la pub et envoyer';
+
+  @override
+  String get removeAdsTitle => 'Les pubs te dérangent ?';
+
+  @override
+  String get removeAdsBody =>
+      'Supprime-les pour toujours avec un paiement unique. Sans abonnement.';
+
+  @override
+  String get removeAdsPerkNoAds => 'Aucune pub dans toute l\'app';
+
+  @override
+  String get removeAdsPerkAiChat => 'Chat avec l\'IA sans regarder de pub';
+
+  @override
+  String get removeAdsPerkForever => 'Paiement unique : à toi pour toujours';
+
+  @override
+  String removeAdsBuyButton(String price) {
+    return 'Supprimer les pubs · $price';
+  }
+
+  @override
+  String get removeAdsNotNow => 'Plus tard';
+
+  @override
+  String get removeAdsRestore => 'Restaurer l\'achat';
+
+  @override
+  String get removeAdsUnavailable =>
+      'L\'achat n\'est pas disponible pour le moment. Réessaie plus tard.';
+
+  @override
+  String get removeAdsThanks => 'Merci ! Tu ne verras plus de pubs.';
+
+  @override
+  String get removeAdsSettingsTitle => 'Supprimer les pubs';
+
+  @override
+  String removeAdsSettingsSubtitle(String price) {
+    return 'Paiement unique de $price';
+  }
+
+  @override
+  String get removeAdsSettingsOwned =>
+      'Pubs supprimées. Merci pour ton soutien !';
+
+  @override
+  String get settingsAdsHeader => 'Publicités';
 }

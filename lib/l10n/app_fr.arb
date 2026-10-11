@@ -298,5 +298,19 @@
   "settingsPrivacyHeader": "Confidentialité",
   "chatAdNotice": "Chaque demande à l'IA nécessite de regarder une courte publicité.",
   "chatAdDismissed": "Regarde la publicité en entier pour envoyer ta demande à l'IA.",
-  "chatSendWithAdTooltip": "Voir la pub et envoyer"
+  "chatSendWithAdTooltip": "Voir la pub et envoyer",
+  "removeAdsTitle": "Les pubs te dérangent ?",
+  "removeAdsBody": "Supprime-les pour toujours avec un paiement unique. Sans abonnement.",
+  "removeAdsPerkNoAds": "Aucune pub dans toute l'app",
+  "removeAdsPerkAiChat": "Chat avec l'IA sans regarder de pub",
+  "removeAdsPerkForever": "Paiement unique : à toi pour toujours",
+  "removeAdsBuyButton": "Supprimer les pubs · {price}",
+  "removeAdsNotNow": "Plus tard",
+  "removeAdsRestore": "Restaurer l'achat",
+  "removeAdsUnavailable": "L'achat n'est pas disponible pour le moment. Réessaie plus tard.",
+  "removeAdsThanks": "Merci ! Tu ne verras plus de pubs.",
+  "removeAdsSettingsTitle": "Supprimer les pubs",
+  "removeAdsSettingsSubtitle": "Paiement unique de {price}",
+  "removeAdsSettingsOwned": "Pubs supprimées. Merci pour ton soutien !",
+  "settingsAdsHeader": "Publicités"
 }

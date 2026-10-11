@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/ads/ads_service.dart';
+import '../../../core/billing/remove_ads_service.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../l10n/app_localizations.dart';
@@ -197,28 +198,36 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
                   style: AppTextStyles.caption.copyWith(color: secondary),
                 ),
               ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.smart_display_outlined,
-                    size: 16,
-                    color: _adDismissed ? AppColors.error : secondary,
-                  ),
-                  const SizedBox(width: 6),
-                  Expanded(
-                    child: Text(
-                      _adDismissed
-                          ? AppLocalizations.of(context).chatAdDismissed
-                          : AppLocalizations.of(context).chatAdNotice,
-                      style: AppTextStyles.caption.copyWith(
-                        color: _adDismissed ? AppColors.error : secondary,
+            // Ad-free users (remove-ads purchase) never see the notice.
+            ValueListenableBuilder<bool>(
+              valueListenable: removeAdsService.adsRemoved,
+              builder: (context, adsRemoved, _) => adsRemoved
+                  ? const SizedBox.shrink()
+                  : Padding(
+                      padding: const EdgeInsets.only(bottom: 8),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.smart_display_outlined,
+                            size: 16,
+                            color: _adDismissed ? AppColors.error : secondary,
+                          ),
+                          const SizedBox(width: 6),
+                          Expanded(
+                            child: Text(
+                              _adDismissed
+                                  ? AppLocalizations.of(context).chatAdDismissed
+                                  : AppLocalizations.of(context).chatAdNotice,
+                              style: AppTextStyles.caption.copyWith(
+                                color: _adDismissed
+                                    ? AppColors.error
+                                    : secondary,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
-              ),
             ),
             Row(
               children: [
@@ -233,10 +242,19 @@ class _PackingChatSheetState extends ConsumerState<PackingChatSheet> {
                   ),
                 ),
                 const SizedBox(width: 8),
-                IconButton.filled(
-                  onPressed: _isSending ? null : _send,
-                  tooltip: AppLocalizations.of(context).chatSendWithAdTooltip,
-                  icon: const Icon(Icons.smart_display_rounded),
+                ValueListenableBuilder<bool>(
+                  valueListenable: removeAdsService.adsRemoved,
+                  builder: (context, adsRemoved, _) => IconButton.filled(
+                    onPressed: _isSending ? null : _send,
+                    tooltip: adsRemoved
+                        ? null
+                        : AppLocalizations.of(context).chatSendWithAdTooltip,
+                    icon: Icon(
+                      adsRemoved
+                          ? Icons.send_rounded
+                          : Icons.smart_display_rounded,
+                    ),
+                  ),
                 ),
               ],
             ),
