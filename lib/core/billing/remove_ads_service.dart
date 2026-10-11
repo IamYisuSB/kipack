@@ -50,6 +50,13 @@ class RemoveAdsService {
       final details = await _iap.queryProductDetails({productId});
       if (details.productDetails.isNotEmpty) {
         product.value = details.productDetails.first;
+      } else {
+        // Shows in `adb logcat` — e.g. product not yet active in Play
+        // Console, or an install Play didn't sign (sideloaded build).
+        debugPrint(
+          'remove_ads not returned by Play: '
+          'notFound=${details.notFoundIDs} error=${details.error}',
+        );
       }
 
       final android = _iap
