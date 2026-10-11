@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<Layout title="Borrar tus datos · Kipack" description="Cómo eliminar los datos que Kipack guarda.">
+  <article class="prose">
+    <h1>Borrar tus datos</h1>
+    <p class="updated">Kipack · Última actualización: octubre de 2026</p>
+
+    <p>
+      Kipack no tiene cuentas de usuario ni guarda tus viajes en servidores, así que no hay ninguna
+      cuenta que eliminar. Todo lo que la App guarda está en tu propio móvil.
+    </p>
+
+    <h2>Borrar un viaje concreto</h2>
+    <p>
+      En la lista de viajes, pulsa el menú de la tarjeta del viaje y elige <strong>Eliminar</strong>.
+      Se borran el viaje, su lista de equipaje y sus maletas.
+    </p>
+
+    <h2>Borrar todos tus datos</h2>
+    <ul>
+      <li>Ve a <strong>Ajustes de Android → Aplicaciones → Kipack → Almacenamiento</strong> y pulsa <strong>Borrar datos</strong>, o</li>
+      <li>desinstala la App. Al desinstalarla se eliminan todos los datos guardados.</li>
+    </ul>
+
+    <h2>Datos de publicidad</h2>
+    <p>
+      Los anuncios los sirve Google AdMob. Puedes cambiar tu consentimiento en
+      <strong>Ajustes → Privacidad de anuncios</strong> dentro de la App, y restablecer o eliminar tu
+      ID de publicidad en <strong>Ajustes de Android → Google → Anuncios</strong>.
+    </p>
+
+    <h2>Correos que nos hayas enviado</h2>
+    <p>
+      Si nos escribiste para reportar un error o hacer una sugerencia y quieres que borremos ese
+      correo, escríbenos a <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> y lo eliminaremos.
+    </p>
+  </article>
+</Layout>

@@ -1,0 +1,456 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PhoneMockup from '../components/PhoneMockup.astro';
+import { PLAY_URL } from '../consts';
+
+const features = [
+  {
+    icon: '✦',
+    title: 'Lista hecha con IA',
+    text: 'Dinos destino, fechas, tipo de viaje y actividades. Kipack prepara una lista pensada para ese viaje, no una plantilla genérica.',
+  },
+  {
+    icon: '☀︎',
+    title: 'Clima real del destino',
+    text: 'Previsión de hasta 16 días o, si el viaje es más adelante, la media de años anteriores. Nada de meter el paraguas si no va a llover.',
+  },
+  {
+    icon: '🧳',
+    title: 'Organiza por maletas',
+    text: 'Crea tu maleta de cabina, la facturada o la mochila y asigna cada cosa a la suya.',
+  },
+  {
+    icon: '💬',
+    title: 'Ajusta hablando',
+    text: '"Voy solo con mochila, recórtala." Pídeselo al chat y la IA rehace la lista por ti.',
+  },
+  {
+    icon: '🗺️',
+    title: 'Tu mapa de viajes',
+    text: 'Mira en el mapa del mundo los países que ya has visitado y los que tienes programados.',
+  },
+  {
+    icon: '🔔',
+    title: 'Recordatorios',
+    text: 'Te avisa unos días antes de salir si todavía te falta algo por meter en la maleta.',
+  },
+  {
+    icon: '📋',
+    title: 'Plantillas',
+    text: 'Guarda tu lista de "viaje de trabajo" o "playa" y reutilízala en el siguiente viaje.',
+  },
+  {
+    icon: '📄',
+    title: 'Exporta a PDF',
+    text: 'Comparte la lista por WhatsApp o imprímela para tacharla a boli.',
+  },
+];
+
+const steps = [
+  { n: '01', title: 'Crea el viaje', text: 'Elige el destino, las fechas y cómo vas a viajar.' },
+  { n: '02', title: 'Kipack prepara la lista', text: 'Cruza tu viaje con el clima y en segundos tienes todo ordenado por categorías.' },
+  { n: '03', title: 'Haz la maleta', text: 'Ve marcando lo que metes. La barra de progreso te dice cuánto te falta.' },
+];
+
+const faqs = [
+  {
+    q: '¿Kipack es gratis?',
+    a: 'Sí, todas las funciones son gratuitas. La app se mantiene con algunos anuncios discretos, que solo aparecen en momentos puntuales como mientras se genera tu lista.',
+  },
+  {
+    q: '¿Necesito crear una cuenta?',
+    a: 'No. Abres la app y empiezas. No te pedimos email ni contraseña.',
+  },
+  {
+    q: '¿Dónde se guardan mis viajes?',
+    a: 'Solo en tu móvil. No tenemos servidores con tus datos. Para generar la lista, los datos del viaje (destino, fechas, tipo) se envían al servicio de IA en ese momento y no se guardan.',
+  },
+  {
+    q: '¿Está disponible para iPhone?',
+    a: 'De momento Kipack está disponible para Android en Google Play.',
+  },
+  {
+    q: '¿En qué idiomas está?',
+    a: 'Español, inglés y francés. La lista se genera en el idioma de tu móvil.',
+  },
+];
+---
+
+<Layout title="Kipack · Tu maleta, lista en segundos">
+  <section class="hero">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="dot"></span> Listas de equipaje con IA</span>
+        <h1>
+          Tu maleta,<br />
+          <span class="hl">lista en segundos.</span>
+        </h1>
+        <p class="lead">
+          Kipack crea tu lista de equipaje según tu destino, tus fechas y el clima real que te vas a
+          encontrar. Sin listas genéricas, sin cuentas y gratis.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href={PLAY_URL} target="_blank" rel="noopener">
+            <svg width="20" height="22" viewBox="0 0 20 22" aria-hidden="true">
+              <path d="M1 1.5v19l10-9.5L1 1.5z" fill="currentColor" opacity=".9" />
+              <path d="M11 11l3.2 3.1L18.5 11.7c.7-.4.7-1.4 0-1.8L14.2 7.9 11 11z" fill="currentColor" />
+            </svg>
+            Descargar en Google Play
+          </a>
+          <a class="btn btn-ghost" href="#funciones">Ver funciones</a>
+        </div>
+        <ul class="badges">
+          <li>✓ Gratis</li>
+          <li>✓ Sin cuentas</li>
+          <li>✓ Datos solo en tu móvil</li>
+        </ul>
+      </div>
+      <div class="hero-visual">
+        <div class="float-card fc-1">🌦️ <span>Ajustada al clima</span></div>
+        <div class="float-card fc-2">✦ <span>29 artículos en 5 s</span></div>
+        <PhoneMockup />
+      </div>
+    </div>
+  </section>
+
+  <section id="funciones" class="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Funciones</span>
+        <h2>Todo lo que necesitas<br />para no olvidarte de nada.</h2>
+      </div>
+      <div class="feature-grid">
+        {features.map((f, i) => (
+          <article class="feature reveal" style={`transition-delay: ${(i % 4) * 70}ms`}>
+            <div class="feature-icon">{f.icon}</div>
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="how">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2>Tres pasos y a volar.</h2>
+      </div>
+      <div class="steps">
+        {steps.map((s, i) => (
+          <div class="step reveal" style={`transition-delay: ${i * 90}ms`}>
+            <span class="step-n">{s.n}</span>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy-band">
+    <div class="container band reveal">
+      <div>
+        <span class="eyebrow">Privacidad</span>
+        <h2>Tus viajes son tuyos.</h2>
+        <p class="lead">
+          Kipack no tiene cuentas ni guarda tus viajes en ningún servidor. Todo vive en tu móvil y se
+          borra si desinstalas la app.
+        </p>
+      </div>
+      <a class="btn btn-ghost" href="/privacidad">Leer la política de privacidad →</a>
+    </div>
+  </section>
+
+  <section id="faq" class="faq">
+    <div class="container narrow">
+      <div class="section-head reveal">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2>¿Dudas?</h2>
+      </div>
+      {faqs.map((f) => (
+        <details class="reveal">
+          <summary>{f.q}</summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="container cta-box reveal">
+      <h2>Tu próximo viaje empieza<br />por la maleta.</h2>
+      <p class="lead">Descarga Kipack y prepárala en segundos.</p>
+      <a class="btn btn-primary" href={PLAY_URL} target="_blank" rel="noopener">
+        Descargar en Google Play
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    padding: 72px 0 96px;
+    overflow: hidden;
+  }
+
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+  }
+
+  .glow-1 {
+    width: 520px;
+    height: 520px;
+    background: rgba(198, 232, 62, 0.16);
+    top: -120px;
+    right: -80px;
+  }
+
+  .glow-2 {
+    width: 420px;
+    height: 420px;
+    background: rgba(62, 122, 84, 0.35);
+    bottom: -160px;
+    left: -120px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(240, 237, 228, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(to bottom, black, transparent 85%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--lime);
+    box-shadow: 0 0 0 4px rgba(198, 232, 62, 0.2);
+  }
+
+  h1 {
+    font-size: clamp(2.8rem, 7vw, 4.8rem);
+    font-weight: 800;
+    margin: 18px 0 20px;
+  }
+
+  .hl {
+    background: linear-gradient(90deg, var(--lime), #e6f7a4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 32px 0 24px;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: var(--muted-dark);
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .hero-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-card {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding: 10px 16px;
+    border-radius: 16px;
+    background: rgba(19, 42, 29, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(198, 232, 62, 0.25);
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .fc-1 { top: 4%; left: -8%; }
+  .fc-2 { bottom: 10%; right: -6%; }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-visual { animation: none; }
+  }
+
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: left; }
+    .hero-visual { margin-top: 24px; }
+    .fc-1 { left: 0; }
+    .fc-2 { right: 0; }
+  }
+
+  @media (max-width: 560px) {
+    .float-card { display: none; }
+  }
+
+  .section-head { margin-bottom: 48px; }
+  .section-head h2 { margin-top: 12px; }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  @media (max-width: 1000px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .feature-grid { grid-template-columns: 1fr; } }
+
+  .feature {
+    background: linear-gradient(160deg, var(--green-900), rgba(19, 42, 29, 0.4));
+    border: 1px solid rgba(240, 237, 228, 0.07);
+    border-radius: var(--radius);
+    padding: 26px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .feature:hover {
+    border-color: rgba(198, 232, 62, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .feature-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: var(--lime-soft);
+    color: var(--green-900);
+    display: grid;
+    place-items: center;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
+  .feature h3 { font-size: 1.08rem; margin-bottom: 8px; }
+  .feature p { color: var(--muted-dark); margin: 0; font-size: 0.95rem; }
+
+  .how { background: var(--green-900); }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  @media (max-width: 800px) { .steps { grid-template-columns: 1fr; } }
+
+  .step {
+    padding: 32px 28px;
+    border-radius: var(--radius);
+    background: var(--green-950);
+    border: 1px solid var(--green-800);
+  }
+
+  .step-n {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--lime);
+    display: block;
+    margin-bottom: 14px;
+  }
+
+  .step h3 { font-size: 1.25rem; margin-bottom: 8px; }
+  .step p { color: var(--muted-dark); margin: 0; }
+
+  .band {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 48px;
+    border-radius: 32px;
+    background:
+      radial-gradient(circle at 90% 20%, rgba(198, 232, 62, 0.18), transparent 50%),
+      var(--green-900);
+    border: 1px solid var(--green-800);
+  }
+
+  .band h2 { margin: 12px 0; }
+
+  @media (max-width: 600px) { .band { padding: 32px 24px; } }
+
+  .narrow { max-width: 760px; }
+
+  details {
+    border-bottom: 1px solid var(--green-800);
+    padding: 20px 0;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary::after {
+    content: '+';
+    color: var(--lime);
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::after { transform: rotate(45deg); }
+
+  details p { color: var(--muted-dark); margin: 12px 0 0; }
+
+  .cta-box {
+    text-align: center;
+    padding: 72px 24px;
+    border-radius: 36px;
+    background:
+      radial-gradient(circle at 50% 0%, rgba(198, 232, 62, 0.25), transparent 60%),
+      var(--green-900);
+    border: 1px solid rgba(198, 232, 62, 0.2);
+  }
+
+  .cta-box .lead { margin: 16px auto 28px; }
+</style>

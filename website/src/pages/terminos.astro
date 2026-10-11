@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CONTACT_EMAIL } from '../consts';
+---
+
+<Layout title="Términos de uso · Kipack" description="Condiciones de uso de la aplicación Kipack.">
+  <article class="prose">
+    <h1>Términos de uso</h1>
+    <p class="updated">Última actualización: octubre de 2026</p>
+
+    <p>
+      Estos términos regulan el uso de la aplicación Kipack ("la App"), desarrollada por Jesús David
+      Guerrero. Al descargar o usar la App aceptas estos términos. Si no estás de acuerdo, no la uses.
+    </p>
+
+    <h2>1. Qué es Kipack</h2>
+    <p>
+      Kipack es una aplicación gratuita que te ayuda a preparar tu equipaje de viaje. Genera listas
+      sugeridas a partir de los datos de tu viaje y del clima previsto, y te permite editarlas,
+      organizarlas por maletas y marcarlas a medida que haces la maleta.
+    </p>
+
+    <h2>2. Uso gratuito y publicidad</h2>
+    <p>
+      La App es gratuita y se financia mediante anuncios proporcionados por Google AdMob. Los
+      anuncios se muestran en momentos concretos de la App y no condicionan el acceso a ninguna
+      función.
+    </p>
+
+    <h2>3. Las listas son sugerencias</h2>
+    <p>
+      Las listas de equipaje y la información meteorológica se generan de forma automática mediante
+      inteligencia artificial y servicios de terceros. Son orientativas y pueden contener errores u
+      omisiones. Eres responsable de revisar qué llevas en tu viaje, incluida la documentación
+      necesaria (pasaporte, visados, requisitos sanitarios), que debes consultar siempre en fuentes
+      oficiales.
+    </p>
+
+    <h2>4. Tus datos</h2>
+    <p>
+      Kipack no tiene cuentas de usuario. Los datos de tus viajes se guardan en tu dispositivo y no
+      podemos recuperarlos si desinstalas la App o cambias de móvil. Consulta la
+      <a href="/privacidad">política de privacidad</a> para más detalles.
+    </p>
+
+    <h2>5. Uso adecuado</h2>
+    <p>
+      Te comprometes a no utilizar la App para fines ilícitos, a no intentar acceder de forma no
+      autorizada a sus sistemas ni a los servicios que utiliza, y a no hacer un uso automatizado o
+      abusivo de las funciones de inteligencia artificial.
+    </p>
+
+    <h2>6. Propiedad intelectual</h2>
+    <p>
+      La App, su nombre, logotipo, diseño y código son propiedad de su desarrollador. No se concede
+      ningún derecho sobre ellos más allá del uso personal de la App.
+    </p>
+
+    <h2>7. Responsabilidad</h2>
+    <p>
+      La App se ofrece "tal cual". Dentro de lo permitido por la ley, no nos hacemos responsables de
+      los daños derivados de olvidos, errores en las listas o en la información meteorológica, ni de
+      interrupciones del servicio.
+    </p>
+
+    <h2>8. Cambios</h2>
+    <p>
+      Podemos actualizar la App y estos términos. Si el cambio es relevante, lo indicaremos en la
+      propia App o en esta página.
+    </p>
+
+    <h2>9. Ley aplicable y contacto</h2>
+    <p>
+      Estos términos se rigen por la legislación española. Para cualquier duda puedes escribirnos a
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.
+    </p>
+  </article>
+</Layout>

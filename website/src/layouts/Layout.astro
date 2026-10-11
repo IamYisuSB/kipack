@@ -1,0 +1,167 @@
+---
+import '../styles/global.css';
+import { PLAY_URL } from '../consts';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Kipack crea tu lista de equipaje con IA según tu destino, tus fechas y el clima real. Gratis, sin cuentas y con tus viajes guardados en tu móvil.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0b1710" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <a href="/" class="brand" aria-label="Kipack, inicio">
+          <img src="/logo.png" alt="Kipack" width="104" height="48" />
+        </a>
+        <nav class="links">
+          <a href="/#funciones">Funciones</a>
+          <a href="/#como-funciona">Cómo funciona</a>
+          <a href="/#faq">Preguntas</a>
+        </nav>
+        <a class="btn btn-primary nav-cta" href={PLAY_URL} target="_blank" rel="noopener">
+          Descargar
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <img src="/logo.png" alt="Kipack" width="104" height="48" />
+          <p class="footer-tag">Tu maleta inteligente.</p>
+        </div>
+        <div class="footer-links">
+          <a href="/privacidad">Política de privacidad</a>
+          <a href="/terminos">Términos de uso</a>
+          <a href="/borrar-datos">Borrar tus datos</a>
+          <a href="mailto:fooserd@gmail.com">fooserd@gmail.com</a>
+        </div>
+      </div>
+      <div class="container copyright">
+        © {new Date().getFullYear()} Kipack · Hecho en España
+      </div>
+    </footer>
+
+    <script>
+      // Fade sections in as they scroll into view.
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(11, 23, 16, 0.72);
+    border-bottom: 1px solid rgba(240, 237, 228, 0.06);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    height: 72px;
+  }
+
+  .brand img { height: 40px; width: auto; }
+
+  .links { display: flex; gap: 28px; }
+
+  .links a {
+    text-decoration: none;
+    color: var(--muted-dark);
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+
+  .links a:hover { color: #f0ede4; }
+
+  .nav-cta { padding: 10px 20px; font-size: 0.95rem; }
+
+  @media (max-width: 720px) {
+    .links { display: none; }
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--green-800);
+    padding: 48px 0 32px;
+    background: var(--green-950);
+  }
+
+  .footer-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-grid img { height: 36px; width: auto; }
+
+  .footer-tag { color: var(--muted-dark); margin: 12px 0 0; }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links a {
+    color: var(--muted-dark);
+    text-decoration: none;
+  }
+
+  .footer-links a:hover { color: var(--lime); }
+
+  .copyright {
+    margin-top: 40px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+</style>
