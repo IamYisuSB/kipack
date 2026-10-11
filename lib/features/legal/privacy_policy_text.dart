@@ -12,10 +12,9 @@ const String privacyPolicyText = '''
 
 # 1. Responsable del tratamiento
 
-Jesús David Guerrero (DNI 74537721B), como persona física responsable del desarrollo y explotación de la aplicación Kipack ("la App", "nosotros"), es el responsable del tratamiento de los datos personales que se describen en esta política.
+Jesús David Guerrero, como persona física responsable del desarrollo y explotación de la aplicación Kipack ("la App", "nosotros"), es el responsable del tratamiento de los datos personales que se describen en esta política.
 
 Correo de contacto: fooserd@gmail.com
-Teléfono de contacto: 642355835
 
 Para cualquier consulta relacionada con tus datos personales o el ejercicio de tus derechos, puedes escribirnos a la dirección anterior.
 
