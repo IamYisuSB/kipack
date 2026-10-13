@@ -27,10 +27,6 @@ class RemoveAdsService {
   /// answers or if billing is unavailable.
   final product = ValueNotifier<ProductDetails?>(null);
 
-  /// Short technical reason the product couldn't be loaded, shown in small
-  /// print under the "not available" message so testers can report it.
-  String? lastError;
-
   StreamSubscription<List<PurchaseDetails>>? _subscription;
   Future<void>? _init;
 
@@ -49,26 +45,11 @@ class RemoveAdsService {
 
   Future<void> _syncWithPlay() async {
     try {
-      if (!await _iap.isAvailable()) {
-        lastError = 'billing-unavailable';
-        return;
-      }
+      if (!await _iap.isAvailable()) return;
 
       final details = await _iap.queryProductDetails({productId});
       if (details.productDetails.isNotEmpty) {
         product.value = details.productDetails.first;
-        lastError = null;
-      } else {
-        final error = details.error;
-        lastError = error == null
-            ? 'not-found ${details.notFoundIDs.join(',')}'
-            : '${error.code}: ${error.message}';
-        // Shows in `adb logcat` — e.g. product not yet active in Play
-        // Console, or an install Play didn't sign (sideloaded build).
-        debugPrint(
-          'remove_ads not returned by Play: '
-          'notFound=${details.notFoundIDs} error=${details.error}',
-        );
       }
 
       final android = _iap
@@ -86,7 +67,6 @@ class RemoveAdsService {
       }
       await _setRemoved(owned);
     } catch (error) {
-      lastError = error.toString();
       debugPrint('Could not sync purchases with Play: $error');
     }
   }

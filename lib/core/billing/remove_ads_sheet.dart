@@ -129,14 +129,6 @@ class _RemoveAdsSheetState extends State<_RemoveAdsSheet> {
                 l10n.removeAdsUnavailable,
                 style: AppTextStyles.caption.copyWith(color: AppColors.error),
               ),
-              if (removeAdsService.lastError != null)
-                Text(
-                  removeAdsService.lastError!,
-                  style: AppTextStyles.caption.copyWith(
-                    color: secondary,
-                    fontSize: 11,
-                  ),
-                ),
               const SizedBox(height: 8),
             ],
             SizedBox(
