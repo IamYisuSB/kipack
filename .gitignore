@@ -53,3 +53,19 @@ app.*.map.json
 
 # Unrelated local tool data found alongside the project
 .freebuff/
+
+# More secrets — env variants, signing/service credentials
+.env.*
+!.env.example
+supabase/.env
+supabase/functions/.env
+supabase/.temp/
+google-services.json
+GoogleService-Info.plist
+*.pem
+*.p12
+*.p8
+*service-account*.json
+
+# Local Claude Code settings
+.claude/settings.local.json
